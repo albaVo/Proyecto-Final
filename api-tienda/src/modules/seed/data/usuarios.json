@@ -1,0 +1,63 @@
+[
+  {
+    "nombre": "Alba",
+    "apellidos": "Villanueva",
+    "email": "alba@gmail.com",
+    "contraseña": "Abc123"
+  },
+  {
+    "nombre": "Diego",
+    "apellidos": "Martinez",
+    "email": "diego@gmail.com",
+    "contraseña": "Abc123"
+  },
+  {
+    "nombre": "Mario",
+    "apellidos": "Hernández",
+    "email": "mario.hernandez@gmail.com",
+    "contraseña": "Abc123"
+  },
+  {
+    "nombre": "Laura",
+    "apellidos": "García Pérez",
+    "email": "laura.garcia@gmail.com",
+    "contraseña": "Abc123"
+  },
+  {
+    "nombre": "Pedro",
+    "apellidos": "Ruíz Sánchez",
+    "email": "pedro.ruiz@gmail.com",
+    "contraseña": "Abc123"
+  },
+  {
+    "nombre": "María",
+    "apellidos": "Gómez Fernández",
+    "email": "maria.gomez@gmail.com",
+    "contraseña": "Abc123"
+  },
+  {
+    "nombre": "Sara",
+    "apellidos": "Herrera",
+    "email": "sara.herrera@gmail.com",
+    "contraseña": "Abc123"
+  },
+  {
+    "nombre": "Javier",
+    "apellidos": "Molina",
+    "email": "javier.molina@gmail.com",
+    "contraseña": "Abc123"
+  },
+  {
+    "nombre": "Carlos",
+    "apellidos": "Sánchez Sáenz",
+    "email": "carlos.sanchez@gmail.com",
+    "contraseña": "Abc123"
+  },
+  {
+    "nombre": "Elena",
+    "apellidos": "González",
+    "email": "elena.gonzalez1@gmail.com",
+    "contraseña": "Abc123"
+  }
+]
+  

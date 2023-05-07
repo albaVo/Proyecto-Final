@@ -1,0 +1,28 @@
+@import "./colors.scss";
+
+* {
+    color: $text-primary;
+}
+
+body {
+    margin: 0;
+    background-color: $background-primary !important;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    color: $text-primary;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: $text-primary;
+    text-decoration: none;
+
+    &:hover {
+        color: $primary;
+    }
+}

@@ -1,0 +1,87 @@
+[
+    {
+        "titulo": "PC",
+        "icono": "https://www.flaticon.es/icono-gratis/pc-de-escritorio_4449619",
+        "categoriaId": 2
+    },
+    {
+        "titulo": "PlayStation",
+        "icono": "https://www.flaticon.com/free-icon/playstation-logotype_1443?term=playstation&page=1&position=2&origin=search&related_id=1443",
+        "categoriaId": 2
+    },
+    {
+        "titulo": "Nintendo",
+        "icono": "https://www.flaticon.com/free-icon/nintendo-switch_871469?term=nintendo&page=1&position=5&origin=search&related_id=871469",
+        "categoriaId": 2
+    },
+    {
+        "titulo": "Xbox",
+        "icono": "https://www.flaticon.com/free-icon/xbox-logo_1321?term=xbox&page=1&position=1&origin=search&related_id=1321",
+        "categoriaId": 2
+    },
+    {
+        "titulo": "Consolas",
+        "icono": "https://www.flaticon.es/icono-gratis/estacion-de-juegos_744141?term=consolas&page=1&position=1&origin=search&related_id=744141",
+        "categoriaId": 3
+    },
+    {
+        "titulo": "Accesorios",
+        "icono": "https://www.flaticon.es/icono-gratis/auriculares_3791442?term=auriculares&page=1&position=11&origin=search&related_id=3791442",
+        "categoriaId": 3
+    },
+    {
+        "titulo": "PC Completos",
+        "icono": "https://www.flaticon.es/icono-gratis/monitor-de-pc_3518688?term=pc&related_id=3518688",
+        "categoriaId": 3
+    },
+    {
+        "titulo": "Perifericos",
+        "icono": "https://www.flaticon.es/icono-gratis/hardware-de-la-computadora_4989137?term=perifericos&page=1&position=4&origin=search&related_id=4989137",
+        "categoriaId": 3
+    },
+    {
+        "titulo": "Componentes",
+        "icono": "https://www.flaticon.es/icono-gratis/procesador_9454738?term=componentes+chip&page=1&position=3&origin=search&related_id=9454738",
+        "categoriaId": 3
+    },
+    {
+        "titulo": "Funkos",
+        "icono": "https://www.flaticon.es/icono-gratis/muneca_2207911?term=mu%C3%B1eco&page=1&position=37&origin=search&related_id=2207911",
+        "categoriaId": 4
+    },
+    {
+        "titulo": "Replicas",
+        "icono": "https://www.flaticon.es/icono-gratis/embarcacion_1460264?term=replicas&page=1&position=24&origin=search&related_id=1460264",
+        "categoriaId": 4
+    },
+    {
+        "titulo": "Accesorios",
+        "icono": "https://www.flaticon.es/icono-gratis/taza-de-cafe_166805?term=taza&page=1&position=8&origin=search&related_id=166805",
+        "categoriaId": 4
+    },
+    {
+        "titulo": "Disfraces",
+        "icono": "https://www.flaticon.es/icono-gratis/disfraz_4620019?term=disfraces&page=1&position=15&origin=search&related_id=4620019",
+        "categoriaId": 5
+    },
+    {
+        "titulo": "Accesorios",
+        "icono": "https://www.flaticon.es/icono-gratis/accesorios-de-halloween-para-disfraces_12462?term=disfraces+accesorios&page=1&position=12&origin=search&related_id=12462",
+        "categoriaId": 5
+    },
+    {
+        "titulo": "Juegos de mesa",
+        "icono": "https://www.flaticon.es/icono-gratis/juego-de-mesa_3524297?term=juegos+de+mesa&page=1&position=12&origin=search&related_id=3524297",
+        "categoriaId": 6
+    },
+    {
+        "titulo": "Cartas",
+        "icono": "https://www.flaticon.es/icono-gratis/juego-de-cartas_7231290?term=juegos+de+mesa&related_id=7231290",
+        "categoriaId": 6
+    },
+    {
+        "titulo": "Accesorios",
+        "icono": "https://www.flaticon.es/icono-gratis/dado_5484631?term=juegos+de+mesa&page=1&position=5&origin=search&related_id=5484631",
+        "categoriaId": 6
+    }
+]

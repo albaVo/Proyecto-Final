@@ -1,0 +1,22 @@
+[
+    {
+        "titulo": "Videojuegos",
+        "icono": "https://www.flaticon.es/icono-gratis/arcada_1138589?term=arcade&related_id=1138589"
+    },
+    {
+        "titulo": "Consolas y accesorios",
+        "icono": "https://www.flaticon.es/icono-gratis/jugando-videojuegos_3271009?term=consolas&related_id=3271009"
+    },
+    {
+        "titulo": "Figuras y coleccionables",
+        "icono":  "https://www.flaticon.es/icono-gratis/coleccion_8463194?term=coleccionables&page=1&position=10&origin=search&related_id=8463194"
+    },
+    {
+        "titulo": "Cosplay y disfraces",
+        "icono": "https://www.flaticon.es/icono-gratis/mascaras-de-carnaval_72388?term=disfraces&page=1&position=3&origin=search&related_id=72388"
+    },
+    {
+        "titulo": "Juegos de mesa y cartas",
+        "icono": "https://www.flaticon.es/icono-gratis/juego-de-mesa_3351767?term=juegos+de+mesa&page=1&position=1&origin=search&related_id=3351767"
+    }
+]

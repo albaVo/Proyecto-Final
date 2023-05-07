@@ -1,0 +1,155 @@
+[
+    {
+      "nombre": "ToysRUs",
+      "email": "toysrus@mail.com",
+      "telefono": 675842016,
+      "direccion": "Calle del Juguete, 123",
+      "ciudad": "Ciudad Juguete",
+      "codigo_postal": 12345,
+      "subcategoriaId": 12
+    },
+    {
+      "nombre": "Collectibles Galore",
+      "email": "collectiblesgalore@mail.com",
+      "telefono": 620157896,
+      "direccion": "Avenida de las Colecciones, 456",
+      "ciudad": "Ciudad Coleccionable",
+      "codigo_postal": 67890,
+      "subcategoriaId": 13
+    },
+    {
+      "nombre": "Comic Emporium",
+      "email": "comicemporium@mail.com",
+      "telefono": 652003697,
+      "direccion": "Calle del Cómic, 789",
+      "ciudad": "Ciudad del Cómic",
+      "codigo_postal": 13579,
+      "subcategoriaId": 14
+    },
+    {
+      "nombre": "Sports Memorabilia",
+      "email": "sportsmemorabilia@mail.com",
+      "telefono": 632859960,
+      "direccion": "Avenida de los Deportes, 246",
+      "ciudad": "Ciudad Deportiva",
+      "codigo_postal": 24680,
+      "subcategoriaId": 15
+    },
+    {
+      "nombre": "Action Figures Warehouse",
+      "email": "actionfigureswarehouse@mail.com",
+      "telefono": 620147853,
+      "direccion": "Calle de las Figuras de Acción, 369",
+      "ciudad": "Ciudad Figurilla",
+      "codigo_postal": 36912,
+      "subcategoriaId": 16
+    },
+    {
+      "nombre": "Board Game Co.",
+      "email": "boardgameco@mail.com",
+      "telefono": 630259634,
+      "direccion": "Avenida de los Juegos de Mesa, 481",
+      "ciudad": "Ciudad del Tablero",
+      "codigo_postal": 48152,
+      "subcategoriaId": 18
+    },
+    {
+      "nombre": "Dice Emporium",
+      "email": "diceemporium@mail.com",
+      "telefono": 632598741,
+      "direccion": "Calle de los Dados, 753",
+      "ciudad": "Ciudad del Dado",
+      "codigo_postal": 75314,
+      "subcategoriaId": 19
+    },
+    {
+      "nombre": "Miniatures Palace",
+      "email": "miniaturespalace@mail.com",
+      "telefono": 636985321,
+      "direccion": "Avenida de las Miniaturas, 852",
+      "ciudad": "Ciudad Miniatura",
+      "codigo_postal": 85236,
+      "subcategoriaId": 20
+    },
+    {
+        "nombre": "RPG Haven",
+        "email": "rpghaven@mail.com",
+        "telefono": 602105478,
+        "direccion": "Calle del RPG, 963",
+        "ciudad": "Ciudad del RPG",
+        "codigo_postal": 96357,
+        "subcategoriaId": 21
+    },
+    {
+        "nombre": "Coleccionables World",
+        "email": "coleccionablesworld@gmail.com",
+        "telefono": 695874023,
+        "direccion": "Calle del Sol, 8",
+        "ciudad": "Madrid",
+        "codigo_postal": 28001,
+        "subcategoriaId": 22
+    },
+    {
+        "nombre": "Figuras y más",
+        "email": "figurasycoleccionables@gmail.com",
+        "telefono": 627459813,
+        "direccion": "Avenida del Norte, 15",
+        "ciudad": "Barcelona",
+        "codigo_postal": 48012,
+        "subcategoriaId": 24
+    },
+    {
+        "nombre": "Objetos únicos",
+        "email": "objetosunicos@gmail.com",
+        "telefono": 689751236,
+        "direccion": "Calle Mayor, 24",
+        "ciudad": "Sevilla",
+        "codigo_postal": 41001,
+        "subcategoriaId": 25
+    },
+    {
+        "nombre": "Coleccionables exclusivos",
+        "email": "colecc_exclusivos@gmail.com",
+        "telefono": 677456389,
+        "direccion": "Calle Real, 6",
+        "ciudad": "Valencia",
+        "codigo_postal": 46001,
+        "subcategoriaId": 26
+    },
+    {
+      "nombre": "Fantasy Figures",
+      "email": "fantasyfigures@example.com",
+      "telefono": 634567890,
+      "direccion": "Avenida del Dragón, 10",
+      "ciudad": "Barcelona",
+      "codigo_postal": 78002,
+      "subcategoriaId": 27
+    },
+    {
+      "nombre": "Sci-Fi Emporium",
+      "email": "scifiemporium@example.com",
+      "telefono": 645678901,
+      "direccion": "Calle del Futuro, 5",
+      "ciudad": "Valencia",
+      "codigo_postal": 46001,
+      "subcategoriaId": 28
+    },
+    {
+      "nombre": "Horror Shop",
+      "email": "horrorshop@example.com",
+      "telefono": 656789012,
+      "direccion": "Calle del Terror, 13",
+      "ciudad": "Sevilla",
+      "codigo_postal": 41001,
+      "subcategoriaId": 29
+    },
+    {
+      "nombre": "Gaming Toys",
+      "email": "gamingtoys@example.com",
+      "telefono": 667890123,
+      "direccion": "Avenida del Jugón, 8",
+      "ciudad": "Zaragoza",
+      "codigo_postal": 50001,
+      "subcategoriaId": 30
+    }
+]

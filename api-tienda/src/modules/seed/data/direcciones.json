@@ -1,0 +1,82 @@
+[
+    {
+        "titulo": "Casa Playa",
+        "direccion": "Calle Rosales, 8",
+        "ciudad": "Almeria",
+        "codigo_postal": 46807,
+        "telefono": 695874023,
+        "usuarioId": 4
+    },
+    {
+        "titulo": "Casa de campo",
+        "direccion": "Calle Nueva, 25",
+        "ciudad": "Murcia",
+        "codigo_postal": 30001,
+        "telefono": 654789012,
+        "usuarioId": 4
+    },
+    {
+        "titulo": "Apartamento en la playa",
+        "direccion": "Avenida del Mar, 37",
+        "ciudad": "Málaga",
+        "codigo_postal": 29001,
+        "telefono": 671234567,
+        "usuarioId": 5
+    },
+    {
+        "titulo": "Casa en la montaña",
+        "direccion": "Carretera de la Sierra, 10",
+        "ciudad": "Granada",
+        "codigo_postal": 18001,
+        "telefono": 689076543,
+        "usuarioId": 6
+    },
+    {
+        "titulo": "Piso en el centro",
+        "direccion": "Calle Mayor, 8",
+        "ciudad": "Madrid",
+        "codigo_postal": 28001,
+        "telefono": 612345678,
+        "usuarioId": 7
+    },
+    {
+        "titulo": "Chalet con piscina",
+        "direccion": "Avenida de la Palmera, 12",
+        "ciudad": "Sevilla",
+        "codigo_postal": 41001,
+        "telefono": 643219876,
+        "usuarioId": 8
+    },
+    {
+        "titulo": "Casa de campo",
+        "direccion": "Camino de los Olivos, 12",
+        "ciudad": "Granada",
+        "codigo_postal": 18001,
+        "telefono": 638951247,
+        "usuarioId": 6
+    },
+    {
+        "titulo": "Apartamento céntrico",
+        "direccion": "Calle San Juan, 4",
+        "ciudad": "Madrid",
+        "codigo_postal": 28001,
+        "telefono": 677123456,
+        "usuarioId": 7
+    },
+    {
+        "titulo": "Piso luminoso",
+        "direccion": "Avenida del Parque, 22",
+        "ciudad": "Barcelona",
+        "codigo_postal": 48510,
+        "telefono": 689745231,
+        "usuarioId": 8
+    },
+    {
+        "titulo": "Casa adosada",
+        "direccion": "Calle de la Luna, 10",
+        "ciudad": "Sevilla",
+        "codigo_postal": 41001,
+        "telefono": 622784596,
+        "usuarioId": 9
+    }
+]

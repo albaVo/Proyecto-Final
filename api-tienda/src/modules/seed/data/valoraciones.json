@@ -1,0 +1,92 @@
+[  
+    {    
+        "puntuacion": 4,    
+        "comentario": "Me ha gustado mucho",    
+        "productoId": 201,    
+        "usuarioId": 9   
+    },  
+    {    
+        "puntuacion": 3,    
+        "comentario": "Está bien pero esperaba algo más",    
+        "productoId": 214,    
+        "usuarioId": 10  
+    },  
+    {    
+        "puntuacion": 5,    
+        "comentario": "Simplemente increíble",    
+        "productoId": 270,    
+        "usuarioId": 7  
+    },  
+    {    
+        "puntuacion": 2,    
+        "comentario": "No es lo que esperaba",    
+        "productoId": 191,    
+        "usuarioId": 6  
+    },  
+    {    
+        "puntuacion": 1,    
+        "comentario": "No lo recomiendo",    
+        "productoId": 283,    
+        "usuarioId": 8  
+    },
+    {    
+        "puntuacion": 5,    
+        "comentario": "¡Este producto es impresionante! Lo compré para mi hijo y no puedo estar más feliz con mi compra. La calidad es excelente y el precio es justo. Definitivamente lo recomiendo.",    
+        "productoId": 205,    
+        "usuarioId": 8  
+    },  
+    {    
+        "puntuacion": 4,    
+        "comentario": "El producto es bueno y cumple su función. Sin embargo, creo que el precio es un poco alto considerando que hay opciones similares en el mercado por menos dinero.",   
+        "productoId": 248,    
+        "usuarioId": 4  
+    },  
+    {    
+        "puntuacion": 3,    
+        "comentario": "Compré este producto porque tenía buenas críticas, pero no me impresionó tanto. La calidad es buena, pero no estoy seguro de si vale la pena el precio.",    
+        "productoId": 222,    
+        "usuarioId": 7  
+    },  
+    {   
+        "puntuacion": 5,    
+        "comentario": "Me encanta este producto, lo uso todos los días y ha mejorado mi vida en gran medida. La calidad es excelente y el precio es justo. Definitivamente compraré de nuevo.",    
+        "productoId": 272,    
+        "usuarioId": 10  
+    },  
+    {    
+        "puntuacion": 2,    
+        "comentario": "No estoy muy impresionado con este producto. La calidad no es tan buena como esperaba y el precio es demasiado alto. No lo recomendaría.",    
+        "productoId": 191,    
+        "usuarioId": 5  
+    },  
+    {    
+        "puntuacion": 5,    
+        "comentario": "Este producto es increíble. Lo compré para mi esposa y ella no puede dejar de usarlo. La calidad es excelente y el precio es justo. Sin duda lo recomiendo.",    
+        "productoId": 225,    
+        "usuarioId": 11  
+    },  
+    {    
+        "puntuacion": 4,    
+        "comentario": "Este producto es bastante bueno. La calidad es sólida y el precio es razonable. No puedo decir que sea el mejor que he usado, pero definitivamente cumple su función.",    
+        "productoId": 262,    
+        "usuarioId": 9  
+    },  
+    {    
+        "puntuacion": 3,    
+        "comentario": "No estoy seguro de qué pensar de este producto. No es malo, pero tampoco es excepcional. El precio es un poco alto considerando lo que obtienes.",    
+        "productoId": 208,    
+        "usuarioId": 6  
+    },  
+    {    
+        "puntuacion": 5,    
+        "comentario": "Este producto es impresionante. La calidad es excelente y el precio es justo. Lo compré para mi hijo y él está muy feliz con su nuevo juguete.",    
+        "productoId": 283,    
+        "usuarioId": 12  
+    },  
+    {    
+        "puntuacion": 4,    
+        "comentario": "Estoy bastante satisfecho con este producto. La calidad es buena y el precio es razonable. No tengo ninguna queja importante.",    
+        "productoId": 238,    
+        "usuarioId": 4  
+    }
+]
