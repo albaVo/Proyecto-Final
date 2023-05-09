@@ -5,7 +5,7 @@ import { AuthLayout } from "@/layouts"
 //next
 import Link from "next/link"
 //components
-import { RegisterForm } from "@/components/auth/RegisterForm"
+import { RegisterForm } from "@/components/Auth/RegisterForm"
 
 
 const RegisterPage = () => {

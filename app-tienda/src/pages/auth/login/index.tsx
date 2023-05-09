@@ -3,7 +3,7 @@ import styles from "./login.module.scss"
 //layout
 import { AuthLayout } from "@/layouts"
 //components
-import { LoginForm } from "@/components/auth"
+import { LoginForm } from "@/components/Auth"
 //next 
 import Link from "next/link"
 

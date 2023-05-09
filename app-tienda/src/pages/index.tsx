@@ -10,8 +10,8 @@ import { BasicLayout } from '@/layouts';
 export default function Home() {
   
   return (
-    <BasicLayout isContainer>
-      <h1>SHOP</h1>
+    <BasicLayout>
+      <h1 style={{paddingTop: 100}}>SHOP</h1>
     </BasicLayout>
   )
 }

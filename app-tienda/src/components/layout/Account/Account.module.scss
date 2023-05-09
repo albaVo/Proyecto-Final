@@ -1,0 +1,43 @@
+@import "~/src/scss/colors.scss";
+
+.account {
+    display: flex;
+
+    button {
+        background-color: transparent !important;
+        margin-left: 10px !important;
+        
+        &:hover {
+            > svg {
+                fill: $primary
+            }
+            
+            > span svg {
+                fill: $primary;
+            }
+        }
+
+        > span {
+            font-size: 18px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    // .user {
+    //     background-color: $background-tertiary !important;
+    //     border-radius: 10px;
+    //     border: 2px solid $background-tertiary;
+    //     width: 10px;
+
+    //     &:hover {
+    //         border: 2px solid $primary;
+
+    //         svg {
+    //             color: $text-primary;
+    //         }
+    //     }
+    // }
+}
