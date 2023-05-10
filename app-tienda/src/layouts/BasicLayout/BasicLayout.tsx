@@ -3,7 +3,7 @@ import classNames from "classnames"
 import styles from "./BasicLayout.module.scss"
 //mui
 import { Container } from "@mui/material"
-import { TopBar } from "@/components/layout"
+import { Footer, TopBar } from "@/components/layout"
 
 
 export const BasicLayout = (props: any) => {
@@ -24,6 +24,8 @@ export const BasicLayout = (props: any) => {
                     {isContainer ? <Container>{children}</Container> : children}
                 </div>
             </div>
+
+            <Footer/>
         </>
     )
 }
