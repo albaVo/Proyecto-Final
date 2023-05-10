@@ -34,7 +34,7 @@ export const Menu:FC<Props> = ({isOpenSearch, categoria}) => {
         {
           categoriaData.map((categoria) => (
             <Link key={categoria.id} href={`/demo`}>
-              <Image src={categoria.icono} width={20} height={20} alt={""}/>
+              <img src={categoria.icono}/>
               {categoria.titulo}
             </Link>
           ))
@@ -52,22 +52,22 @@ const categoriaData = [
   },
   {
     "id": 2,
-    "titulo": "Consolas y accesorios",
+    "titulo": "Consolas",
     "icono": "https://cdn-icons-png.flaticon.com/512/3271/3271009.png"
   },
   {
     "id": 3,
-    "titulo": "Figuras y coleccionables",
+    "titulo": "Coleccionables",
     "icono":  "https://cdn-icons-png.flaticon.com/512/6967/6967649.png"
   },
   {
     "id": 4,
-    "titulo": "Cosplay y disfraces",
+    "titulo": "Cosplay",
     "icono": "https://cdn-icons-png.flaticon.com/512/72/72388.png"
   },
   {
     "id": 5,
-    "titulo": "Juegos de mesa y cartas",
+    "titulo": "Tableros",
     "icono": "https://cdn-icons-png.flaticon.com/512/3351/3351767.png"
   }
 ]
