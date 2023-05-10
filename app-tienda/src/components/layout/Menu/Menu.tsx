@@ -1,13 +1,16 @@
 //styles
 import styles from "./Menu.module.scss"
 //react
-import { FC, useEffect, useState } from "react"
+import { FC, useState } from "react"
 //interfaces
 import { ICategoria } from "@/interfaces/ICategorias"
 //next
 import Link from "next/link"
 import Image from "next/image";
-import { CardMedia } from "@mui/material";
+//mui
+import { Button, Input } from "@mui/material";
+import { Close, Search } from "@mui/icons-material";
+import classnames from "classnames";
 
 interface Props {
   isOpenSearch: boolean,
@@ -16,29 +19,39 @@ interface Props {
 
 export const Menu:FC<Props> = ({isOpenSearch, categoria}) => {
     
-    const [categorias, setCategorias] = useState(null)    
-
-    useEffect(() => {
-      (async () => {
-        try {
-            // 
-        } catch (error) {
-            console.error(error);
-        }
-      })()
-    }, [])
+    const [categorias, setCategorias] = useState(null)  
+    const [showSearch, setShowSearch] = useState(false)   
     
+    const openCloseSearch = () => setShowSearch((prevState) => !prevState)
     
     return (
       <div className={styles.categorias}>
-        {
-          categoriaData.map((categoria) => (
+        {categoriaData.map((categoria) => (
             <Link key={categoria.id} href={`/demo`}>
-              <img src={categoria.icono}/>
+              <Image src={categoria.icono} alt={""} width={32} height={20}/>
               {categoria.titulo}
             </Link>
-          ))
-        }
+          ))}
+
+          <Button 
+            className={styles.search}
+            sx={{position: 'absolute', top: 0, right: '-30px', backgroundColor: '#512da8', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 100, height: '100%', width: 60, border: 0}} 
+            onClick={openCloseSearch}
+          >
+            <Search/>
+          </Button> 
+
+          <div className={classnames(styles.inputContainer, {
+            [styles.active]: showSearch
+          })}>
+            <Input 
+              id="search-games" 
+              placeholder="Buscador" 
+              className={styles.input} 
+              autoFocus
+            />
+            <Close className={styles.closeInput} onClick={openCloseSearch}/>
+          </div>
       </div>
     )
 }
