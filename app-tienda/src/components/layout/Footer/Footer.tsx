@@ -2,10 +2,10 @@
 import styles from "./Footer.module.scss"
 //mui
 import { Button, Container } from "@mui/material"
+import { Facebook, Instagram, Twitter, WhatsApp, YouTube } from "@mui/icons-material"
 //next
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook } from "@mui/icons-material"
 
 
 export const Footer = () => {
@@ -29,8 +29,15 @@ export const Footer = () => {
                 </div>
                 
                 <div className={styles.social}>
-                    <Link href="#"><Facebook sx={{bg: '#3b5998'}}/></Link>
+                    <Link href="#"><Facebook sx={{fill: '#3b5998 '}}/></Link>
+                    <Link href="#"><Twitter sx={{fill: '#00acee'}}/></Link>
+                    <Link href="#"><WhatsApp sx={{fill: '#25D366'}}/></Link>
+                    <Link href="#"><Instagram sx={{fill: '#C13584'}}/></Link>
                 </div>
+            </div>
+
+            <div className={styles.copyright}>
+                <span>Copyright © 2023 OlympusArcade - Todos los derechos reservados</span>
             </div>
         </Container>
     </div>
