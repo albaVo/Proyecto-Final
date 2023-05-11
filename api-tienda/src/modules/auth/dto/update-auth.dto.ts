@@ -13,10 +13,6 @@ export class UpdateAuthDto extends PartialType(CreateUsuarioDto) {
     @IsOptional()
     readonly apellidos?: string;
 
-    @IsNumber()
-    @IsOptional()
-    readonly telefono?: number;
-
     @IsString()
     @MinLength(1)
     @IsOptional()

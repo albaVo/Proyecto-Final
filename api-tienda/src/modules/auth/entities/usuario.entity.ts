@@ -14,9 +14,6 @@ export class Usuario {
     @Column('text', { unique: true })
     apellidos: string;
 
-    @Column({nullable: true})
-    telefono?: number;
-
     @Column('text', { unique: true })
     email: string;
 

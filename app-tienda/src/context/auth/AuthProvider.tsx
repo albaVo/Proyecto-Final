@@ -109,12 +109,35 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
         setUser(null)
     }
 
+    const updateUser = async (id: number, email: string, contraseña: string, nombre: string, apellidos: string):Promise<IRespuestaApiAuth> => {
+        try {
+            const { data } = await tiendaApi.patch(`/auth/{$id}`, {email, contraseña, nombre, apellidos})
+            return {
+                hasError: false,
+                message: 'Usuario modificado con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            // no es error de axios
+            return {
+                hasError: true,
+                message: 'No se puede modificar el usuario, inténtalo de nuevo'
+            }
+        }
+    }
+
     return (
         <AuthContext.Provider value={{
             ...state,
             registerUser,
             loginUser,
-            logout
+            logout,
+            updateUser
         }}>
             { children }
         </AuthContext.Provider>

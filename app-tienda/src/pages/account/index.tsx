@@ -1,7 +1,7 @@
 //styles 
 import styles from "./account.module.scss"
 //components
-import Info from "@/components/account/info/Info"
+import Info from "@/components/account/Info/Info"
 // layout
 import { BasicLayout } from "@/layouts"
 //mui
@@ -15,6 +15,7 @@ import React, { useContext } from "react";
 //context
 import { AuthContext } from "@/context/auth";
 import router from "next/router";
+import { UpdateForm } from "@/components/account/Settings";
 
 
 const AccountPage = () => {
@@ -79,7 +80,7 @@ const AccountPage = () => {
           <TabPanel value="1">Mis pedidos...</TabPanel>
           <TabPanel value="2">Mi lista de deseos...</TabPanel>
           <TabPanel value="3">Mis direcciones...</TabPanel>
-          <TabPanel value="4">Mis ajustes...</TabPanel>
+          <TabPanel value="4"><UpdateForm/></TabPanel>
         </TabContext>
         
       </BasicLayout>

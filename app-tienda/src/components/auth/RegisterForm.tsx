@@ -25,7 +25,6 @@ export const RegisterForm = () => {
     const router = useRouter()
 
     const { registerUser } = useContext(AuthContext)
-
     const { register, handleSubmit, formState: { errors } } = useForm<UserData>()
 
     const [ showError, setShowError ] = useState(false)
@@ -68,7 +67,6 @@ export const RegisterForm = () => {
 
     return (
         <form onSubmit={ handleSubmit(onRegisterUser) } noValidate>
-            {/* <TextField label="Correo Electronico" variant='filled' fullWidth/> */}
             <Box sx={{width: '100%', display: "flex"}}>
                 <Box sx={{width: '50%', paddingRight: 1.5}}>
                     <TextField 
