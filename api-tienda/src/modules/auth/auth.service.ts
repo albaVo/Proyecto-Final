@@ -91,7 +91,6 @@ export class AuthService {
     // aplicar los cambios del DTO
     auth.nombre = updateAuthDto.nombre
     auth.apellidos = updateAuthDto.apellidos
-    auth.telefono = updateAuthDto.telefono
     auth.email = updateAuthDto.email
     auth.contraseña = updateAuthDto.contraseña
 

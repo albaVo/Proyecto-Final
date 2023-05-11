@@ -2,6 +2,7 @@
 import styles from "./account.module.scss"
 //components
 import Info from "@/components/account/Info/Info"
+import { UpdateForm } from "@/components/account/Settings";
 // layout
 import { BasicLayout } from "@/layouts"
 //mui
@@ -14,8 +15,9 @@ import { Logout, Settings } from "@mui/icons-material";
 import React, { useContext } from "react";
 //context
 import { AuthContext } from "@/context/auth";
+//next
 import router from "next/router";
-import { UpdateForm } from "@/components/account/Settings";
+
 
 
 const AccountPage = () => {
@@ -50,17 +52,6 @@ const AccountPage = () => {
     <>
       <BasicLayout isContainer relative>
         <Info/>
-
-        {/* <TabContext value={value}>
-          <Box sx={{ borderBottom: 2, borderColor: '#3d3d3d'}}>
-            <TabList>
-              <Tab label="Mis pedidos" value={1} className={styles.tablist}/>
-            </TabList>
-          </Box>
-
-          <TabPanel value="1">Mis pedidos...</TabPanel>
-        </TabContext> */}
-
         
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: '#3d3d3d' }}>

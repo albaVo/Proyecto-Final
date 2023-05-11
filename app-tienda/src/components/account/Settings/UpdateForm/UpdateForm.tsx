@@ -21,8 +21,10 @@ type UserData = {
 
 export const UpdateForm = () => {
 
+  const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
+  
   const { updateUser } = useContext(AuthContext)
-  const { register, handleSubmit, formState: { errors } } = useForm<UserData>()
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<UserData>()
 
   const [ showError, setShowError ] = useState(false)
   const [ errorMessage, setErrorMessage ] = useState('')
@@ -66,6 +68,8 @@ export const UpdateForm = () => {
             error={!!errors.nombre}
             helperText = { errors.nombre?.message }
             placeholder="Nombre" fullWidth variant="outlined"
+            defaultValue={storedUser.nombre}
+            value={watch('nombre')}
           />
         </Box>
         <Box sx={{width: '50%'}}>
@@ -74,56 +78,58 @@ export const UpdateForm = () => {
             error={!!errors.apellidos}
             helperText = { errors.apellidos?.message }
             placeholder="Apellidos" fullWidth
+            defaultValue={storedUser.apellidos}
+            value={watch('apellidos')}
           />
         </Box>
       </Box>
 
       <Box sx={{width: '100%', display: "flex"}}>
-          <Box sx={{width: '50%', paddingRight: 1.5}}>
-            <TextField 
-              { ...register('email', {
-                validate: validations.isEmail
-              })}
-              error={!!errors.email}
-              helperText = { errors.email?.message }
-              placeholder="Correo electrónico" type="email" fullWidth
-            />
-          </Box>
-          <Box sx={{width: '50%'}}>
-                    {/* <OutlinedInput placeholder="Contraseña" type="password" fullWidth/> */}
-                    <TextField
-                        { ...register('contraseña', {
-                            required: 'Contraseña obligatoria',
-                            minLength: { value: 6, message: 'Minimo 6 caracteres' }
-                        })}
-                        error={!!errors.contraseña}
-                        helperText = { errors.contraseña?.message }
-                        placeholder="Contraseña" fullWidth
-                        type={showPassword ? 'text' : 'password'}
-                        InputProps={{
-                            endAdornment: <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                    sx={{color: "#B2ABAA"}}
-
-                                >
-                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
-                            </InputAdornment>
-                        }}
-                    />
-                </Box>
+        <Box sx={{width: '50%', paddingRight: 1.5}}>
+          <TextField 
+            { ...register('email', {
+              // validate: validations.isEmail
+            })}
+            error={!!errors.email}
+            helperText = { errors.email?.message }
+            placeholder="Correo electrónico" type="email" fullWidth
+            defaultValue={storedUser.email}
+            value={watch('email')}
+          />
         </Box>
+        <Box sx={{width: '50%'}}>
+          <TextField
+            { ...register('contraseña', {
+              // minLength: { value: 6, message: 'Minimo 6 caracteres' }
+            })}
+            error={!!errors.contraseña}
+            helperText = { errors.contraseña?.message }
+            placeholder="Contraseña" fullWidth
+            type={showPassword ? 'text' : 'password'}
+            value={watch('contraseña')}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  sx={{color: "#B2ABAA"}}
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }}
+          />
+        </Box>
+      </Box>
 
-            <Button
-                type='submit'
-                sx={{width: '100%', marginLeft: 1.3, textTransform: 'none'}}
-                disabled={isSubmitting}
-            >
-                {isSubmitting ? <CircularProgress size={20} /> : 'Registrarse'}
-            </Button>
+      <Button
+        type='submit'
+        sx={{width: '100%', marginLeft: 1.3, textTransform: 'none'}}
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? <CircularProgress size={20} /> : 'Enviar'}
+      </Button>
     </form>
   )
 }

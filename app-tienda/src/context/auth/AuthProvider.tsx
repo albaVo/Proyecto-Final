@@ -111,7 +111,7 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
 
     const updateUser = async (id: number, email: string, contraseña: string, nombre: string, apellidos: string):Promise<IRespuestaApiAuth> => {
         try {
-            const { data } = await tiendaApi.patch(`/auth/{$id}`, {email, contraseña, nombre, apellidos})
+            const { data } = await tiendaApi.patch(`/auth/${id}`, {email, contraseña, nombre, apellidos})
             return {
                 hasError: false,
                 message: 'Usuario modificado con éxito'
