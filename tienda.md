@@ -80,4 +80,8 @@ $ yarn add js-cookie @types/js-cookie
 
 # Clases (condicionar clases)
 $ yarn add classnames
+
+
+# Luxon
+$ yarn add luxon
 ```
