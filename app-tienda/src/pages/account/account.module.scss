@@ -1,5 +1,28 @@
 @import "~/src/scss/colors.scss";
 
-// .MuiTab-root:not(.Mui-selected) {
-//     color: white;
-// }
+.tabs {
+    position: relative;
+    margin-top: 50px;
+
+    > div > div {
+        > button {
+            &:last-of-type {
+                position: absolute !important;
+                right: 0;
+
+                svg {
+                    fill: #e040fb;
+                }
+            }
+
+            &:nth-last-of-type(2) {
+                position: absolute;
+                right: 75px;
+
+                svg {
+                    fill: #e040fb;
+                }
+            }
+        }
+    }
+}

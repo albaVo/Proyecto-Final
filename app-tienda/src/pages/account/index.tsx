@@ -9,17 +9,41 @@ import { Box, Tab, Tabs } from "@mui/material"
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import { Logout, Settings } from "@mui/icons-material";
 //react
-import React from "react";
+import React, { useContext } from "react";
+//context
+import { AuthContext } from "@/context/auth";
+import router from "next/router";
 
 
 const AccountPage = () => {
+
+  const { logout } = useContext(AuthContext)
 
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
+
+  const isTokenPresent = () => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      return token !== null && token !== undefined && token !== '';
+    }
+    return false;
+  }
+
+  // if (!isTokenPresent) {
+  //   router.push("/")
+  //   return null
+  // }
+
+  const onLogout = () => {
+    logout()
+    router.push("/")
+  }
   
   return (
     <>
@@ -43,16 +67,19 @@ const AccountPage = () => {
               onChange={handleChange} 
               textColor="inherit"
               indicatorColor="secondary"
-              
+              className={styles.tabs}
             >
-              <Tab label="Item One" value="1" />
-              <Tab label="Item Two" value="2" />
-              <Tab label="Item Three" value="3" />
+              <Tab label="Mis pedidos" value="1" />
+              <Tab label="Lista de deseos" value="2" />
+              <Tab label="Direcciones" value="3" />
+              <Tab icon={<Settings/>} value="4" />
+              <Tab icon={<Logout/>} value="5" onClick={onLogout}/>
             </TabList>
           </Box>
-          <TabPanel value="1">Item One</TabPanel>
-          <TabPanel value="2">Item Two</TabPanel>
-          <TabPanel value="3">Item Three</TabPanel>
+          <TabPanel value="1">Mis pedidos...</TabPanel>
+          <TabPanel value="2">Mi lista de deseos...</TabPanel>
+          <TabPanel value="3">Mis direcciones...</TabPanel>
+          <TabPanel value="4">Mis ajustes...</TabPanel>
         </TabContext>
         
       </BasicLayout>
