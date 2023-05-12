@@ -131,6 +131,34 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
         }
     }
 
+    // DIRECCIONES
+    const createDireccion = async (id: number, titulo: string, direccion: string, codigo_postal: number):Promise<IRespuestaApiAuth> => {
+        try {
+            const { data } = await tiendaApi.post('/auth/register', {email, contraseña, nombre, apellidos})
+            const { token, user } = data
+            Cookies.set('token', token)
+            Cookies.set('rol', user.roles)
+            dispatch({ type: '[Auth] - Login', payload: user })
+            return {
+                hasError: false,
+                message: 'Usuario creado con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            // no es error de axios
+            return {
+                hasError: true,
+                message: 'No se puede crear el usuario, inténtalo de nuevo'
+            }
+        }
+    }
+
+
     return (
         <AuthContext.Provider value={{
             ...state,
