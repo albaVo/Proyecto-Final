@@ -19,7 +19,7 @@ export const AddAddress = () => {
                 Crear
             </Button>
 
-            <BasicModal>
+            <BasicModal show={show} onClose={onOpenClose} title="Nueva dirección">
                 <h2>Contenido del modal</h2>
             </BasicModal>
         </>
