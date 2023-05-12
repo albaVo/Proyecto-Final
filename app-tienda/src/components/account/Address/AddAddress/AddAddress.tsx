@@ -4,7 +4,9 @@ import styles from "./AddAddress.module.scss"
 import { useState } from "react"
 // mui
 import { Button } from "@mui/material"
+//components
 import BasicModal from "@/components/shared/BasicModal/BasicModal"
+import { AddressForm } from "../AddressForm"
 
 
 export const AddAddress = () => {
@@ -20,7 +22,7 @@ export const AddAddress = () => {
             </Button>
 
             <BasicModal show={show} onClose={onOpenClose} title="Nueva dirección">
-                <h2>Contenido del modal</h2>
+                <AddressForm onClose={onOpenClose}/>
             </BasicModal>
         </>
     )
