@@ -59,6 +59,17 @@ export const UpdateForm = () => {
     event.preventDefault();
   };
 
+  //update datos cambiados
+  // const handleUpdateUser = async (data) => {
+  //   const updateUser = {}
+    
+  //   if (data.nombre !== storedUser.nombre) {
+  //     updateUser.nombre = data.nombre
+  //   }
+
+  //   await updateUser(storedUser.id, updateUser)
+  // }
+
   return (
     <form onSubmit={ handleSubmit(onUpdateUser) } noValidate>
       <Box sx={{width: '100%', display: "flex"}}>
@@ -125,8 +136,9 @@ export const UpdateForm = () => {
 
       <Button
         type='submit'
-        sx={{width: '100%', marginLeft: 1.3, textTransform: 'none'}}
+        sx={{width: '30%', marginLeft: 50, marginTop: 2, textTransform: 'none'}}
         disabled={isSubmitting}
+        className={styles.button}
       >
         {isSubmitting ? <CircularProgress size={20} /> : 'Enviar'}
       </Button>
