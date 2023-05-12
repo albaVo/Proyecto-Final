@@ -136,7 +136,7 @@ export const UpdateForm = () => {
 
       <Button
         type='submit'
-        sx={{width: '30%', marginLeft: 50, marginTop: 2, textTransform: 'none'}}
+        sx={{width: '30%', marginLeft: 50, marginTop: 4, textTransform: 'none'}}
         disabled={isSubmitting}
         className={styles.button}
       >

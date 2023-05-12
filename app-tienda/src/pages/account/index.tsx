@@ -3,6 +3,7 @@ import styles from "./account.module.scss"
 //components
 import Info from "@/components/account/Info/Info"
 import { UpdateForm } from "@/components/account/Settings";
+import { AddAddress } from "@/components/account/Address";
 // layout
 import { BasicLayout } from "@/layouts"
 //mui
@@ -17,6 +18,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "@/context/auth";
 //next
 import router from "next/router";
+import { Separator } from "@/components/shared";
 
 
 
@@ -70,10 +72,14 @@ const AccountPage = () => {
           </Box>
           <TabPanel value="1">Mis pedidos...</TabPanel>
           <TabPanel value="2">Mi lista de deseos...</TabPanel>
-          <TabPanel value="3">Mis direcciones...</TabPanel>
+          <TabPanel value="3">
+            <AddAddress/>
+            <Separator height={80}/>
+          </TabPanel>
           <TabPanel value="4"><UpdateForm/></TabPanel>
         </TabContext>
         
+        <Separator height={50}/>
       </BasicLayout>
     </>
   )
