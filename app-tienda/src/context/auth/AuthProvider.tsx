@@ -80,10 +80,10 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
     const loginUser = async (email: string, contraseña: string):Promise<boolean> => {
         try {
             const { data } = await tiendaApi.post('/auth/login', {email, contraseña})
-            console.log(data);
+            // console.log('data', data);
             
             const { token, user } = data   
-            console.log(user);
+            // console.log('user', user);
                     
             Cookies.set('token', token)
             Cookies.set('email', user.email)
@@ -109,9 +109,21 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
         setUser(null)
     }
 
-    const updateUser = async (id: number, email: string, contraseña: string, nombre: string, apellidos: string):Promise<IRespuestaApiAuth> => {
+    const updateUser = async (id: number, email: string, nombre: string, apellidos: string, contraseña: string):Promise<IRespuestaApiAuth> => {
         try {
-            const { data } = await tiendaApi.patch(`/auth/${id}`, {email, contraseña, nombre, apellidos})
+            const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
+            console.log(storedUser);
+            
+            // const { data } = await tiendaApi.patch(`/auth/${id}`, {contraseña, apellidos, email, nombre})
+            const { data } = await tiendaApi.patch(`/auth/${id}`, {
+                nombre: nombre,
+                apellidos: apellidos,
+                email: email,
+                contraseña: contraseña
+            });
+              
+            console.log(data)       
+
             return {
                 hasError: false,
                 message: 'Usuario modificado con éxito'
@@ -132,31 +144,31 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
     }
 
     // DIRECCIONES
-    const createDireccion = async (id: number, titulo: string, direccion: string, codigo_postal: number):Promise<IRespuestaApiAuth> => {
-        try {
-            const { data } = await tiendaApi.post('/auth/register', {email, contraseña, nombre, apellidos})
-            const { token, user } = data
-            Cookies.set('token', token)
-            Cookies.set('rol', user.roles)
-            dispatch({ type: '[Auth] - Login', payload: user })
-            return {
-                hasError: false,
-                message: 'Usuario creado con éxito'
-            }
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                return {
-                    hasError: true,
-                    message: error.response?.data.message
-                }
-            }
-            // no es error de axios
-            return {
-                hasError: true,
-                message: 'No se puede crear el usuario, inténtalo de nuevo'
-            }
-        }
-    }
+    // const createDireccion = async (id: number, titulo: string, direccion: string, codigo_postal: number):Promise<IRespuestaApiAuth> => {
+    //     try {
+    //         const { data } = await tiendaApi.post('/auth/register', {email, contraseña, nombre, apellidos})
+    //         const { token, user } = data
+    //         Cookies.set('token', token)
+    //         Cookies.set('rol', user.roles)
+    //         dispatch({ type: '[Auth] - Login', payload: user })
+    //         return {
+    //             hasError: false,
+    //             message: 'Usuario creado con éxito'
+    //         }
+    //     } catch (error) {
+    //         if (axios.isAxiosError(error)) {
+    //             return {
+    //                 hasError: true,
+    //                 message: error.response?.data.message
+    //             }
+    //         }
+    //         // no es error de axios
+    //         return {
+    //             hasError: true,
+    //             message: 'No se puede crear el usuario, inténtalo de nuevo'
+    //         }
+    //     }
+    // }
 
 
     return (

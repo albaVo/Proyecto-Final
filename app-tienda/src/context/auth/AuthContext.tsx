@@ -13,7 +13,7 @@ interface ContextProps {
     registerUser: (email: string, contraseña: string, usuario: string, apellidos: string) => Promise<IRespuestaApiAuth>;
     loginUser: (email: string, contraseña: string) => Promise<boolean>
     logout: () => void
-    updateUser: (id: number, email: string, contraseña: string, nombre: string, apellidos: string) => Promise<IRespuestaApiAuth>
+    updateUser: (id: number, nombre: string, apellidos: string, email: string, constraseña: string) => Promise<IRespuestaApiAuth>
 }
 
 export const AuthContext = createContext( {} as ContextProps )

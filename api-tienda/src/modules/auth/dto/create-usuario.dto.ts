@@ -15,7 +15,7 @@ export class CreateUsuarioDto {
   
     @IsString()
     @MinLength(6)
-    @MaxLength(50)
+    @MaxLength(60)
     @Matches(
     /(?:(?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'La contraseña debe tener una letra MAYÚSCULA, minúscula y un número'

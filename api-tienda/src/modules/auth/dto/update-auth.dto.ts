@@ -20,7 +20,7 @@ export class UpdateAuthDto extends PartialType(CreateUsuarioDto) {
   
     @IsString()
     @MinLength(6)
-    @MaxLength(50)
+    @MaxLength(60)
     @IsOptional()
     @Matches(
     /(?:(?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {

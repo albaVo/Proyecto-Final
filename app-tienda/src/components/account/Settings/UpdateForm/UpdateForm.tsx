@@ -16,7 +16,6 @@ type UserData = {
   contraseña: string,
   nombre: string,
   apellidos: string,
-  telefono: string
 }
 
 export const UpdateForm = () => {
@@ -33,12 +32,22 @@ export const UpdateForm = () => {
   
   const onUpdateUser = async ( InputData: UserData ) => {
     setShowError(false)
-    const { id, email, contraseña, nombre, apellidos } = InputData
+    const { email, contraseña, nombre, apellidos } = InputData
+    const { id } = storedUser
+    console.log(InputData);
     
+
     setIsSubmitting(true)
 
-    const { hasError, message } = await updateUser(id, email, contraseña, nombre, apellidos)
+    const { hasError, message } = await updateUser(
+      id,
+      email || '',
+      contraseña || '',
+      nombre || '',
+      apellidos || ''
+    )
     console.log(message);
+    
 
     setIsSubmitting(false)
 
@@ -58,20 +67,11 @@ export const UpdateForm = () => {
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
-
-  //update datos cambiados
-  // const handleUpdateUser = async (data) => {
-  //   const updateUser = {}
-    
-  //   if (data.nombre !== storedUser.nombre) {
-  //     updateUser.nombre = data.nombre
-  //   }
-
-  //   await updateUser(storedUser.id, updateUser)
-  // }
+  
 
   return (
-    <form onSubmit={ handleSubmit(onUpdateUser) } noValidate>
+    <form onSubmit={ handleSubmit(onUpdateUser) } className={styles.form}>
+      <span>Nombre y apellidos</span>
       <Box sx={{width: '100%', display: "flex"}}>
         <Box sx={{width: '50%', paddingRight: 1.5}}>
           <TextField 
@@ -80,7 +80,7 @@ export const UpdateForm = () => {
             helperText = { errors.nombre?.message }
             placeholder="Nombre" fullWidth variant="outlined"
             defaultValue={storedUser.nombre}
-            value={watch('nombre')}
+            // value={watch('nombre') || storedUser.nombre}
           />
         </Box>
         <Box sx={{width: '50%'}}>
@@ -90,11 +90,12 @@ export const UpdateForm = () => {
             helperText = { errors.apellidos?.message }
             placeholder="Apellidos" fullWidth
             defaultValue={storedUser.apellidos}
-            value={watch('apellidos')}
+            // value={watch('apellidos') || storedUser.apellidos}
           />
         </Box>
       </Box>
 
+      <span>Correo electrónico y contraseña</span>
       <Box sx={{width: '100%', display: "flex"}}>
         <Box sx={{width: '50%', paddingRight: 1.5}}>
           <TextField 
@@ -105,19 +106,20 @@ export const UpdateForm = () => {
             helperText = { errors.email?.message }
             placeholder="Correo electrónico" type="email" fullWidth
             defaultValue={storedUser.email}
-            value={watch('email')}
+            // value={watch('email') || storedUser.email}
           />
         </Box>
         <Box sx={{width: '50%'}}>
           <TextField
             { ...register('contraseña', {
-              // minLength: { value: 6, message: 'Minimo 6 caracteres' }
+              minLength: { value: 6, message: 'Minimo 6 caracteres' }
             })}
             error={!!errors.contraseña}
             helperText = { errors.contraseña?.message }
             placeholder="Contraseña" fullWidth
             type={showPassword ? 'text' : 'password'}
-            value={watch('contraseña')}
+            defaultValue={storedUser.contraseña}
+            // value={watch('contraseña') || storedUser.contraseña}
             InputProps={{
               endAdornment: <InputAdornment position="end">
                 <IconButton
@@ -136,12 +138,13 @@ export const UpdateForm = () => {
 
       <Button
         type='submit'
-        sx={{width: '30%', marginLeft: 50, marginTop: 4, textTransform: 'none'}}
+        sx={{width: '50%', marginLeft: 20, textTransform: 'none'}}
         disabled={isSubmitting}
         className={styles.button}
       >
         {isSubmitting ? <CircularProgress size={20} /> : 'Enviar'}
       </Button>
+      
     </form>
   )
 }

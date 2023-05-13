@@ -12,7 +12,7 @@ import { useCategorias } from "@/hooks/useCategorias";
 export const TopBar = (props: any) => {
 
     const { categorias, isLoading } = useCategorias('/categorias')
-    console.log("l=", isLoading, "c=", categorias);
+    // console.log("l=", isLoading, "c=", categorias);
 
     const { isOpenSearch } = props
 
