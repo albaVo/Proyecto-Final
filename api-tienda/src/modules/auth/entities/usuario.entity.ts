@@ -8,10 +8,10 @@ export class Usuario {
     @PrimaryGeneratedColumn('increment')
     id: number
 
-    @Column('text', { unique: true })
+    @Column('text')
     nombre: string;
 
-    @Column('text', { unique: true })
+    @Column('text')
     apellidos: string;
 
     @Column('text', { unique: true })

@@ -144,31 +144,27 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
     }
 
     // DIRECCIONES
-    // const createDireccion = async (id: number, titulo: string, direccion: string, codigo_postal: number):Promise<IRespuestaApiAuth> => {
-    //     try {
-    //         const { data } = await tiendaApi.post('/auth/register', {email, contraseña, nombre, apellidos})
-    //         const { token, user } = data
-    //         Cookies.set('token', token)
-    //         Cookies.set('rol', user.roles)
-    //         dispatch({ type: '[Auth] - Login', payload: user })
-    //         return {
-    //             hasError: false,
-    //             message: 'Usuario creado con éxito'
-    //         }
-    //     } catch (error) {
-    //         if (axios.isAxiosError(error)) {
-    //             return {
-    //                 hasError: true,
-    //                 message: error.response?.data.message
-    //             }
-    //         }
-    //         // no es error de axios
-    //         return {
-    //             hasError: true,
-    //             message: 'No se puede crear el usuario, inténtalo de nuevo'
-    //         }
-    //     }
-    // }
+    const createDireccion = async (titulo: string, direccion: string, ciudad: string, codigo_postal: number, telefono: number, usuarioId: number):Promise<IRespuestaApiAuth> => {
+        try {
+            const { data } = await tiendaApi.post('/direcciones', {titulo, direccion, ciudad, codigo_postal, telefono, usuarioId})
+            return {
+                hasError: false,
+                message: 'Dirección creado con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            // no es error de axios
+            return {
+                hasError: true,
+                message: 'No se puede crear la dirección, inténtalo de nuevo'
+            }
+        }
+    }
 
 
     return (
@@ -177,7 +173,8 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             registerUser,
             loginUser,
             logout,
-            updateUser
+            updateUser,
+            createDireccion
         }}>
             { children }
         </AuthContext.Provider>

@@ -41,10 +41,10 @@ export const UpdateForm = () => {
 
     const { hasError, message } = await updateUser(
       id,
-      email || '',
-      contraseña || '',
-      nombre || '',
-      apellidos || ''
+      email,
+      contraseña,
+      nombre,
+      apellidos
     )
     console.log(message);
     
@@ -57,6 +57,8 @@ export const UpdateForm = () => {
       setTimeout( () => setShowError(false), 3000);
       return;
     }
+
+    window.location.reload()
   }
 
   //visualizar contraseña (ojo)
