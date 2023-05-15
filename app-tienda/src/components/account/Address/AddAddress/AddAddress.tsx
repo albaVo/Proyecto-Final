@@ -17,7 +17,11 @@ export const AddAddress = () => {
 
     return (
         <>
-            <Button className={styles.add} onClick={onOpenClose}>
+            <Button 
+                className={styles.add} 
+                onClick={onOpenClose}
+                sx={{textTransform: 'none'}}
+            >
                 Crear
             </Button>
 

@@ -8,7 +8,7 @@ export const theme = createTheme({
                     backgroundColor: '#512da8',
                     color: '#fff',
                     margin: 0,
-                    padding: '15.5px 30px',
+                    padding: '13px 30px',
                     borderRadius: '6px',
                     '&:hover, &:active, &:focus': {
                         backgroundColor: '#9575cd'

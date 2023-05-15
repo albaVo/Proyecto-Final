@@ -3,30 +3,31 @@ import styles from "./account.module.scss"
 //components
 import Info from "@/components/account/Info/Info"
 import { UpdateForm } from "@/components/account/Settings";
-import { AddAddress } from "@/components/account/Address";
+import { AddAddress, ListAddresses } from "@/components/account/Address";
+import { Separator } from "@/components/shared";
 // layout
 import { BasicLayout } from "@/layouts"
 //mui
-import { Box, Tab, Tabs } from "@mui/material"
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
+import { Box, Tab } from "@mui/material"
+import { TabList, TabPanel, TabContext } from '@mui/lab';
 import { Logout, Settings } from "@mui/icons-material";
 //react
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 //context
 import { AuthContext } from "@/context/auth";
 //next
 import router from "next/router";
-import { Separator } from "@/components/shared";
-
+//hooks
+import { useDirecciones } from "@/hooks/useDirecciones";
 
 
 const AccountPage = () => {
 
-  const { logout } = useContext(AuthContext)
+  const { direcciones, isLoading } = useDirecciones('/direcciones')
 
-  const [value, setValue] = React.useState('1');
+  const { logout } = useContext(AuthContext)
+  const [value, setValue] = React.useState('1')
+  const [reload, setReload] = useState(false)
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -74,6 +75,7 @@ const AccountPage = () => {
           <TabPanel value="2">Mi lista de deseos...</TabPanel>
           <TabPanel value="3">
             <AddAddress/>
+            <ListAddresses direccion={direcciones}/>
             <Separator height={80}/>
           </TabPanel>
           <TabPanel value="4"><UpdateForm/></TabPanel>

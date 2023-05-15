@@ -1,0 +1,40 @@
+@import "~/src/scss/colors.scss";
+
+.address {
+    background-color: $background-quaternary;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > div {
+        display: flex;
+    }
+}
+
+.title {
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.info {
+    color: $text-secondary;
+    font-size: 16px;
+}
+
+.actions {
+    > button {
+        padding: 12px !important;
+        margin-left: 10px !important;
+        background-color: $primary;
+        border-radius: 6px;
+        padding: 10px 11px !important;
+
+        &:hover {
+            background-color: $primary-hover;
+        }
+    }
+}
