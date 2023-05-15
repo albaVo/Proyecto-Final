@@ -1,7 +1,7 @@
 //styles
 import styles from "./Address.module.scss"
 //mui
-import { IconButton } from "@mui/material"
+import { Button, DialogActions, DialogContent, DialogTitle, IconButton } from "@mui/material"
 import { Delete, Edit } from "@mui/icons-material"
 //react
 import { useState } from "react"
@@ -40,7 +40,16 @@ export const Address = (props: any) => {
         </div>
       </div>
 
-      <Confirm/>
+      <Confirm
+        open={showConfirm}
+        className={styles.confirm}
+      >
+        <DialogTitle>{"¿Estás seguro de que quieres eliminar la dirección?"}</DialogTitle>
+        <DialogActions>
+          <Button onClick={openCloseConfirm}>Cancelar</Button>
+          <Button onClick={() => console.log("Dirección Eliminada")}>OK</Button>
+        </DialogActions>
+      </Confirm>
 
       <BasicModal 
         show={showEdit} 
