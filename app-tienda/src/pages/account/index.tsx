@@ -23,7 +23,8 @@ import { useDirecciones } from "@/hooks/useDirecciones";
 
 const AccountPage = () => {
 
-  const { direcciones, isLoading } = useDirecciones('/direcciones')
+  const { user } = useContext(AuthContext)
+  const { direcciones, isLoading } = useDirecciones('/direcciones/${user.id}')
 
   const { logout } = useContext(AuthContext)
   const [value, setValue] = React.useState('1')

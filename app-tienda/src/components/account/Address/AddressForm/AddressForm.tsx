@@ -36,9 +36,13 @@ export const AddressForm = (props: any) => {
 
     const onCreateDireccion = async ( InputData: DireccionData ) => {
         setShowError(false)
-        const { titulo, direccion, ciudad, codigo_postal, telefono, usuarioId } = InputData
+        const { titulo, direccion, ciudad, codigo_postal, telefono } = InputData
 
         setIsSubmitting(true)
+
+        //obtener el id del usuario logeuado desde el localStorage
+        const storedUser = JSON.parse(localStorage.getItem('user') || '{}')
+        const usuarioId = storedUser.id
 
         const { hasError, message } = await createDireccion(titulo, direccion, ciudad, codigo_postal, telefono, usuarioId)
         console.log(message)
@@ -97,11 +101,13 @@ export const AddressForm = (props: any) => {
                 <Box sx={{width: '50%', paddingRight: 1.5}}>
                     <TextField
                         { ...register('codigo_postal', {
-                            required: 'Código postal obligatorio'
+                            required: 'Código postal obligatorio',
+                            valueAsNumber: true,
                         })}
                         error={!!errors.codigo_postal}
                         helperText={errors.codigo_postal?.message}
                         placeholder="Código postal"
+                        // type="number"
                         fullWidth
                     />
                 </Box>
@@ -109,11 +115,13 @@ export const AddressForm = (props: any) => {
                 <Box sx={{width: '50%'}}>
                     <TextField
                         { ...register('telefono', {
-                            required: 'Teléfono obligatorio'
+                            required: 'Teléfono obligatorio',
+                            valueAsNumber: true,
                         })}
                         error={!!errors.telefono}
                         helperText={errors.telefono?.message}
                         placeholder="Teléfono"
+                        // type="number"
                         fullWidth
                     />
                 </Box>
