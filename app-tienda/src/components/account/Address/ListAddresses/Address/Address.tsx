@@ -1,13 +1,24 @@
 //styles
 import styles from "./Address.module.scss"
 //mui
-import { Button, IconButton } from "@mui/material"
+import { IconButton } from "@mui/material"
 import { Delete, Edit } from "@mui/icons-material"
+//react
+import { useState } from "react"
+//components
+import BasicModal from "@/components/shared/BasicModal/BasicModal"
+import { AddressForm } from "../../AddressForm"
+import { Confirm } from "@/components/shared"
 
 
 export const Address = (props: any) => {
 
   const { direccionId, direccion } = props
+  const [showEdit, setShowEdit] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
+
+  const openCloseEdit = () => setShowEdit((prevState) => !prevState)
+  const openCloseConfirm = () => setShowConfirm((prevState) => !prevState)
 
   return (
     <>
@@ -20,14 +31,24 @@ export const Address = (props: any) => {
         </div>
 
         <div className={styles.actions}>
-          <IconButton>
+          <IconButton onClick={openCloseEdit}>
             <Edit/>
           </IconButton>
-          <IconButton>
+          <IconButton onClick={openCloseConfirm}>
             <Delete/>
           </IconButton>
         </div>
       </div>
+
+      <Confirm/>
+
+      <BasicModal 
+        show={showEdit} 
+        onClose={openCloseEdit} 
+        title="Editar dirección"
+      >
+        <AddressForm onClose={openCloseEdit}/>
+      </BasicModal>
     </>
   )
 }
