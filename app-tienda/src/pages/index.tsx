@@ -4,14 +4,18 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '@/context/auth'
 //layout
 import { BasicLayout } from '@/layouts';
+import { BannerGame } from '@/components/home';
 
 
 export default function Home() {
   
+  
   return (
-    <BasicLayout>
-      <h1 style={{paddingTop: 100}}>SHOP</h1>
-    </BasicLayout>
+    <>
+      <BasicLayout>
+        <BannerGame/>
+      </BasicLayout>
+    </>
   )
 }
 
