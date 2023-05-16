@@ -13,7 +13,7 @@ interface Props {
 export const ListAddresses:FC<Props> = ({direccion}) => {
   return (
     <div className={styles.addresses}>
-        {direccion.map((direccion) => (
+        {direccionData.map((direccion) => (
             <Address 
                 key={direccion.id}
                 direccionId={direccion.id}

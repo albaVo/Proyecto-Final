@@ -44,8 +44,8 @@ export const Address = (props: any) => {
         open={showConfirm}
         className={styles.confirm}
       >
-        <DialogTitle>{"¿Estás seguro de que quieres eliminar la dirección?"}</DialogTitle>
-        <DialogActions>
+        <DialogTitle className={styles.dialog}>{"¿Estás seguro de que quieres eliminar la dirección?"}</DialogTitle>
+        <DialogActions className={styles.dialog}>
           <Button onClick={openCloseConfirm}>Cancelar</Button>
           <Button onClick={() => console.log("Dirección Eliminada")}>OK</Button>
         </DialogActions>
