@@ -4,16 +4,19 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '@/context/auth'
 //layout
 import { BasicLayout } from '@/layouts';
-import { BannerGame } from '@/components/home';
+//components
+import { BannerRandomGame } from '@/components/home';
+import { useProductos } from '@/hooks/useProductos';
 
 
 export default function Home() {
   
-  
+  const { productos, isLoading } = useProductos('/productos')
+
   return (
     <>
       <BasicLayout>
-        <BannerGame/>
+        <BannerRandomGame/>
       </BasicLayout>
     </>
   )

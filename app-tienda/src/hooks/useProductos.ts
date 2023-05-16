@@ -1,3 +1,4 @@
+import { IProducto } from "@/interfaces/IProductos";
 import useSWR, { SWRConfiguration } from "swr";
 
 export const useProductos = (url: string, config: SWRConfiguration={}) => {

@@ -6,6 +6,7 @@ import Image from "next/image";
 //components
 import { Account } from "../Account";
 import { Menu } from "../Menu";
+//hooks
 import { useCategorias } from "@/hooks/useCategorias";
 
 

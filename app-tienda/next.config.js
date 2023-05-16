@@ -6,7 +6,13 @@ const nextConfig = {
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['cdn-icons-png.flaticon.com', 'www.flaticon.es']
+    domains: [
+      'cdn-icons-png.flaticon.com', 
+      'www.flaticon.es', 
+      'images8.alphacoders.com',
+      'fondosmil.com',
+      'www.muycomputer.com'
+    ]
   }
 }
 
