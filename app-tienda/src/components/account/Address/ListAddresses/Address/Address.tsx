@@ -63,7 +63,7 @@ export const Address = (props: any) => {
         <DialogTitle className={styles.dialog}>{"¿Estás seguro de que quieres eliminar la dirección?"}</DialogTitle>
         <DialogActions className={styles.dialog}>
           <Button onClick={openCloseConfirm}>Cancelar</Button>
-          <Button onClick={() => handleDelete(id)}>OK</Button>
+          <Button onClick={() => handleDelete}>OK</Button>
         </DialogActions>
       </Confirm>
 
