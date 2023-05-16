@@ -167,6 +167,28 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
         }
     }
 
+    const deleteDireccion = async (id: number):Promise<IRespuestaApiAuth> => {
+        try {
+            const { data } = await tiendaApi.delete(`/direcciones/${id}`)
+            return {
+                hasError: false,
+                message: 'Dirección eliminada con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            
+            return {
+                hasError: true,
+                message: 'No se puede eliminar la dirección, inténtalo de nuevo'
+            }
+        }
+    }
+
 
     return (
         <AuthContext.Provider value={{
@@ -175,7 +197,8 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             loginUser,
             logout,
             updateUser,
-            createDireccion
+            createDireccion,
+            deleteDireccion
         }}>
             { children }
         </AuthContext.Provider>
