@@ -7,14 +7,28 @@ import Link from "next/link";
 import { useProductos } from "@/hooks/useProductos";
 //mui
 import { Container } from "@mui/material";
+//utils
+import { fn } from "@/utils";
+//interfaces
+import { IProducto } from "@/interfaces/IProductos";
+//react
+import { FC } from "react";
+//components
+import { Discount } from "@/components/shared";
 
+interface Props {
+  productos: IProducto[]
+}
 
-export const BannerRandomGame = () => {
+export const BannerRandomGame:FC<Props> = ({productos}) => {
   
-  const { productos, isLoading, isError } = useProductos('/productos')
+  const precio = fn.calcDiscount(
+    // productos.prcio,
+    // productos.descuento
+    60, 39
+  )
 
   const randomProduct = productos[Math.floor(Math.random() * productos.length)]
-  
   console.log(randomProduct);
 
   // numero random
@@ -44,9 +58,9 @@ export const BannerRandomGame = () => {
               <h2>{product.titulo}</h2>
 
               <p className={styles.price}>
-                <label>-40%</label>
+                <Discount>-{product.descuento}%</Discount>
                 <span className={styles.finalPrice}>
-                  37€
+                  {precio}€
                 </span>
               </p>
             </Container>
