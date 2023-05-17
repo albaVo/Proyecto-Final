@@ -11,7 +11,8 @@ module.exports = {
       'www.flaticon.es', 
       'images8.alphacoders.com',
       'fondosmil.com',
-      'www.muycomputer.com'
+      'www.muycomputer.com',
+      'gaming-cdn.com'
     ]
   }
 }
