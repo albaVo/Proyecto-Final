@@ -22,38 +22,53 @@ interface Props {
 
 export const BannerRandomGame:FC<Props> = ({productos}) => {
   
-  const precio = fn.calcDiscount(
-    // productos.prcio,
-    // productos.descuento
-    60, 39
-  )
-
   const randomProduct = productos[Math.floor(Math.random() * productos.length)]
   console.log(randomProduct);
 
-  // numero random
-  function getRandomNumber(min: number, max: number) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1)) + min
-  }
+  const precio = randomProduct?.precio;
+  const descuento = randomProduct?.descuento;
+  const precioFinal = fn.calcDiscount(precio, descuento);
 
-  const randomNumber = getRandomNumber(1, 100)
+
+  
+
+  // numero random
+  // function getRandomNumber(min: number, max: number) {
+  //   min = Math.ceil(min)
+  //   max = Math.floor(max)
+  //   return Math.floor(Math.random() * (max - min + 1)) + min
+  // }
+
+  // const randomNumber = getRandomNumber(1, 100)
   
 
   return (
     <div className={styles.container}>
       
-      {/* <Image src={randomProduct.fondo} width={100} height={100} alt={"Fondo producto"} className={styles.fondo}/> */}
-      {Producto.map((product) => (
+      <img src={randomProduct?.fondo} alt={"Fondo producto"} className={styles.fondo}/>
+      
+      <Link className={styles.infoContainer} href="">
+        <Container>
+          <h2>{randomProduct?.titulo}</h2>
+
+          <p className={styles.price}>
+            <Discount>-{randomProduct?.descuento}%</Discount>
+            <span className={styles.finalPrice}>
+              {precioFinal}€
+            </span>
+          </p>
+        </Container>
+      </Link>
+
+      {/* {Producto.map((product) => (
         <>
           <img src={product.fondo} alt={"Fondo producto"} className={styles.fondo}/>
           
           <Link className={styles.infoContainer} href="">
             <Container>
-              {/* <span className={styles.date}>
+              <span className={styles.date}>
                 hace {randomNumber} días
-              </span> */}
+              </span>
 
               <h2>{product.titulo}</h2>
 
@@ -66,7 +81,7 @@ export const BannerRandomGame:FC<Props> = ({productos}) => {
             </Container>
           </Link>
         </>
-      ))}
+      ))} */}
 
     </div>
   )

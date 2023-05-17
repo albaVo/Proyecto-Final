@@ -16,8 +16,10 @@ import router from "next/router"
 
 
 export const Address = (props: any) => {
+  const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
+  console.log(storedUser)
 
-  const { direccionId, direccion } = props
+  // const { usuario } = props
   const { deleteDireccion } = useContext(AuthContext)
   const [showEdit, setShowEdit] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
@@ -40,10 +42,10 @@ export const Address = (props: any) => {
     <>
       <div className={styles.address}>
         <div>
-          <p className={styles.title}>{direccion.titulo}: </p>
-          <p className={styles.info}>
-            {direccion.direccion}, {direccion.ciudad}, {direccion.codigo_postal}, {direccion.telefono}
-          </p>
+          <p className={styles.title}>{storedUser}: </p>
+          {/* <p className={styles.info}>
+            {usuario.direccion.direccion}, {usuario.direccion.ciudad}, {usuario.direccion.codigo_postal}, {usuario.direccion.telefono}
+          </p> */}
         </div>
 
         <div className={styles.actions}>

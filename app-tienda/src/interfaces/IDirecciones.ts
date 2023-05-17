@@ -7,5 +7,5 @@ export interface IDireccion {
     ciudad:        string;
     codigo_postal: string;
     telefono:      string;
-    usuario:       IUsuario;
+    usuario:       IUsuario[];
 }

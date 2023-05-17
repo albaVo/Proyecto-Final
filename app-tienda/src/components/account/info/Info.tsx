@@ -31,15 +31,9 @@ export default function Info() {
             </IconButton>
             <h3 className={styles.username}>{storedUser.nombre} {storedUser.apellidos}</h3>
             <h4 className={styles.email}>{storedUser.email}</h4>
-            {/* <p className={styles.createdAt}>
-                Miembro desde: {randomDate}
-            </p> */}
-
-            {/* <h3 className={styles.username}>Alba Villanueva</h3>
-            <h4 className={styles.email}>alba@gmail.com</h4>
             <p className={styles.createdAt}>
-                Miembro desde: 15/03/2022
-            </p> */}
+                Miembro desde: {randomDate}
+            </p>
         </div>
     )
 }

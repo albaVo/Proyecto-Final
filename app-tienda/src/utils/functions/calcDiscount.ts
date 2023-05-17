@@ -1,10 +1,8 @@
-import { log } from "console"
-
-export function calcDiscount(precio: number, descuento: number) {
+export function calcDiscount(precio: any, descuento: any) {
     if(!descuento) return precio
 
     const cantidadDescuento = (precio * descuento) / 100
     const precioFinal = precio - cantidadDescuento
 
-    return precioFinal        
+    return Number(precioFinal.toFixed(2))        
 }

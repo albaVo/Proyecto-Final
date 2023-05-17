@@ -12,7 +12,8 @@ module.exports = {
       'images8.alphacoders.com',
       'fondosmil.com',
       'www.muycomputer.com',
-      'gaming-cdn.com'
+      'gaming-cdn.com',
+      'i.blogs.es'
     ]
   }
 }

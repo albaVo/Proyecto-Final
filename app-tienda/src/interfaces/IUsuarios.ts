@@ -1,3 +1,5 @@
+import { IDireccion } from "./IDirecciones";
+
 export interface IUsuario {
     id:          number;
     nombre:      string;
@@ -7,5 +9,5 @@ export interface IUsuario {
     contraseña:  string;
     isActive:    boolean;
     roles:       string[];
-    // direcciones: Direccione[];
+    direcciones: IDireccion[];
 }
