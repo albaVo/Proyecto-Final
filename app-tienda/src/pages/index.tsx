@@ -1,7 +1,3 @@
-//react
-import { useContext, useEffect, useState } from 'react'
-//context
-import { AuthContext } from '@/context/auth'
 //layout
 import { BasicLayout } from '@/layouts';
 //components
@@ -31,7 +27,7 @@ export default function Home() {
         <Separator height={100}/>
 
         <BarraInfo/>
-        
+
         <Separator height={100}/>
       </BasicLayout>
     </>
