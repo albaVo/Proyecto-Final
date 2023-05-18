@@ -1,11 +1,16 @@
 //styles
-import Link from "next/link"
 import styles from "./GridProductos.module.scss"
+//next
+import Link from "next/link"
+//components
 import { Discount } from "../Label"
+//utils
+import { fn } from "@/utils"
+
 
 export const GridProductos = (props: any) => {
 
-    const {products} = props
+    const {productos} = props
 
     return (
         <div className={styles.gridProductos}>
@@ -21,14 +26,17 @@ export const GridProductos = (props: any) => {
                     </div>
 
                     <div>
-                        
+                        <span>{product.titulo}</span>
+                        <span className={styles.price}>
+                            {fn.calcDiscount(product.precio, product.descuento)}€
+                        </span>
                     </div>
                </Link> 
             ))}
 
             {/* <Link href={} className={styles.producto}>
                 <div>
-                    <img src={products?.imagen}/>
+                    <img src={productos?.imagen}/>
                 </div>
             </Link> */}
         </div>

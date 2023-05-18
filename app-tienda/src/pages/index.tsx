@@ -6,7 +6,7 @@ import { AuthContext } from '@/context/auth'
 import { BasicLayout } from '@/layouts';
 //components
 import { BannerRandomGame, RandomGames } from '@/components/home';
-import { Separator } from '@/components/shared';
+import { BarraInfo, Separator } from '@/components/shared';
 //hooks
 import { useProductos } from '@/hooks/useProductos';
 //mui
@@ -27,6 +27,12 @@ export default function Home() {
         <Container>
           <RandomGames productos={productos} title="Productos"/>
         </Container>
+
+        <Separator height={100}/>
+
+        <BarraInfo/>
+        
+        <Separator height={100}/>
       </BasicLayout>
     </>
   )
