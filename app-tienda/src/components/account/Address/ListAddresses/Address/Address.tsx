@@ -17,7 +17,6 @@ import router from "next/router"
 
 export const Address = (props: any) => {
   const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
-  console.log(storedUser)
 
   // const { usuario } = props
   const { deleteDireccion } = useContext(AuthContext)
@@ -42,7 +41,7 @@ export const Address = (props: any) => {
     <>
       <div className={styles.address}>
         <div>
-          <p className={styles.title}>{storedUser}: </p>
+          <p className={styles.title}>{storedUser.direcciones.titulo}: </p>
           {/* <p className={styles.info}>
             {usuario.direccion.direccion}, {usuario.direccion.ciudad}, {usuario.direccion.codigo_postal}, {usuario.direccion.telefono}
           </p> */}

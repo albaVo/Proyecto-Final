@@ -15,15 +15,6 @@ import { useDirecciones } from "@/hooks/useDirecciones"
 export const ListAddresses = () => {
   
     const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
-    // const { direcciones, isLoading } = useDirecciones(`/direcciones/${storedUser?.id || ''}`)
-    
-    console.log(storedUser)
-
-    // const direccionesUser = direcciones.filter(
-    //     (direccion) => direccion.usuario == storedUser.id
-    // )
-
-    // console.log('direccionesUser', direccionesUser);
 
     return (
     <div className={styles.addresses}>
