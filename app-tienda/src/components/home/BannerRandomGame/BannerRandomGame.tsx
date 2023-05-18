@@ -45,9 +45,9 @@ export const BannerRandomGame:FC<Props> = ({productos}) => {
   return (
     <div className={styles.container}>
       
-      <img src={randomProduct?.fondo} alt={"Fondo producto"} className={styles.fondo}/>
+      {/* <img src={randomProduct?.fondo} alt={"Fondo producto"} className={styles.fondo}/> */}
       
-      <Link className={styles.infoContainer} href="">
+      {/* <Link className={styles.infoContainer} href="">
         <Container>
           <h2>{randomProduct?.titulo}</h2>
 
@@ -58,16 +58,16 @@ export const BannerRandomGame:FC<Props> = ({productos}) => {
             </span>
           </p>
         </Container>
-      </Link>
+      </Link> */}
 
-      {/* {Producto.map((product) => (
+      {Producto.map((product) => (
         <>
           <img src={product.fondo} alt={"Fondo producto"} className={styles.fondo}/>
           
           <Link className={styles.infoContainer} href="">
             <Container>
               <span className={styles.date}>
-                hace {randomNumber} días
+                {/* hace randomNumber días */}
               </span>
 
               <h2>{product.titulo}</h2>
@@ -81,7 +81,7 @@ export const BannerRandomGame:FC<Props> = ({productos}) => {
             </Container>
           </Link>
         </>
-      ))} */}
+      ))}
 
     </div>
   )

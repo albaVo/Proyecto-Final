@@ -5,10 +5,12 @@ import { AuthContext } from '@/context/auth'
 //layout
 import { BasicLayout } from '@/layouts';
 //components
-import { BannerRandomGame } from '@/components/home';
+import { BannerRandomGame, RandomGames } from '@/components/home';
 import { Separator } from '@/components/shared';
 //hooks
 import { useProductos } from '@/hooks/useProductos';
+//mui
+import { Container } from '@mui/material';
 
 
 export default function Home() {
@@ -21,6 +23,10 @@ export default function Home() {
         <BannerRandomGame productos={productos}/>
 
         <Separator height={100}/>
+
+        <Container>
+          <RandomGames productos={productos} title="Productos"/>
+        </Container>
       </BasicLayout>
     </>
   )

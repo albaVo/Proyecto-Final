@@ -45,6 +45,14 @@ export const theme = createTheme({
                     }
                 }
             }
+        },
+        MuiContainer: {
+            styleOverrides: {
+                root: {
+                    marginLeft: '18%',
+                    width: '70%'
+                }
+            }
         }
     }
 })
