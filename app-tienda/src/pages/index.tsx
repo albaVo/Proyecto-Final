@@ -1,7 +1,7 @@
 //layout
 import { BasicLayout } from '@/layouts';
 //components
-import { BannerRandomGame, RandomGames } from '@/components/home';
+import { BannerRandomProduct, RandomProducts } from '@/components/home';
 import { BannerAd, BarraInfo, Separator } from '@/components/shared';
 //hooks
 import { useProductos } from '@/hooks/useProductos';
@@ -16,12 +16,12 @@ export default function Home() {
   return (
     <>
       <BasicLayout>
-        <BannerRandomGame productos={productos}/>
+        <BannerRandomProduct productos={productos}/>
 
         <Separator height={100}/>
 
         <Container>
-          <RandomGames productos={productos} title="Productos"/>
+          <RandomProducts productos={productos} title="Productos"/>
         </Container>
 
         <Separator height={100}/>
@@ -32,7 +32,7 @@ export default function Home() {
 
         {/* Poner que devuelva videojuegos al azar */}
         <Container>
-          <RandomGames productos={productos} title="Videojuegos"/> 
+          <RandomProducts productos={productos} title="Videojuegos"/> 
         </Container>
 
         <Separator height={100}/>
@@ -50,7 +50,7 @@ export default function Home() {
 
         {/* Poner que devuelva productos del titulo al azar */}
         <Container>
-          <RandomGames productos={productos} title="Figuras y collecionables"/> 
+          <RandomProducts productos={productos} title="Figuras y collecionables"/> 
         </Container>
 
         <Separator height={100}/>

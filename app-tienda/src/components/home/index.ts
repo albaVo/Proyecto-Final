@@ -1,2 +1,2 @@
-export * from "./BannerRandomGame"
-export * from "./RandomGames"
+export * from "./BannerRandomProduct"
+export * from "./RandomProducts"
