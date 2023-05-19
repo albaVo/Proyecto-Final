@@ -30,9 +30,9 @@ export default function Home() {
 
         <Separator height={100}/>
 
-        {/* Poner que devuelva videojuegos al azar pero de la categoria playstation */}
+        {/* Poner que devuelva videojuegos al azar */}
         <Container>
-          <RandomGames productos={productos} title="Videojuegos PlayStation"/> 
+          <RandomGames productos={productos} title="Videojuegos"/> 
         </Container>
 
         <Separator height={100}/>
@@ -46,6 +46,14 @@ export default function Home() {
         />
 
         <Separator height={50}/>
+
+
+        {/* Poner que devuelva productos del titulo al azar */}
+        <Container>
+          <RandomGames productos={productos} title="Figuras y collecionables"/> 
+        </Container>
+
+        <Separator height={100}/>
       </BasicLayout>
     </>
   )
