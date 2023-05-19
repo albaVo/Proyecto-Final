@@ -1,0 +1,47 @@
+@import "~/src/scss/colors.scss";
+
+.container {
+    display: flex !important;
+    position: relative;
+    height:350px;
+    background-color: #489bca;
+    background-image: radial-gradient(
+        circle at center bottom,
+        #489bca 0,
+        #154483 29%,
+        #0f0f1b 73%
+    );
+
+    // &::after {
+    //     content: ".";
+    //     background-color: $background-primary;
+    //     position: absolute;
+    //     bottom: 60px;
+    //     width: 100%;
+    //     clip-path: polygon(0 100%, 100% 100%, 0 0);
+    //     color: $background-primary;
+    // }
+}
+
+.containerImage {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 30px;
+    // margin: 0;
+}
+
+.infoContainer {
+    position: absolute;
+    top: 0;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    
+    h3 {
+        font-weight: normal;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+}

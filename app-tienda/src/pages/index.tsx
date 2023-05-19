@@ -2,7 +2,7 @@
 import { BasicLayout } from '@/layouts';
 //components
 import { BannerRandomGame, RandomGames } from '@/components/home';
-import { BarraInfo, Separator } from '@/components/shared';
+import { BannerAd, BarraInfo, Separator } from '@/components/shared';
 //hooks
 import { useProductos } from '@/hooks/useProductos';
 //mui
@@ -29,6 +29,23 @@ export default function Home() {
         <BarraInfo/>
 
         <Separator height={100}/>
+
+        {/* Poner que devuelva videojuegos al azar pero de la categoria playstation */}
+        <Container>
+          <RandomGames productos={productos} title="Videojuegos PlayStation"/> 
+        </Container>
+
+        <Separator height={100}/>
+
+        <BannerAd
+          title="Registrate y obten los mejores precios"
+          subtitle="¡Compara con otros productos y elige el tuyo!"
+          titleLink="Entrar ahora"
+          link="/account"
+          image="/images/anuncio.png"
+        />
+
+        <Separator height={50}/>
       </BasicLayout>
     </>
   )
