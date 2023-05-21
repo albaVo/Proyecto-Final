@@ -9,11 +9,11 @@ interface Props {
     title: any
 }
 
-export const RandomGames:FC<Props> = ({productos, title}) => {
+export const RandomProducts:FC<Props> = ({productos, title}) => {
   
     //intentar poner pa que devuelva como máximo 9
     const randomProduct = productos[Math.floor(Math.random() * productos.length)]
-    console.log(randomProduct);
+    // console.log(randomProduct);
   
     return (
         <div>

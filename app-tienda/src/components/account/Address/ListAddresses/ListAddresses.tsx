@@ -3,50 +3,28 @@ import styles from "./ListAddresses.module.scss"
 // interfaces
 import { IDireccion } from "@/interfaces/IDirecciones"
 // react
-import { FC } from "react"
+import { FC, useState } from "react"
 //components
 import { Address } from "./Address"
-import { useDirecciones } from "@/hooks/useDirecciones"
 
-// interface Props {
-//     direcciones: IDireccion[]
-// }
 
 export const ListAddresses = () => {
   
-    const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
+    const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')  
 
     return (
     <div className={styles.addresses}>
-        {/* {direcciones.map((direccion) => (
+        {storedUser.direcciones.map((direccion: any, index: number) => (
             <Address 
                 key={direccion.id}
-                direccionId={direccion.id}
-                direccion={direccion}
+                id={direccion.id}
+                titulo={direccion.titulo}
+                direccion={direccion.direccion}
+                ciudad={direccion.ciudad}
+                codigo_postal={direccion.codigo_postal}
+                telefono={direccion.telefono}
             />
-        ))} */}
-
-        <Address/>
+        ))}
     </div>
   )
 }
-
-
-const direccionData = [
-    {
-        "id" : 1,
-        "titulo": "Casa Playa",
-        "direccion": "Calle Rosales, 8",
-        "ciudad": "Almeria",
-        "codigo_postal": 46807,
-        "telefono": 695874023
-    },
-    {
-        "id" : 2,
-        "titulo": "Casa de campo",
-        "direccion": "Calle Nueva, 25",
-        "ciudad": "Murcia",
-        "codigo_postal": 30001,
-        "telefono": 654789012
-    }
-]

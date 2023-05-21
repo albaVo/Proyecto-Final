@@ -24,7 +24,7 @@ import { useDirecciones } from "@/hooks/useDirecciones";
 const AccountPage = () => {
 
   const { user } = useContext(AuthContext)
-  const { direcciones, isLoading } = useDirecciones('/direcciones/${user.id}')
+  // const { direcciones, isLoading } = useDirecciones('/direcciones/${user.id}')
 
   const { logout } = useContext(AuthContext)
   const [value, setValue] = React.useState('1')
@@ -76,7 +76,7 @@ const AccountPage = () => {
           <TabPanel value="2">Mi lista de deseos...</TabPanel>
           <TabPanel value="3">
             <AddAddress/>
-            <ListAddresses direccion={direcciones}/>
+            <ListAddresses/>
             <Separator height={80}/>
           </TabPanel>
           <TabPanel value="4"><UpdateForm/></TabPanel>

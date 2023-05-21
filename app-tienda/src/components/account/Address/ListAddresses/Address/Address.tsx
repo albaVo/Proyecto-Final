@@ -17,8 +17,10 @@ import router from "next/router"
 
 export const Address = (props: any) => {
   const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
+  // console.log(storedUser);
 
-  // const { usuario } = props
+  const { titulo, direccion, ciudad, codigo_postal, telefono, id } = props  
+
   const { deleteDireccion } = useContext(AuthContext)
   const [showEdit, setShowEdit] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
@@ -41,10 +43,10 @@ export const Address = (props: any) => {
     <>
       <div className={styles.address}>
         <div>
-          <p className={styles.title}>{storedUser.direcciones.titulo}: </p>
-          {/* <p className={styles.info}>
-            {usuario.direccion.direccion}, {usuario.direccion.ciudad}, {usuario.direccion.codigo_postal}, {usuario.direccion.telefono}
-          </p> */}
+          <p className={styles.title}>{titulo}:</p>
+          <p className={styles.info}>
+            {direccion}, {ciudad}, {codigo_postal}, {telefono}
+          </p>
         </div>
 
         <div className={styles.actions}>
@@ -56,6 +58,7 @@ export const Address = (props: any) => {
           </IconButton>
         </div>
       </div>
+      
 
       <Confirm
         open={showConfirm}
@@ -66,14 +69,18 @@ export const Address = (props: any) => {
           <Button onClick={openCloseConfirm}>Cancelar</Button>
           <Button onClick={() => handleDelete}>OK</Button>
         </DialogActions>
-      </Confirm>
+      </Confirm> 
 
       <BasicModal 
         show={showEdit} 
         onClose={openCloseEdit} 
         title="Editar dirección"
       >
-        <AddressForm onClose={openCloseEdit}/>
+        <AddressForm
+          onClose={openCloseEdit}
+          isEditMode={true}
+          id={id}
+        />
       </BasicModal>
     </>
   )

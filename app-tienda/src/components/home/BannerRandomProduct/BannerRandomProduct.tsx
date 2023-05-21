@@ -1,5 +1,5 @@
 //styles
-import styles from "./BannerRandomGame.module.scss"
+import styles from "./BannerRandomProduct.module.scss"
 //next
 import Image from "next/image";
 import Link from "next/link";
@@ -20,7 +20,7 @@ interface Props {
   productos: IProducto[]
 }
 
-export const BannerRandomGame:FC<Props> = ({productos}) => {
+export const BannerRandomProduct:FC<Props> = ({productos}) => {
   
   const randomProduct = productos[Math.floor(Math.random() * productos.length)]
   console.log(randomProduct);

@@ -5,6 +5,7 @@ export interface IRespuestaApiAuth {
     message?: string
 }
 
+
 export interface IRespuestaLogin {
     token: string,
     usuario: IUsuario

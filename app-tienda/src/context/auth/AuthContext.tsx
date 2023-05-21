@@ -16,7 +16,12 @@ interface ContextProps {
     updateUser: (id: number, nombre: string, apellidos: string, email: string, constraseña: string) => Promise<IRespuestaApiAuth>
     
     // direcciones
-    createDireccion: (titulo: string, direccion: string, ciudad: string, codigo_postal: number, telefono: number, usuarioId: number) => Promise<IRespuestaApiAuth>
+    createDireccion: (titulo: string, direccion: string, ciudad: string, codigo_postal: number, telefono: number, usuarioId: number) => Promise<{
+        hasError: boolean;
+        message: string;
+        id?: number;
+    }>
+    updateDireccion: (id: number, titulo?: string, direccion?: string, ciudad?: string, codigo_postal?: number, telefono?: number, usuarioId?: number) => Promise<IRespuestaApiAuth>
     deleteDireccion: (id: number) => Promise<IRespuestaApiAuth>
 }
 

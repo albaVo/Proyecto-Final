@@ -5,13 +5,14 @@ import { Box, Button, CircularProgress, TextField } from "@mui/material"
 //next
 import { useRouter } from "next/router";
 //react
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 // context
 import { AuthContext } from "@/context/auth";
 
 
 type DireccionData = {
+    id?: number,
     titulo: string,
     direccion: string,
     ciudad: string,
@@ -22,15 +23,17 @@ type DireccionData = {
 
 export const AddressForm = (props: any) => {
 
-    const { onClose } = props
+    const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
+
+    const { onClose, isEditMode, id } = props
 
     const router = useRouter()
 
-    const { createDireccion } = useContext(AuthContext)
+    const { createDireccion, updateDireccion } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm<DireccionData>()
 
-    const [ showError, setShowError ] = useState(false)
-    const [ errorMessage, setErrorMessage ] = useState('')
+    const [showError, setShowError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -38,34 +41,81 @@ export const AddressForm = (props: any) => {
         setShowError(false)
         const { titulo, direccion, ciudad, codigo_postal, telefono } = InputData
 
+        // const { id } = storedUser.direcciones
+
         setIsSubmitting(true)
 
         //obtener el id del usuario logeuado desde el localStorage
-        const storedUser = JSON.parse(localStorage.getItem('user') || '{}')
+        // const storedUser = JSON.parse(localStorage.getItem('user') || '{}')
         const usuarioId = storedUser.id
 
-        const { hasError, message } = await createDireccion(titulo, direccion, ciudad, codigo_postal, telefono, usuarioId)
-        console.log(message)
+        if (!isEditMode) {
+            const { hasError, message, id } = await createDireccion (
+                titulo, 
+                direccion, 
+                ciudad, 
+                codigo_postal, 
+                telefono, 
+                usuarioId
+            )              
+            console.log(message)
 
-        setIsSubmitting(false)
+            if (!hasError) {
+                const updatedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}');
+                updatedUser.direcciones.push({
+                  id,
+                  titulo,
+                  direccion,
+                  ciudad,
+                  codigo_postal,
+                  telefono,
+                  usuarioId
+                });
+                localStorage.setItem('user', JSON.stringify(updatedUser));
+            }
+        } else {
+            const { hasError, message } = await updateDireccion(
+                id,
+                titulo,
+                direccion,
+                ciudad,
+                codigo_postal,
+                telefono,
+                usuarioId
+            )
+            console.log(message)
 
-        if (hasError){
-            setShowError(true);
-            setErrorMessage(message || '');
-            setTimeout( () => setShowError(false), 3000);
-            return;
+            if (!hasError) {
+                
+                let updatedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}');
+
+                if (updatedUser) {
+                    updatedUser.direcciones = updatedUser.direcciones.filter((dir: { id: number }) => dir.id !== id);
+
+                    updatedUser.direcciones.push({
+                        id,
+                        titulo,
+                        direccion,
+                        ciudad,
+                        codigo_postal,
+                        telefono,
+                        usuarioId
+                    });
+
+                    localStorage.setItem('user', JSON.stringify(updatedUser));
+                }
+            }
         }
 
-        
+        setIsSubmitting(false)
+        onClose()        
     }
-
+   
     return (
-        <form onSubmit={handleSubmit(onCreateDireccion)} className={styles.form}> 
-         {/* ver si se puede condicionar el handlesubmit */}
-         
+        <form onSubmit={handleSubmit(onCreateDireccion)} className={styles.form}>          
             <TextField
                 { ...register('titulo', {
-                    required: 'Título obligatorio'
+                    required: isEditMode ? false : 'Titulo obligatorio'
                 })}
                 error={!!errors.titulo}
                 helperText={errors.titulo?.message}
@@ -77,7 +127,7 @@ export const AddressForm = (props: any) => {
                 <Box sx={{width: '50%', paddingRight: 1.5}}>
                     <TextField
                         { ...register('direccion', {
-                            required: 'Dirección obligatoria'
+                            required: isEditMode ? false : 'Dirección obligatoria'
                         })}
                         error={!!errors.direccion}
                         helperText={errors.direccion?.message}
@@ -89,7 +139,7 @@ export const AddressForm = (props: any) => {
                 <Box sx={{width: '50%'}}>
                     <TextField
                         { ...register('ciudad', {
-                            required: 'Ciudad obligatoria'
+                            required: isEditMode ? false : 'Ciudad obligatoria'
                         })}
                         error={!!errors.ciudad}
                         helperText={errors.ciudad?.message}
@@ -103,7 +153,7 @@ export const AddressForm = (props: any) => {
                 <Box sx={{width: '50%', paddingRight: 1.5}}>
                     <TextField
                         { ...register('codigo_postal', {
-                            required: 'Código postal obligatorio',
+                            required: isEditMode ? false : 'Código postal obligatorio',
                             valueAsNumber: true,
                         })}
                         error={!!errors.codigo_postal}
@@ -117,7 +167,7 @@ export const AddressForm = (props: any) => {
                 <Box sx={{width: '50%'}}>
                     <TextField
                         { ...register('telefono', {
-                            required: 'Teléfono obligatorio',
+                            required: isEditMode ? false : 'Teléfono obligatorio',
                             valueAsNumber: true,
                         })}
                         error={!!errors.telefono}

@@ -112,7 +112,7 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
     const updateUser = async (id: number, email: string, nombre: string, apellidos: string, contraseña: string):Promise<IRespuestaApiAuth> => {
         try {
             const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
-            console.log(storedUser);
+            // console.log(storedUser);
             
             // const { data } = await tiendaApi.patch(`/auth/${id}`, {contraseña, apellidos, email, nombre})
             const { data } = await tiendaApi.patch(`/auth/${id}`, {
@@ -145,12 +145,16 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
 
     
     // DIRECCIONES
-    const createDireccion = async (titulo: string, direccion: string, ciudad: string, codigo_postal: number, telefono: number, usuarioId: number):Promise<IRespuestaApiAuth> => {
+    const createDireccion = async (titulo: string, direccion: string, ciudad: string, codigo_postal: number, telefono: number, usuarioId: number):Promise<{hasError: boolean, message: string, id?: number}> => {
         try {
             const { data } = await tiendaApi.post('/direcciones', {titulo, direccion, ciudad, codigo_postal, telefono, usuarioId})
+            
+            window.location.reload();
+
             return {
                 hasError: false,
-                message: 'Dirección creado con éxito'
+                message: 'Dirección creado con éxito',
+                id: data.id
             }
         } catch (error) {
             if (axios.isAxiosError(error)) {
@@ -163,6 +167,32 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             return {
                 hasError: true,
                 message: 'No se puede crear la dirección, inténtalo de nuevo'
+            }
+        }
+    }
+
+    const updateDireccion = async (id: number, titulo?: string, direccion?: string, ciudad?: string, codigo_postal?: number, telefono?: number, usuarioId?: number):Promise<IRespuestaApiAuth> => {
+        try {            
+            const { data } = await tiendaApi.patch(`/direcciones/${id}`, {titulo, direccion, ciudad, codigo_postal, telefono, usuarioId})  
+            console.log(data)
+
+            window.location.reload();
+            
+            return {
+                hasError: false,
+                message: 'Usuario modificado con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            // no es error de axios
+            return {
+                hasError: true,
+                message: 'No se puede modificar el usuario, inténtalo de nuevo'
             }
         }
     }
@@ -198,6 +228,7 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             logout,
             updateUser,
             createDireccion,
+            updateDireccion,
             deleteDireccion
         }}>
             { children }
