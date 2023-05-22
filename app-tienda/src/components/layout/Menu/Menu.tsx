@@ -61,7 +61,7 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
                   <MenuItem 
                     onClick={handleClose}
                     className={styles.menuItem}
-                    href={''}
+                    href={'/'} // hacer que funcione
                   >
                     Subcategoria
                   </MenuItem>
@@ -98,7 +98,7 @@ const categoriaData = [
   {
     "id": 1,
     "titulo": "Videojuegos",
-    "icono": "https://cdn-icons-png.flaticon.com/512/4693/4693547.png"
+    "icono": "https://cdn-icons-png.flaticon.com/512/4693/4693547.png",
   },
   {
     "id": 2,

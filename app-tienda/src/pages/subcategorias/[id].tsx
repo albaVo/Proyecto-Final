@@ -12,7 +12,7 @@ interface Props {
   titulo: string
 }
 
-const CategoriaPage = () => {
+const SubcategoriaPage = () => {
   
   const router = useRouter();
   const titulo = router.query
@@ -31,4 +31,4 @@ const CategoriaPage = () => {
   )
 }
 
-export default CategoriaPage
+export default SubcategoriaPage
