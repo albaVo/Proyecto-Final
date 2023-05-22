@@ -41,7 +41,7 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
 
     return (
       <div className={styles.categorias}>
-        {categoriaData.map((categoria) => (
+        {categoria.map((categoria) => (
             <>
               <div key={categoria.id} className={styles.categoria}>
                 <Image src={categoria.icono} alt={""} width={32} height={20}/>
@@ -63,7 +63,9 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
                     className={styles.menuItem}
                     href={'/'} // hacer que funcione
                   >
-                    Subcategoria
+                    {/* {categoria.subcategorias.map((subcategoria) => (
+                      <div key={subcategoria.id}></div>
+                    ))} */}
                   </MenuItem>
                 </Menu>    
               </div>     
@@ -92,32 +94,3 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
       </div>
     )
 }
-
-
-const categoriaData = [
-  {
-    "id": 1,
-    "titulo": "Videojuegos",
-    "icono": "https://cdn-icons-png.flaticon.com/512/4693/4693547.png",
-  },
-  {
-    "id": 2,
-    "titulo": "Consolas",
-    "icono": "https://cdn-icons-png.flaticon.com/512/3271/3271009.png"
-  },
-  {
-    "id": 3,
-    "titulo": "Coleccionables",
-    "icono":  "https://cdn-icons-png.flaticon.com/512/6967/6967649.png"
-  },
-  {
-    "id": 4,
-    "titulo": "Cosplay",
-    "icono": "https://cdn-icons-png.flaticon.com/512/72/72388.png"
-  },
-  {
-    "id": 5,
-    "titulo": "Tableros",
-    "icono": "https://cdn-icons-png.flaticon.com/512/3351/3351767.png"
-  }
-]

@@ -200,6 +200,10 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
     const deleteDireccion = async (id: number):Promise<IRespuestaApiAuth> => {
         try {
             const { data } = await tiendaApi.delete(`/direcciones/${id}`)
+            console.log(data)
+
+            window.location.reload();
+
             return {
                 hasError: false,
                 message: 'Dirección eliminada con éxito'

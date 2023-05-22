@@ -54,7 +54,7 @@ export const Address = (props: any) => {
             <Edit/>
           </IconButton>
           <IconButton onClick={openCloseConfirm}>
-            <Delete/>
+            <Delete />
           </IconButton>
         </div>
       </div>
