@@ -10,11 +10,12 @@
     padding: 0 50px 0 20px;
     border-radius: 100px 0 0 100px;
 
-    > a {
+    .categoria  {
         display: flex;
         align-items: center;
         padding: 20px 15px;
         text-decoration: none;
+        background-color: transparent;
 
         // &:hover {
         //     opacity: 0.6;
@@ -22,7 +23,6 @@
 
         img {
            filter: brightness(0) invert(1);
-        //    height: 16px; 
            padding-right: 10px;
         }
     }
@@ -72,4 +72,14 @@
         font-size: 20px;
         cursor: pointer;
     }
+}
+
+
+.buttonArrow {
+    padding: 0;
+    margin-bottom: 17px;
+}
+
+.menu {
+        
 }

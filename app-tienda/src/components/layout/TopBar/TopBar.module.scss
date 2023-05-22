@@ -8,17 +8,18 @@
 }
 
 .left {
-    width: 20%;
+    width: 10%;
 }
 
 .center {
-    width: 60%;
+    width: 75%;
     display: flex;
     justify-content: center;
+    margin-left: 15px;
 }
 
 .right {
-    width: 20%;
+    width: 15%;
     display: flex;
     justify-content: flex-end;
 }

@@ -53,6 +53,14 @@ export const theme = createTheme({
                     width: '70%'
                 }
             }
+        },
+        MuiPaper: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#3d3d3d10',
+                    backdropFilter: 'blur(30px)'
+                }
+            }
         }
     }
 })

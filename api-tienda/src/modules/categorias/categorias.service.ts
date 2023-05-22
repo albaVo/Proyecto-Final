@@ -25,7 +25,9 @@ export class CategoriasService {
   }
 
   findAll() {
-    return this.categoriaRepository.find({})
+    return this.categoriaRepository.find({
+      relations: {subcatgorias: true}
+    })
   }
 
   findOne(id: number) {

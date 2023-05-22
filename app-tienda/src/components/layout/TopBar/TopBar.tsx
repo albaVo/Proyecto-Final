@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image";
 //components
 import { Account } from "../Account";
-import { Menu } from "../Menu";
+import { MenuTop } from "../Menu";
 //hooks
 import { useCategorias } from "@/hooks/useCategorias";
 
@@ -21,12 +21,12 @@ export const TopBar = (props: any) => {
         <div className={styles.topBar}>
             <div className={styles.left}>
                 <Link href="/">
-                    <Image src="/images/logo.png" width={150} height={60} alt="OlympusArcade"/>
+                    <Image src="/images/logo.png" width={140} height={60} alt="OlympusArcade"/>
                 </Link>
             </div>
             
             <div className={styles.center}>
-                <Menu isOpenSearch={isOpenSearch} categoria={categorias}/>
+                <MenuTop isOpenSearch={isOpenSearch} categoria={categorias}/>
             </div>
 
             <div className={styles.right}>
