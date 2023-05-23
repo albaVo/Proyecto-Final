@@ -22,7 +22,7 @@ interface Props {
 
 export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
     
-    const [categorias, setCategorias] = useState(null)  
+    // const [categorias, setCategorias] = useState(null)  
 
     // Buscador
     const [showSearch, setShowSearch] = useState(false)   
@@ -30,12 +30,17 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
 
     // Menu subcategorias
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [openMenuIndex, setOpenMenuIndex] = useState<number>(-1)
     const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+
+    const handleClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
       setAnchorEl(event.currentTarget);
+      setOpenMenuIndex(openMenuIndex === index ? -1: index)
     };
+
     const handleClose = () => {
       setAnchorEl(null);
+      setOpenMenuIndex(-1)
     };
     
 
@@ -49,24 +54,28 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
               </div>
 
               <div className={styles.menu}>
-                <IconButton className={styles.buttonArrow} onClick={handleClick}>
+                <IconButton 
+                  className={styles.buttonArrow} 
+                  onClick={(event) => handleClick(event, categoria.id)}
+                >
                   <KeyboardArrowDown/>
                 </IconButton> 
 
                 <Menu
                   anchorEl={anchorEl}
-                  open={open}
+                  open={openMenuIndex === categoria.id}
                   onClose={handleClose}
                 >
-                  <MenuItem 
-                    onClick={handleClose}
-                    className={styles.menuItem}
-                    href={'/'} // hacer que funcione
-                  >
-                    {/* {categoria.subcategorias.map((subcategoria) => (
-                      <div key={subcategoria.id}></div>
-                    ))} */}
-                  </MenuItem>
+                  {categoria.subcategorias?.map((subcategoria) => (
+                    <MenuItem 
+                      onClick={handleClose}
+                      className={styles.menuItem}
+                      href={'/'} // hacer que funcione
+                      key={subcategoria.id}
+                    >
+                      {subcategoria.titulo}
+                    </MenuItem>
+                  ))} 
                 </Menu>    
               </div>     
             </>

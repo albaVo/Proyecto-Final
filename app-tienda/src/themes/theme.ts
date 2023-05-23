@@ -58,7 +58,7 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     backgroundColor: '#3d3d3d10',
-                    backdropFilter: 'blur(30px)'
+                    backdropFilter: 'blur(100px)'
                 }
             }
         }

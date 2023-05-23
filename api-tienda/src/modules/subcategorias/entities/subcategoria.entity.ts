@@ -18,7 +18,7 @@ export class Subcategoria {
     // RELACIONES
     @ManyToOne(
         () => Categoria,
-        (Categoria) => Categoria.subcatgorias,
+        (Categoria) => Categoria.subcategorias,
         { onDelete: 'CASCADE'}
     )
     categoria?: Categoria

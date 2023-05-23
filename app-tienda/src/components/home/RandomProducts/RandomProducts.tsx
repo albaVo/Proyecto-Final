@@ -18,7 +18,7 @@ export const RandomProducts:FC<Props> = ({productos, title}) => {
     return (
         <div>
             <h2>{title}</h2>
-            <GridProductos productos={randomProduct}/>
+            <GridProductos producto={randomProduct}/>
         </div>
     )
 }

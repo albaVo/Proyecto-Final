@@ -21,7 +21,7 @@ export class Categoria {
         (Subcategoria) => Subcategoria.categoria,
         { onDelete: 'CASCADE', eager: true }
     )
-    subcatgorias?: Subcategoria[]
+    subcategorias?: Subcategoria[]
 
     @OneToMany(
         () => Producto,

@@ -21,7 +21,7 @@ export const TopBar = (props: any) => {
         <div className={styles.topBar}>
             <div className={styles.left}>
                 <Link href="/">
-                    <Image src="/images/logo.png" width={140} height={60} alt="OlympusArcade"/>
+                    <Image src="/images/logo.png" width={150} height={60} alt="OlympusArcade"/>
                 </Link>
             </div>
             
