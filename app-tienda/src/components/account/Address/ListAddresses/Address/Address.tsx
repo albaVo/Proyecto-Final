@@ -36,7 +36,13 @@ export const Address = (props: any) => {
       return
     }
 
-    // router.replace('/account')
+    // Eliminar la dirección del localStorage
+    const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}');
+    const updatedDirecciones = storedUser.direcciones.filter((direcciones: any) => direcciones.id !== id);
+
+    storedUser.direcciones = updatedDirecciones;
+
+    localStorage.setItem('user', JSON.stringify(storedUser))
   }
 
   return (
@@ -67,7 +73,7 @@ export const Address = (props: any) => {
         <DialogTitle className={styles.dialog}>{"¿Estás seguro de que quieres eliminar la dirección?"}</DialogTitle>
         <DialogActions className={styles.dialog}>
           <Button onClick={openCloseConfirm}>Cancelar</Button>
-          <Button onClick={() => handleDelete}>OK</Button>
+          <Button onClick={() => handleDelete(id)}>OK</Button>
         </DialogActions>
       </Confirm> 
 

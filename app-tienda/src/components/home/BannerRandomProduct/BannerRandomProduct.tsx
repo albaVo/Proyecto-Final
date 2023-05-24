@@ -52,7 +52,9 @@ export const BannerRandomProduct:FC<Props> = ({productos}) => {
           <h2>{randomProduct?.titulo}</h2>
 
           <p className={styles.price}>
-            <Discount>-{randomProduct?.descuento}%</Discount>
+            {randomProduct?.descuento > 0 && (
+              <Discount>-{randomProduct?.descuento}%</Discount>
+            )}
             <span className={styles.finalPrice}>
               {precioFinal}€
             </span>

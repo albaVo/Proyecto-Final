@@ -34,20 +34,18 @@ export const UpdateForm = () => {
     setShowError(false)
     const { email, contraseña, nombre, apellidos } = InputData
     const { id } = storedUser
-    console.log(InputData);
+    // console.log(InputData);
     
-
     setIsSubmitting(true)
 
     const { hasError, message } = await updateUser(
       id,
-      email,
-      contraseña,
       nombre,
-      apellidos
+      apellidos,
+      email,
+      contraseña
     )
     console.log(message);
-    
 
     setIsSubmitting(false)
 
@@ -58,7 +56,16 @@ export const UpdateForm = () => {
       return;
     }
 
-    window.location.reload()
+    // Actualizar en el localStorage
+    const updatedUser = {
+      ...storedUser,
+      email,
+      contraseña,
+      nombre,
+      apellidos
+    }
+
+    localStorage.setItem('user', JSON.stringify(updatedUser))
   }
 
   //visualizar contraseña (ojo)

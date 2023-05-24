@@ -41,12 +41,10 @@ export const AddressForm = (props: any) => {
         setShowError(false)
         const { titulo, direccion, ciudad, codigo_postal, telefono } = InputData
 
-        // const { id } = storedUser.direcciones
 
         setIsSubmitting(true)
 
         //obtener el id del usuario logeuado desde el localStorage
-        // const storedUser = JSON.parse(localStorage.getItem('user') || '{}')
         const usuarioId = storedUser.id
 
         if (!isEditMode) {

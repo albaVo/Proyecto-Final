@@ -109,21 +109,21 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
         setUser(null)
     }
 
-    const updateUser = async (id: number, email: string, nombre: string, apellidos: string, contraseña: string):Promise<IRespuestaApiAuth> => {
+    const updateUser = async (id: number, nombre: string, apellidos: string, email: string, contraseña: string):Promise<IRespuestaApiAuth> => {
         try {
-            const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
-            // console.log(storedUser);
             
-            // const { data } = await tiendaApi.patch(`/auth/${id}`, {contraseña, apellidos, email, nombre})
-            const { data } = await tiendaApi.patch(`/auth/${id}`, {
-                nombre: nombre,
-                apellidos: apellidos,
-                email: email,
-                contraseña: contraseña
-            });
+            const { data } = await tiendaApi.patch(`/auth/${id}`, {nombre, apellidos, email, contraseña})
+            // const { data } = await tiendaApi.patch(`/auth/${id}`, {
+            //     nombre: nombre,
+            //     apellidos: apellidos,
+            //     email: email,
+            //     contraseña: contraseña
+            // });
               
-            console.log(data)       
-
+            console.log(data)   
+            
+            window.location.reload()
+            
             return {
                 hasError: false,
                 message: 'Usuario modificado con éxito'

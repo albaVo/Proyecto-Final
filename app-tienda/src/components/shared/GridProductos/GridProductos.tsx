@@ -14,7 +14,7 @@ export const GridProductos = (props: any) => {
 
     return (
         <div className={styles.gridProductos}>
-            {producto.map((product: any) => (
+            {/* {producto.map((product: any) => (
                <Link href="/" className={styles.producto} key={product.id}>
                     <div>
                         <img src={product.imagen}/>
@@ -32,13 +32,7 @@ export const GridProductos = (props: any) => {
                         </span>
                     </div>
                </Link> 
-            ))}
-
-            {/* <Link href={} className={styles.producto}>
-                <div>
-                    <img src={productos?.imagen}/>
-                </div>
-            </Link> */}
+            ))} */}
         </div>
     )
 }
