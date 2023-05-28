@@ -6,19 +6,30 @@ import { FC, useState } from "react"
 
 interface Props {
     productos: IProducto[],
-    title: any
+    title: any,
+    cantidad: number,
+    categoria?: number
 }
 
-export const RandomProducts:FC<Props> = ({productos, title}) => {
-  
-    //intentar poner pa que devuelva como máximo 9
-    const randomProduct = productos[Math.floor(Math.random() * productos.length)]
+export const RandomProducts:FC<Props> = ({productos, title, cantidad, categoria}) => {
+
+    // const randomProduct = productos[Math.floor(Math.random() * productos.length)]
     // console.log(randomProduct);
-  
+
+    const filteredProducts = productos.filter((product) => product.categoriaId === categoria)
+
+    const randomProducts: IProducto[] = []
+
+    for (let i = 0; i < cantidad; i++) {
+        const randomProduct = productos[Math.floor(Math.random() * productos.length)];
+        randomProducts.push(randomProduct);
+    }
+
+
     return (
         <div>
             <h2>{title}</h2>
-            <GridProductos producto={randomProduct}/>
+            <GridProductos producto={randomProducts}/>
         </div>
     )
 }

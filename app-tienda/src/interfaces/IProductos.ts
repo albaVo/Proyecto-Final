@@ -10,6 +10,6 @@ export interface IProducto {
     video:        string;
     precio:       number;
     descuento:    number;
-    // stock:        number;
-    // categoriaId:  number;
+    stock:        number;
+    categoriaId:  number;
 }

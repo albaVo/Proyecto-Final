@@ -21,7 +21,7 @@ export default function Home() {
         <Separator height={100}/>
 
         <Container>
-          <RandomProducts productos={productos} title="Productos"/>
+          <RandomProducts productos={productos} title="Productos" cantidad={6}/>
         </Container>
 
         <Separator height={100}/>
@@ -32,7 +32,7 @@ export default function Home() {
 
         {/* Poner que devuelva videojuegos al azar */}
         <Container>
-          <RandomProducts productos={productos} title="Videojuegos"/> 
+          <RandomProducts productos={productos} title="Videojuegos" cantidad={0} categoria={2}/> 
         </Container>
 
         <Separator height={100}/>
@@ -50,7 +50,7 @@ export default function Home() {
 
         {/* Poner que devuelva productos del titulo al azar */}
         <Container>
-          <RandomProducts productos={productos} title="Figuras y collecionables"/> 
+          <RandomProducts productos={productos} title="Figuras y collecionables" cantidad={0} categoria={4}/> 
         </Container>
 
         <Separator height={100}/>
