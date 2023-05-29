@@ -1,6 +1,7 @@
 //styles
-import { Container } from "@mui/material"
 import styles from "./Info.module.scss"
+//mui
+import { Container } from "@mui/material"
 
 
 export const Info = (props: any) => {

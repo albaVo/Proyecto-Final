@@ -86,4 +86,8 @@ $ yarn add classnames
 
 # Luxon
 $ yarn add luxon
+
+
+# Video
+$ yarn add react-player
 ```
