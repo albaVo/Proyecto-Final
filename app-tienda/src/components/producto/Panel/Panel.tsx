@@ -1,8 +1,11 @@
 //styles
-import { Button, Container } from "@mui/material"
 import styles from "./Panel.module.scss"
+//mui
 import { Check, LocalOffer } from "@mui/icons-material"
+import { Button, Container } from "@mui/material"
+//utils
 import { fn } from "@/utils"
+import { WhishlistIcon } from "@/components/shared"
 
 export const Panel = (props: any) => {
     
@@ -51,6 +54,8 @@ export const Panel = (props: any) => {
                     <Button sx={{textDecoration: 'none'}} fullWidth>
                         Comprar ahora
                     </Button>
+
+                    <WhishlistIcon productoId={productoId} className={styles.heart}/>
                 </div>
             </div>
         </Container>
