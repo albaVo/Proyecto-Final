@@ -3,7 +3,7 @@ import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
 import { Producto } from './entities/producto.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DataSource, Repository } from 'typeorm';
+import { DataSource, FindManyOptions, Repository } from 'typeorm';
 import { CategoriasService } from '../categorias/categorias.service';
 import { SubcategoriasService } from '../subcategorias/subcategorias.service';
 
@@ -41,9 +41,18 @@ export class ProductosService {
   }
 
   findAll() {
-    return this.productoRepository.find({});
+    return this.productoRepository.find({
+      relations: {categoria: true}
+    });
   }
 
+  findByCategoria(categoria: number): Promise<Producto[]> {
+    return this.productoRepository
+      .createQueryBuilder('producto')
+      .where('producto.categoriaId = :categoria', { categoria })
+      .getMany();
+  }
+  
   findOne(id: number) {
     return this.productoRepository.findOne({
       where: {id}

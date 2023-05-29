@@ -14,25 +14,25 @@ export const GridProductos = (props: any) => {
 
     return (
         <div className={styles.gridProductos}>
-            {/* {producto.map((product: any) => (
-               <Link href="/" className={styles.producto} key={product.id}>
+            {producto.map((product: any) => (
+               <Link href="/" className={styles.producto} key={product?.id}>
                     <div>
-                        <img src={product.imagen}/>
-                        {product.descuento > 0 && (
+                        <img src={product?.imagen}/>
+                        {product?.descuento > 0 && (
                             <Discount className={styles.discount}>
-                                {`-${product.descuento}%`}
+                                {`-${product?.descuento}%`}
                             </Discount>
                         )}
                     </div>
 
                     <div>
-                        <span>{product.titulo}</span>
+                        <span>{product?.titulo}</span>
                         <span className={styles.price}>
-                            {fn.calcDiscount(product.precio, product.descuento)}€
+                            {fn.calcDiscount(product?.precio, product?.descuento)}€
                         </span>
                     </div>
                </Link> 
-            ))} */}
+            ))}
         </div>
     )
 }

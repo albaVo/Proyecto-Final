@@ -32,7 +32,7 @@ export default function Home() {
 
         {/* Poner que devuelva videojuegos al azar */}
         <Container>
-          <RandomProducts productos={productos} title="Videojuegos" cantidad={0} categoria={2}/> 
+          <RandomProducts productos={productos} title="Videojuegos" cantidad={6} categoria={2}/> 
         </Container>
 
         <Separator height={100}/>
@@ -50,7 +50,7 @@ export default function Home() {
 
         {/* Poner que devuelva productos del titulo al azar */}
         <Container>
-          <RandomProducts productos={productos} title="Figuras y collecionables" cantidad={0} categoria={4}/> 
+          <RandomProducts productos={productos} title="Figuras y collecionables" cantidad={6} categoria={4}/> 
         </Container>
 
         <Separator height={100}/>

@@ -39,7 +39,7 @@ export class DireccionesService {
 
   findOne(id: number) {
     return this.direccionRepository.findOne({
-      where:  {id}
+      where: {id}
     })
   }
 

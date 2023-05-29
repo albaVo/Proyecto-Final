@@ -13,18 +13,19 @@ interface Props {
 
 export const RandomProducts:FC<Props> = ({productos, title, cantidad, categoria}) => {
 
-    // const randomProduct = productos[Math.floor(Math.random() * productos.length)]
-    // console.log(randomProduct);
-
-    const filteredProducts = productos.filter((product) => product.categoriaId === categoria)
-
-    const randomProducts: IProducto[] = []
-
+    // Filtrar productos por categoría (si se proporciona)
+  let filteredProducts = productos;
+  if (categoria !== undefined) {
+    filteredProducts = productos.filter((product) => product.categoriaId === categoria);
+  }
+    // Seleccionar productos al azar
+    const randomProducts: IProducto[] = [];
     for (let i = 0; i < cantidad; i++) {
         const randomProduct = productos[Math.floor(Math.random() * productos.length)];
         randomProducts.push(randomProduct);
     }
 
+    
 
     return (
         <div>
