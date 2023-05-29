@@ -7,14 +7,14 @@ import { Container } from "@mui/material";
 //next
 import { useRouter } from "next/router"
 //components
-import { Separator } from "@/components/shared";
+import { GridProductos, NoResult, Separator } from "@/components/shared";
 
 
 interface Props {
   titulo: string
 }
 
-const SubcategoriaPage = () => {
+const SubcategoriaPage = (props: any) => {
   
   const router = useRouter();
   const titulo = router.query
@@ -22,12 +22,29 @@ const SubcategoriaPage = () => {
   const { subcategorias: subcategoria, isLoading } = useSubcategorias(`/subcategorias/${titulo.id}`)
   console.log(subcategoria)
 
+  const { productos } = props
+
+  // const hasProducts = size(productos) > 0
+
   return (
     <BasicLayout relative>
       <Container>
         <Separator height={50}/>
 
-        <h2></h2>
+        <h2>Titulo subcategoria</h2>
+
+        {/* {hasProducts ? (
+          <>
+            <GridProductos productos={productos}/>
+            <Separator height={30}/>
+          </>
+        ) : (
+          <NoResult 
+            text={`La subcategoria ${subcategoria.titulo} aun no tiene productos`}
+          />
+        )} */}
+
+        <Separator height={100}/>
       </Container>
     </BasicLayout>
   )

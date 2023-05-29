@@ -8,6 +8,7 @@ import { ICategoria } from "@/interfaces/ICategorias"
 //next
 import Link from "next/link"
 import Image from "next/image";
+import { useRouter } from "next/router";
 //mui
 import { Button, IconButton, Input, Menu, MenuItem } from "@mui/material";
 import { Close, KeyboardArrowDown, Search } from "@mui/icons-material";
@@ -24,10 +25,17 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
     
     // const [categorias, setCategorias] = useState(null)  
 
+    const router = useRouter()
+
     // Buscador
     const [showSearch, setShowSearch] = useState(false)   
     const openCloseSearch = () => setShowSearch((prevState) => !prevState)
 
+    const onSearch = (text: any) => {
+      router.replace(`/search?s=${text}`)
+    }
+
+    
     // Menu subcategorias
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [openMenuIndex, setOpenMenuIndex] = useState<number>(-1)
@@ -42,7 +50,7 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
       setAnchorEl(null);
       setOpenMenuIndex(-1)
     };
-    
+     
 
     return (
       <div className={styles.categorias}>
@@ -70,14 +78,14 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
                     <MenuItem 
                       onClick={handleClose}
                       className={styles.menuItem}
-                      href={'/'} // hacer que funcione
+                      href={`/subcategorias/${subcategoria.id}`} // hacer que funcione
                       key={subcategoria.id}
                     >
                       {subcategoria.titulo}
                     </MenuItem>
                   ))} 
                 </Menu>    
-              </div>     
+              </div>    
             </>
           ))}
 
@@ -89,14 +97,17 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
             <Search sx={{border: '1px'}}/>
           </Button> 
 
-          <div className={classnames(styles.inputContainer, {
-            [styles.active]: showSearch
-          })}>
+          <div 
+            className={classnames(styles.inputContainer, {
+              [styles.active]: showSearch
+            })}
+          >
             <Input 
               id="search-games" 
               placeholder="Buscador" 
               className={styles.input} 
               autoFocus
+              onChange={(_, data) => onSearch(data.value)}
             />
             <Close className={styles.closeInput} onClick={openCloseSearch}/>
           </div>
