@@ -34,3 +34,67 @@
         }
     }
 }
+
+.moreInfo {
+    background-color: $background-quaternary__blur;
+    backdrop-filter: blur(15px);
+    display: flex;
+    padding: 6px 15px;
+    border-radius: 50px;
+    margin-bottom: 40px;
+
+    > span {
+        display: flex;
+        align-items: center;
+        border-right: 1px solid $border-primary;
+        padding-right: 10px;
+        margin-right: 10px;
+        font-size: 12px;
+
+        &:first-of-type {
+            img {
+                filter: brightness(0) invert(1);
+                height: 18px;
+                margin-right: 10px;
+            }
+        }
+
+        &:last-of-type {
+            border-right: 0;
+            padding-right: 0;
+            margin-right: 0;
+
+            i {
+                display: flex;
+                align-items: center;
+                color: $success;
+                margin-right: 5px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.price {
+    margin-bottom: 40px;
+
+    .originalPrice {
+        font-size: 18px;
+        text-decoration: line-through;
+
+        > svg {
+            font-size: 12px;
+        }
+    }
+
+    .discount {
+        margin: 0 10px;
+        color: $primary;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .price {
+        font-size: 35px;
+    }
+}
