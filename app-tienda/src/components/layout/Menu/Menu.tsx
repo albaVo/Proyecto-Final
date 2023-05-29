@@ -1,7 +1,7 @@
 //styles
 import styles from "./Menu.module.scss"
 //react
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import React from "react";
 //interfaces
 import { ICategoria } from "@/interfaces/ICategorias"
@@ -28,14 +28,21 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
     const router = useRouter()
 
     // Buscador
-    const [showSearch, setShowSearch] = useState(false)   
+    const [showSearch, setShowSearch] = useState(isOpenSearch)   
+    const [searchText, setSearchText] = useState("")
     const openCloseSearch = () => setShowSearch((prevState) => !prevState)
 
+    useEffect(() => {
+      setSearchText(router.query.s || "")
+    }, [])
+    
+
     const onSearch = (text: any) => {
+      setSearchText(text)
       router.replace(`/search?s=${text}`)
     }
 
-    
+
     // Menu subcategorias
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [openMenuIndex, setOpenMenuIndex] = useState<number>(-1)
@@ -103,10 +110,11 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
             })}
           >
             <Input 
-              id="search-games" 
+              id="search-products" 
               placeholder="Buscador" 
               className={styles.input} 
               autoFocus
+              value={searchText}
               onChange={(_, data) => onSearch(data.value)}
             />
             <Close className={styles.closeInput} onClick={openCloseSearch}/>
