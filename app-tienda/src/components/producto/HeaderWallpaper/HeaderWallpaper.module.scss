@@ -1,0 +1,12 @@
+@import "~/src/scss/colors.scss";
+
+.headerWallpaper {
+    display: flex;
+    position: relative;
+    height: 500px;
+
+    > img {
+        object-fit: cover;
+        width: 100%;
+    }
+}
