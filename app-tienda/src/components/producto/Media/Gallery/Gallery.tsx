@@ -1,17 +1,21 @@
 //styles
 import styles from "./Gallery.module.scss"
+//components
+import { FullModal } from "@/components/shared"
+//react
+import { useState } from "react"
+
 
 export const Gallery = (props: any) => {
     
     const { capturas } = props
+    const [show, setShow] = useState(false)
 
     const capturasClone = [...capturas]
     const principalImage = capturasClone.shift()
 
-    const onOpenClose = () => {
+    const onOpenClose = () => setShow((prevState) => !prevState)
 
-    }
-    
     return (
         <>
             <div className={styles.gallery}>
@@ -27,6 +31,10 @@ export const Gallery = (props: any) => {
                     ))}
                 </div>
             </div>
+
+            <FullModal show={show} onClose={onOpenClose}>
+                <h2>Galería de imágenes</h2>
+            </FullModal>
         </>
     )
 }
