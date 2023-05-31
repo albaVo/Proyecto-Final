@@ -14,6 +14,7 @@ import { CssBaseline } from '@mui/material'
 import { SWRConfig } from 'swr'
 //context
 import { AuthProvider } from '@/context/auth'
+import { CartProvider } from '@/context'
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -25,10 +26,12 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
     >
       <AuthProvider>
-        <ThemeProvider theme={theme}>
-          <CssBaseline/>
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <CartProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline/>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </CartProvider>
       </AuthProvider>
     </SWRConfig>
   )
