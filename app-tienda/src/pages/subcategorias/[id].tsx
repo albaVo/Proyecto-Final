@@ -27,7 +27,7 @@ const SubcategoriaPage = (props: any) => {
       <Container>
         <Separator height={50}/>
 
-        <h2>{subcategoria.titulo}</h2>
+        <h2>{subcategoria[0]?.titulo}</h2>
 
         {/* {hasProducts ? (
           <>
