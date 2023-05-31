@@ -10,16 +10,12 @@ import { useRouter } from "next/router"
 import { GridProductos, NoResult, Separator } from "@/components/shared";
 
 
-interface Props {
-  titulo: string
-}
-
 const SubcategoriaPage = (props: any) => {
   
   const router = useRouter();
-  const titulo = router.query
+  const { id } = router.query
   
-  const { subcategorias: subcategoria, isLoading } = useSubcategorias(`/subcategorias/${titulo.id}`)
+  const { subcategorias: subcategoria, isLoading } = useSubcategorias(`/subcategorias/${id}`)
   console.log(subcategoria)
 
   const { productos } = props
@@ -27,11 +23,11 @@ const SubcategoriaPage = (props: any) => {
   // const hasProducts = size(productos) > 0
 
   return (
-    <BasicLayout relative>
+    <BasicLayout relative subcategoria={subcategoria}>
       <Container>
         <Separator height={50}/>
 
-        <h2>Titulo subcategoria</h2>
+        <h2>{subcategoria.titulo}</h2>
 
         {/* {hasProducts ? (
           <>

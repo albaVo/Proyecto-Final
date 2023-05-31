@@ -10,7 +10,7 @@ import Link from "next/link"
 import Image from "next/image";
 import { useRouter } from "next/router";
 //mui
-import { Button, IconButton, Input, Menu, MenuItem } from "@mui/material";
+import { Button, IconButton, Input, Menu, MenuItem, useTheme } from "@mui/material";
 import { Close, KeyboardArrowDown, Search } from "@mui/icons-material";
 //classnames
 import classnames from "classnames";
@@ -26,6 +26,7 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
     // const [categorias, setCategorias] = useState(null)  
 
     const router = useRouter()
+    const theme = useTheme()
 
     // Buscador
     const [showSearch, setShowSearch] = useState(isOpenSearch)   
@@ -80,15 +81,28 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
                   anchorEl={anchorEl}
                   open={openMenuIndex === categoria.id}
                   onClose={handleClose}
+                  PaperProps={{
+                    elevation: 0,
+                    sx: {
+                      overflow: 'visible',
+                      filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                      mt: theme.spacing(1.5),
+                      '& .MuiAvatar-root': {
+                        width: 32,
+                        height: 32,
+                        ml: theme.spacing(-0.5),
+                        mr: theme.spacing(1),
+                      }
+                    },
+                  }}
+                  transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                  anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
                   {categoria.subcategorias?.map((subcategoria) => (
-                    <MenuItem 
-                      onClick={handleClose}
-                      className={styles.menuItem}
-                      href={`/subcategorias/${subcategoria.id}`} // hacer que funcione
-                      key={subcategoria.id}
-                    >
-                      {subcategoria.titulo}
+                    <MenuItem key={subcategoria.id}>
+                      <Link href={`/subcategorias/${subcategoria.id}`} passHref>
+                        {subcategoria.titulo}
+                      </Link>
                     </MenuItem>
                   ))} 
                 </Menu>    

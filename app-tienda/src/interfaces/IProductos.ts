@@ -1,3 +1,4 @@
+import { ICategoria } from "./ICategorias";
 
 export interface IProducto {
     id:           number;
@@ -11,5 +12,5 @@ export interface IProducto {
     precio:       number;
     descuento:    number;
     stock:        number;
-    categoriaId:  number;
+    categoria:    ICategoria;
 }
