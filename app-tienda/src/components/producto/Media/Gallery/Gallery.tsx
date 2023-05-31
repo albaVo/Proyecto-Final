@@ -4,6 +4,8 @@ import styles from "./Gallery.module.scss"
 import { FullModal } from "@/components/shared"
 //react
 import { useState } from "react"
+//slider
+import Slider from "react-slick"
 
 
 export const Gallery = (props: any) => {
@@ -11,10 +13,23 @@ export const Gallery = (props: any) => {
     const { capturas } = props
     const [show, setShow] = useState(false)
 
+    const onOpenClose = () => setShow((prevState) => !prevState)
+
     const capturasClone = [...capturas]
     const principalImage = capturasClone.shift()
 
-    const onOpenClose = () => setShow((prevState) => !prevState)
+    const settings = {
+        dots: true,
+        dotsClass: styles.dots,
+        infinite: true,
+        slidersToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        customPaging: function (index: any) {
+            return <img src={capturas(index)}/>
+        }
+    }
+        
 
     return (
         <>
@@ -33,7 +48,15 @@ export const Gallery = (props: any) => {
             </div>
 
             <FullModal show={show} onClose={onOpenClose}>
-                <h2>Galería de imágenes</h2>
+                <div className={styles.carouselContainer}>
+                    <Slider {...settings}>
+                        {capturas.map((captura:any) => (
+                            <div>
+                                <img src={captura}/>
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
             </FullModal>
         </>
     )

@@ -90,4 +90,8 @@ $ yarn add luxon
 
 # Video
 $ yarn add react-player
+
+
+# Slider fotos
+$ yarn add react-slick slick-carousel
 ```
