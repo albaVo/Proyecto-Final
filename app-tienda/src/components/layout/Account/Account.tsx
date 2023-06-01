@@ -9,13 +9,14 @@ import { AuthContext } from "@/context/auth"
 //mui
 import { Badge, Button } from "@mui/material"
 import { ShoppingCart, Person, AccountCircle } from '@mui/icons-material';
-import classNames from "classnames"
+//hooks
+import { useCart } from "@/hooks/useCart"
 
-const total = 5
 
 export const Account = () => {
     
     const { user } = useContext(AuthContext)
+    const { total } = useCart()
     const router = useRouter()
 
     const isTokenPresent = () => {

@@ -94,4 +94,8 @@ $ yarn add react-player
 
 # Slider fotos
 $ yarn add react-slick slick-carousel
+
+
+# Lodash
+$ yarn add lodash @types/lodash
 ```

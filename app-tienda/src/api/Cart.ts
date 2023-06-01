@@ -1,3 +1,4 @@
+import { forEach } from "lodash"
 
 export class Cart {
     add(productoId: any) {
@@ -24,5 +25,16 @@ export class Cart {
         }
 
         return response
+    }
+
+    count() {
+        const response = this.getAll()
+        let count = 0
+
+        forEach(response, (item) => {
+            count += item.quantity
+        })
+
+        return count
     }
 }
