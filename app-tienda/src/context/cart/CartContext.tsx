@@ -11,7 +11,8 @@ export function CartProvider(props: any) {
     const [total, setTotal] = useState(0)
     
     useEffect(() => {
-      
+        const response = cartCtrl.getAll()
+        setCart(response)
     }, [])      
     
     const addCart = (productoId: any) => {
