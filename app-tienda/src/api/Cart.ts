@@ -16,15 +16,15 @@ export class Cart {
     }
 
     getAll() {
-        const response = localStorage.getItem('cart')
+        // const response = localStorage.getItem('cart')
 
-        if (!response) {
-            return []
-        } else {
-            return JSON.parse(response)
-        }
+        // if (!response) {
+        //     return []
+        // } else {
+        //     return JSON.parse(response)
+        // }
 
-        return response
+        // return response
     }
 
     count() {

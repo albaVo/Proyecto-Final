@@ -10,11 +10,11 @@ import { fn } from "@/utils"
 
 export const GridProductos = (props: any) => {
 
-    const {producto} = props
+    const {productos} = props
 
     return (
         <div className={styles.gridProductos}>
-            {producto.map((product: any) => (
+            {productos?.map((product: any) => (
                <Link href="/" className={styles.producto} key={product?.id}>
                     <div>
                         <img src={product?.imagen}/>
