@@ -1,5 +1,5 @@
 //components
-import { Footer } from "@/components/layout"
+import { Footer, HeaderCart } from "@/components/layout"
 import { Separator } from "@/components/shared"
 //mui
 import { Container } from "@mui/material"
@@ -10,10 +10,12 @@ export const CartLayout = (props: any) => {
     
     return (
         <>
-            <p>HeaderCart</p>
+            <HeaderCart/>
             <Separator height={150}/>
+
             <Container>{children}</Container>
             <Separator height={70}/>
+            
             <Footer/>
         </>
     )
