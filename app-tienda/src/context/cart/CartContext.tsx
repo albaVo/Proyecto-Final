@@ -20,6 +20,10 @@ export function CartProvider(props: any) {
         refreshTotalCart()
     }
 
+    const changeQuantityItem = (productoId, quantity) => {
+        
+    }
+
     const refreshTotalCart = () => {
         setTotal(cartCtrl.count())
         setCart(cartCtrl.getAll())
@@ -31,7 +35,7 @@ export function CartProvider(props: any) {
         total,
         deleteItem: () => {},
         deleteAllItems: () => {},
-        changeQuantityItem: () => {}
+        changeQuantityItem
     }
 
     return <CartContext.Provider value={data}>{children}</CartContext.Provider>

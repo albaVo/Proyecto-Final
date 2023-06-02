@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import { useCart } from "@/hooks/useCart"
 //react
 import { useState, useEffect } from "react"
+import { StepOne } from "@/components/cart"
 
 
 const CartPage = () => {
@@ -34,7 +35,7 @@ const CartPage = () => {
   return (
     <>
       <CartLayout>
-        {currentStep === 1 && <p>Paso 1</p>}
+        {currentStep === 1 && <StepOne productos={products}/>}
         {currentStep === 2 && <p>Paso 2</p>}
         {currentStep === 3 && <p>Paso 3</p>}
       </CartLayout>
