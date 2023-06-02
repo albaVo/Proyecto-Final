@@ -7,13 +7,14 @@ import { MenuItem, Select, SelectChangeEvent } from "@mui/material"
 import { fn } from "@/utils"
 //react
 import { useState } from "react"
+//hooks
 import { useCart } from "@/hooks/useCart"
 
 
 export const Basket = (props: any) => {
     
     const { productos } = props
-    const { changeQuantityItem } = useCart()
+    const { changeQuantityItem, deleteItem } = useCart()
     
     return (
         <div className={styles.basket}>
@@ -29,13 +30,13 @@ export const Basket = (props: any) => {
                                     <p>{producto.titulo}</p>
                                     <p>{producto.categoria.titulo}</p>
                                 </div>
-                                <Delete/>
+                                <Delete onClick={() => deleteItem(producto.id)}/>
                             </div>
 
                             <div className={styles.quantity}>
                                 <Select 
                                     value={producto.quantity}
-                                    onChange={(_, data) => changeQuantityItem(producto.id, data.vlaue)}
+                                    onChange={(_, data) => changeQuantityItem(producto.id, data.value)}
                                 >
                                     <MenuItem value={1}>1</MenuItem>
                                     <MenuItem value={2}>2</MenuItem>
