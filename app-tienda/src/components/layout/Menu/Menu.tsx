@@ -14,6 +14,8 @@ import { Button, IconButton, Input, Menu, MenuItem, useTheme } from "@mui/materi
 import { Close, KeyboardArrowDown, Search } from "@mui/icons-material";
 //classnames
 import classnames from "classnames";
+//hooks
+import { useProductos } from "@/hooks/useProductos";
 
 
 interface Props {
@@ -22,25 +24,36 @@ interface Props {
 }
 
 export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
-    
-    // const [categorias, setCategorias] = useState(null)  
+
+    const { productos, isLoading } = useProductos('/productos')
+    const [products, setProducts] = useState([])
 
     const router = useRouter()
     const theme = useTheme()
 
     // Buscador
-    const [showSearch, setShowSearch] = useState(isOpenSearch)   
+    const [showSearch, setShowSearch] = useState(isOpenSearch)
     const [searchText, setSearchText] = useState("")
     const openCloseSearch = () => setShowSearch((prevState) => !prevState)
 
     useEffect(() => {
-      setSearchText(router.query.s || "")
+      setSearchText(router.query.titulo || "")
     }, [])
-    
 
-    const onSearch = (text: any) => {
+
+    const onSearch = (event) => {
+      const text = event.target.value
       setSearchText(text)
-      router.replace(`/search?s=${text}`)
+      router.replace(`/search?titulo=${text}`)
+      
+      fetch(`http://localhost:3001/api/productos?titulo=${text}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     }
 
 
@@ -58,7 +71,7 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
       setAnchorEl(null);
       setOpenMenuIndex(-1)
     };
-     
+
 
     return (
       <div className={styles.categorias}>
@@ -66,16 +79,16 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
             <>
               <div key={categoria.id} className={styles.categoria}>
                 <Image src={categoria.icono} alt={""} width={32} height={20}/>
-                {categoria.titulo} 
+                {categoria.titulo}
               </div>
 
               <div className={styles.menu}>
-                <IconButton 
-                  className={styles.buttonArrow} 
+                <IconButton
+                  className={styles.buttonArrow}
                   onClick={(event) => handleClick(event, categoria.id)}
                 >
                   <KeyboardArrowDown/>
-                </IconButton> 
+                </IconButton>
 
                 <Menu
                   anchorEl={anchorEl}
@@ -104,32 +117,32 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
                         {subcategoria.titulo}
                       </Link>
                     </MenuItem>
-                  ))} 
-                </Menu>    
-              </div>    
+                  ))}
+                </Menu>
+              </div>
             </>
           ))}
 
-          <Button 
+          <Button
             className={styles.search}
-            sx={{position: 'absolute', top: 0, right: '-30px', backgroundColor: '#512da8', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 100, height: '100%', width: 60, border: 0}} 
+            sx={{position: 'absolute', top: 0, right: '-30px', backgroundColor: '#512da8', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 100, height: '100%', width: 60, border: 0}}
             onClick={openCloseSearch}
           >
             <Search sx={{border: '1px'}}/>
-          </Button> 
+          </Button>
 
-          <div 
+          <div
             className={classnames(styles.inputContainer, {
               [styles.active]: showSearch
             })}
           >
-            <Input 
-              id="search-products" 
-              placeholder="Buscador" 
-              className={styles.input} 
+            <Input
+              id="search-products"
+              placeholder="Buscador"
+              className={styles.input}
               autoFocus
               value={searchText}
-              onChange={(_, data) => onSearch(data.value)}
+              onChange={onSearch}
             />
             <Close className={styles.closeInput} onClick={openCloseSearch}/>
           </div>

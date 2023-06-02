@@ -18,9 +18,11 @@ export class ProductosController {
   // }
 
   @Get()
-  findAll(@Query('categoria') categoria: number) {
-    if (categoria !== undefined) {
-      return this.productosService.findByCategoria(categoria);
+  findAll(@Query('categoria') categoria: number, @Query('titulo') titulo?: string) {
+    if (!isNaN(categoria)) {
+      return this.productosService.findByCategoria(+categoria);
+    } else if (titulo) {
+      return this.productosService.findByTitulo(titulo);
     } else {
       return this.productosService.findAll();
     }

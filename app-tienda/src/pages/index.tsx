@@ -30,7 +30,6 @@ export default function Home() {
 
         <Separator height={100}/>
 
-        {/* Poner que devuelva videojuegos al azar */}
         <Container>
           <RandomProducts productos={productos} title="Videojuegos" cantidad={6} categoria={2}/> 
         </Container>
@@ -47,8 +46,6 @@ export default function Home() {
 
         <Separator height={50}/>
 
-
-        {/* Poner que devuelva productos del titulo al azar */}
         <Container>
           <RandomProducts productos={productos} title="Figuras y collecionables" cantidad={6} categoria={4}/> 
         </Container>

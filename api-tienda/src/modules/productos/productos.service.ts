@@ -52,6 +52,13 @@ export class ProductosService {
       .where('producto.categoriaId = :categoria', { categoria })
       .getMany();
   }
+
+  findByTitulo(titulo: string): Promise<Producto[]> {
+    return this.productoRepository
+      .createQueryBuilder('producto')
+      .where('producto.titulo ILIKE :titulo', { titulo: `%${titulo}%` })
+      .getMany();
+  }
   
   findOne(id: number) {
     return this.productoRepository.findOne({
