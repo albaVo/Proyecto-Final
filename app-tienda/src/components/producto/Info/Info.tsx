@@ -6,7 +6,7 @@ import { Container } from "@mui/material"
 
 export const Info = (props: any) => {
 
-    const { producto } = props
+    const { product } = props
 
     // fecha random
     function getRandomDate(startDate: Date, endDate: Date): Date {
@@ -24,13 +24,16 @@ export const Info = (props: any) => {
     return (
         <Container className={styles.info}>
             <div className={styles.summary}>
-                <p>{producto.descripcion}</p>
+                <p>{product?.descripcion}</p>
             </div>
 
             <div className={styles.more}>
                 <ul>
                     <li>
                         <span>Fecha de lanzamiento:</span> {randomDate}
+                        {product.genero && (
+                            <span><span>Género:</span> {product.genero}</span>
+                        )}
                     </li>
                 </ul>
             </div>

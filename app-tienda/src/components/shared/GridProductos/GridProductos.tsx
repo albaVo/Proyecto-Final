@@ -15,7 +15,7 @@ export const GridProductos = (props: any) => {
     return (
         <div className={styles.gridProductos}>
             {productos?.map((product: any) => (
-               <Link href="/" className={styles.producto} key={product?.id}>
+               <Link href={`/productos/${product?.id}`} className={styles.producto} key={product?.id}>
                     <div>
                         <img src={product?.imagen}/>
                         {product?.descuento > 0 && (

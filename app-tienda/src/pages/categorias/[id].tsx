@@ -1,5 +1,5 @@
 //hooks
-import { useSubcategorias } from "@/hooks/useSubcategorias";
+import { useCategorias } from "@/hooks/useCategorias";
 //layout
 import { BasicLayout } from "@/layouts";
 //mui
@@ -10,31 +10,31 @@ import { useRouter } from "next/router"
 import { GridProductos, NoResult, Separator } from "@/components/shared";
 
 
-const SubcategoriaPage = () => {
+const CategoriasPage = () => {
   
   const router = useRouter();
   const { id } = router.query
   
-  const { subcategorias: subcategoria, isLoading } = useSubcategorias(`/subcategorias/${id}`)
+  const { categorias: categoria, isLoading } = useCategorias(`/categorias/${id}`)
 
-  const hasProducts = subcategoria.productos?.length > 0
+  const hasProducts = categoria.productos?.length > 0
 
 
   return (
-    <BasicLayout relative subcategoria={subcategoria}>
+    <BasicLayout relative categoria={categoria}>
       <Container>
         <Separator height={50}/>
 
-        <h2>{subcategoria.titulo}</h2>
+        <h2>{categoria.titulo}</h2>
 
         {hasProducts ? (
           <>
-            <GridProductos productos={subcategoria.productos}/>
+            <GridProductos productos={categoria.productos}/>
             <Separator height={30}/>
           </>
         ) : (
           <NoResult 
-            text={`La subcategoria ${subcategoria.titulo} aun no tiene productos`}
+            text={`La categoria ${categoria.titulo} aun no tiene productos`}
           />
         )}
 
@@ -44,4 +44,4 @@ const SubcategoriaPage = () => {
   )
 }
 
-export default SubcategoriaPage
+export default CategoriasPage

@@ -62,7 +62,8 @@ export class ProductosService {
   
   findOne(id: number) {
     return this.productoRepository.findOne({
-      where: {id}
+      where: {id},
+      relations: {categoria: true}
     })
   }
 

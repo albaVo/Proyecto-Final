@@ -29,9 +29,6 @@ export const BannerRandomProduct:FC<Props> = ({productos}) => {
   const descuento = randomProduct?.descuento;
   const precioFinal = fn.calcDiscount(precio, descuento);
 
-
-  
-
   // numero random
   // function getRandomNumber(min: number, max: number) {
   //   min = Math.ceil(min)
@@ -47,7 +44,7 @@ export const BannerRandomProduct:FC<Props> = ({productos}) => {
       
       <img src={randomProduct?.fondo} alt={"Fondo producto"} className={styles.fondo}/>
       
-      <Link className={styles.infoContainer} href="">
+      <Link className={styles.infoContainer} href={`/productos/${randomProduct?.id}`}>
         <Container>
           <h2>{randomProduct?.titulo}</h2>
 

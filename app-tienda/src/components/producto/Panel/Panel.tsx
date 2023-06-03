@@ -1,7 +1,7 @@
 //styles
 import styles from "./Panel.module.scss"
 //mui
-import { Check, LocalOffer } from "@mui/icons-material"
+import { Check, Close, LocalOffer } from "@mui/icons-material"
 import { Button, Container } from "@mui/material"
 //utils
 import { fn } from "@/utils"
@@ -15,11 +15,11 @@ import { useState } from "react"
 
 export const Panel = (props: any) => {
     
-    const { producto, productoId } = props
+    const { product, productoId } = props
     const [loading, setLoading] = useState(false)
     const { addCart } = useCart()
 
-    const buyPrice = fn.calcDiscount(producto.precio, producto.descuento)
+    const buyPrice = fn.calcDiscount(product.precio, product.descuento)
     
     const addCartWrapper = () => {
         setLoading(true)
@@ -33,34 +33,42 @@ export const Panel = (props: any) => {
     return (
         <Container className={styles.panel}>
             <div className={styles.imgContainer}>
-                <img src={producto.fondo}/>
+                <img src={product?.imagen}/>
             </div>
 
             <div className={styles.actionsContainer}>
                 <div>
-                    <h2>{producto.titulo}</h2>
+                    <h2>{product?.titulo}</h2>
 
                     <div className={styles.moreInfo}>
                         <span>
-                            <img src={producto.categoria.icono}/>
-                            {producto.categoria.titulo}
+                            <img src={product?.categoria?.icono}/>
+                            {product?.categoria?.titulo}
                         </span>
-                        <span>
-                            <Check/>
-                            En stock
-                        </span>
+                        
+                        {product.stock > 0 ? (
+                            <span>
+                                <Check sx={{fill: '#69af00'}}/>
+                                En stock
+                            </span>
+                        ) : (
+                            <span>
+                                <Close sx={{fill: '#ff0a4e'}}/>
+                                Sin stock
+                            </span>
+                        )}
                     </div>
 
                     <div className={styles.price}>
-                        {producto.descuento > 0 && (
+                        {product?.descuento > 0 && (
                             <>
                                 <span className={styles.originalPrice}>
                                     <LocalOffer/>
-                                    {producto.precio}€
+                                    {product.precio}€
                                 </span>
 
                                 <span className={styles.discount}>
-                                    -{producto.descuento}%
+                                    -{product.descuento}%
                                 </span>
                             </>
                         )}
@@ -68,13 +76,23 @@ export const Panel = (props: any) => {
                         <span className={styles.price}>{buyPrice}€</span>
                     </div>
 
-                    <Button 
-                        sx={{textDecoration: 'none'}} 
-                        fullWidth
-                        onClick={addCartWrapper}
-                    >
-                        Comprar ahora
-                    </Button>
+                    {product.stock > 0 ? (
+                        <Button 
+                            sx={{textTransform: 'none'}} 
+                            fullWidth
+                            onClick={addCartWrapper}
+                        >
+                            Comprar ahora
+                        </Button>
+                    ) : (
+                        <Button 
+                            sx={{textTransform: 'none'}} 
+                            fullWidth
+                            disabled
+                        >
+                            Comprar ahora
+                        </Button>
+                    )}
 
                     <WhishlistIcon productoId={productoId} className={styles.heart}/>
                 </div>

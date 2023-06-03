@@ -15,33 +15,21 @@ export const Gallery = (props: any) => {
 
     const onOpenClose = () => setShow((prevState) => !prevState)
 
-    const capturasClone = [...capturas]
+    const capturasClone = [...(capturas || [])];
     const principalImage = capturasClone.shift()
 
-    const settings = {
-        dots: true,
-        dotsClass: styles.dots,
-        infinite: true,
-        slidersToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        customPaging: function (index: any) {
-            return <img src={capturas(index)}/>
-        }
-    }
-        
 
     return (
         <>
             <div className={styles.gallery}>
                 <div className={styles.principal}>
-                    <img src={principalImage.imagen} onClick={onOpenClose}/>
+                    <img src={principalImage} onClick={onOpenClose}/>
                 </div>
 
                 <div className={styles.grid}>
                     {capturasClone.map((captura) => (
-                        <div key={captura.id}>
-                            <img src={captura.imagen} onClick={onOpenClose}/>
+                        <div key={captura}>
+                            <img src={captura} onClick={onOpenClose}/>
                         </div>
                     ))}
                 </div>
@@ -49,10 +37,10 @@ export const Gallery = (props: any) => {
 
             <FullModal show={show} onClose={onOpenClose}>
                 <div className={styles.carouselContainer}>
-                    <Slider {...settings}>
-                        {capturas.map((captura:any) => (
-                            <div>
-                                <img src={captura}/>
+                    <Slider>
+                        {capturas?.map((captura) => (
+                            <div key={captura}>
+                                <img src={captura} className={styles.imagen}/>
                             </div>
                         ))}
                     </Slider>

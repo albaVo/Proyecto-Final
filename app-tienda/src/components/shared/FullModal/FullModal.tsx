@@ -5,7 +5,7 @@ import { Close } from "@mui/icons-material"
 
 export const FullModal = (props: any) => {
     
-    const { children, show, onClose } = props
+    const { children, show, onClose } = props    
     
     return (
         <Modal open={show}>

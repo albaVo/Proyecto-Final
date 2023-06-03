@@ -32,7 +32,8 @@ export class CategoriasService {
 
   findOne(id: number) {
     return this.categoriaRepository.findOne({
-      where: {id}
+      where: {id},
+      relations: {productos: true}
     })
   }
 

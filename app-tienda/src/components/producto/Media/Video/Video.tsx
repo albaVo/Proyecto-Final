@@ -13,7 +13,7 @@ export const Video = (props: any) => {
       url={video} 
       className={styles.video} 
       width='100%' 
-      height={634}
+      height={550}
     />
   )
 }

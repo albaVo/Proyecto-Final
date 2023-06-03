@@ -17,10 +17,10 @@ export const Media = (props: any) => {
             <h2>Visuales</h2>
             <Separator height={30}/>
 
-            <Video video={video}/>
-            <Separator height={30}/>
-
             <Gallery capturas={capturas}/>
+            <Separator height={50}/>
+
+            <Video video={video}/>
         </Container>
     )
 }

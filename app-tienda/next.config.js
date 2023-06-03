@@ -8,7 +8,8 @@ module.exports = {
   images: {
     domains: [
       'cdn-icons-png.flaticon.com', 
-      'www.flaticon.es', 
+      'www.flaticon.es',
+      'www.flaticon.com', 
       'images8.alphacoders.com',
       'fondosmil.com',
       'www.muycomputer.com',
