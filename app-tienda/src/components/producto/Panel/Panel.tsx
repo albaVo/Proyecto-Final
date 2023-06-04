@@ -2,7 +2,7 @@
 import styles from "./Panel.module.scss"
 //mui
 import { Check, Close, LocalOffer } from "@mui/icons-material"
-import { Button, Container } from "@mui/material"
+import { Button, CircularProgress, Container } from "@mui/material"
 //utils
 import { fn } from "@/utils"
 //components
@@ -82,7 +82,7 @@ export const Panel = (props: any) => {
                             fullWidth
                             onClick={addCartWrapper}
                         >
-                            Comprar ahora
+                            {loading ? <CircularProgress size={20} /> : 'Comprar ahora'}
                         </Button>
                     ) : (
                         <Button 

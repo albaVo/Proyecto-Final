@@ -23,7 +23,7 @@ interface Props {
 export const BannerRandomProduct:FC<Props> = ({productos}) => {
   
   const randomProduct = productos[Math.floor(Math.random() * productos.length)]
-  console.log(randomProduct);
+  // console.log(randomProduct);
 
   const precio = randomProduct?.precio;
   const descuento = randomProduct?.descuento;

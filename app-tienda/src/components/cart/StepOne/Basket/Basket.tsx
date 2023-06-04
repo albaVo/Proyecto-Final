@@ -21,7 +21,7 @@ export const Basket = (props: any) => {
             <h2>Cesta</h2>
 
             <div className={styles.block}>
-                {productos.map((producto) => (
+                {productos?.map((producto) => (
                     <div key={producto.id} className={styles.product}>
                         <img src={producto.imagen}/>
                         <div>

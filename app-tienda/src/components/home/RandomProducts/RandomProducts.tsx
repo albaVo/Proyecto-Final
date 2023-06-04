@@ -28,7 +28,7 @@ export const RandomProducts:FC<Props> = ({productos, title, cantidad, categoria}
         randomProducts.push(randomProduct);
     }
 
-    console.log('productos', productos)
+    // console.log('productos', productos)
 
 
     return (

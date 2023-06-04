@@ -52,6 +52,10 @@ $ yarn add @mui/material @emotion/react @emotion/styled
 $ yarn add @mui/lab
 
 
+# Semantic UI
+$ yarn add semantic-ui-react semantic-ui-css
+
+
 # Fuentes
 $ yarn add @fontsource/roboto
 

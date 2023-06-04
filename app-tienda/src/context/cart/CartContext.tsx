@@ -1,4 +1,6 @@
+//api
 import { Cart } from "@/api/Cart";
+//react
 import { createContext, useEffect, useState,  } from "react";
 
 const cartCtrl = new Cart()
@@ -9,15 +11,14 @@ export function CartProvider(props: any) {
     const { children } = props
     const [cart, setCart] = useState(null)
     const [total, setTotal] = useState(cartCtrl.count())
-    
+
     useEffect(() => {
-        const response = cartCtrl.getAll()
-        setCart(response)
+        setCart(cartCtrl.getAll())        
     }, [])      
     
-    const addCart = (productoId: any) => {
+    const addCart = (productoId) => {
         cartCtrl.add(productoId)
-        refreshTotalCart()
+        refreshTotalCart()        
     }
 
     const changeQuantityItem = (productoId, quantity) => {

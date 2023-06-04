@@ -4,6 +4,7 @@ import { theme } from '@/themes/theme'
 import "@/scss/global.scss"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import "semantic-ui-css/semantic.min.css"
 //react
 import { ThemeProvider } from '@emotion/react'
 //next

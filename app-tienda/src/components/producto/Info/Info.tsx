@@ -32,7 +32,7 @@ export const Info = (props: any) => {
                     <li>
                         <span>Fecha de lanzamiento:</span> {randomDate}
                         {product.genero && (
-                            <span><span>Género:</span> {product.genero}</span>
+                            <div><span>Género:</span> {product.genero}</div>
                         )}
                     </li>
                 </ul>

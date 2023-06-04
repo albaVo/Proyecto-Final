@@ -1,30 +1,28 @@
 import { forEach } from "lodash"
 
 export class Cart {
-    add(productoId: any) {
+    add(productoId) {
         const productos = this.getAll()
         const objIndex = productos.findIndex((producto) => producto.id === productoId)
 
         if(objIndex < 0) {
-            productos.push({ id: productoId, quantity: 1})
+            productos.push({ id: productoId, quantity: 1 })
         } else {
             const producto = productos[objIndex]
-            producto[objIndex].quantity = producto.quantity + 1
+            producto.quantity = producto.quantity + 1
         }
 
         localStorage.setItem('cart', JSON.stringify(productos))
     }
 
     getAll() {
-        // const response = localStorage.getItem('cart')
+        const response = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('cart') || '{}')
 
-        // if (!response) {
-        //     return []
-        // } else {
-        //     return JSON.parse(response)
-        // }
-
-        // return response
+        if (Array.isArray(response)) {
+            return response;
+        } else {
+            return [];
+        }
     }
 
     count() {
