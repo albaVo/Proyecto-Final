@@ -4,6 +4,7 @@ import { CartLayout } from "@/layouts"
 import { useRouter } from "next/router"
 //hooks
 import { useCart } from "@/hooks/useCart"
+import { useProductos } from "@/hooks/useProductos"
 //react
 import { useState, useEffect } from "react"
 import { StepOne } from "@/components/cart"
@@ -14,23 +15,38 @@ const CartPage = () => {
   const { query: { step = 1 } } = useRouter() 
   const currentStep = Number(step)
   const [products, setProducts] = useState(null)
-  const { cart } = useCart()
+  const { cart } = useCart()  
+
+  const getProductoById = async (id: string) => {
+    try {
+      const url = `http://localhost:3000/api/productos/${id}`
+      const response = await fetch(url)
+      const data = await response.json()
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
 
   useEffect(() => {
     (async () => {
       try {
         const data = []
         for await (const item of cart){
-          console.log(item)
+          const productoId = item.id
+          const producto = await getProductoById(productoId)
+          data.push({...producto, quantity: item.quantity})
         }
         console.log(data)
         setProducts(data)
-      } catch (error) {
+      } 
+      catch (error) {
         console.error(error)
       }
     })()
   }, [cart])
-  
+
+ 
   
   return (
     <>

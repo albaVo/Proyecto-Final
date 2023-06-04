@@ -28,7 +28,7 @@ export const Basket = (props: any) => {
                             <div className={styles.info}>
                                 <div>
                                     <p>{producto.titulo}</p>
-                                    <p>{producto.categoria.titulo}</p>
+                                    <p>{producto.categoria?.titulo}</p>
                                 </div>
                                 <Delete onClick={() => deleteItem(producto.id)}/>
                             </div>
