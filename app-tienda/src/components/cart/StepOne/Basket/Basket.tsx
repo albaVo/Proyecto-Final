@@ -20,7 +20,7 @@ export const Basket = (props: any) => {
     const { productos } = props
     const { changeQuantityItem, deleteItem } = useCart()
 
-    const options = Array.from({ length: 6 }, (_, index) => {
+    const options = Array.from({ length: 10 }, (_, index) => {
         const number = index + 1 
         return { key: number, text: String(number), value: number}
     })
@@ -52,7 +52,7 @@ export const Basket = (props: any) => {
                                     onChange={(_, data) => changeQuantityItem(producto.id, data.value)}
                                 />
                                 <span>
-                                    {fn.calcDiscount(producto.precio, producto.descuento)} €
+                                    {fn.calcDiscount(producto.precio, producto.descuento)}€
                                 </span>
                             </div>
                         </div>

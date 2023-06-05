@@ -7,7 +7,7 @@ import { useCart } from "@/hooks/useCart"
 import { useProductos } from "@/hooks/useProductos"
 //react
 import { useState, useEffect } from "react"
-import { StepOne } from "@/components/cart"
+import { StepOne, StepTwo } from "@/components/cart"
 
 
 const CartPage = () => {
@@ -52,7 +52,7 @@ const CartPage = () => {
     <>
       <CartLayout>
         {currentStep === 1 && <StepOne productos={products}/>}
-        {currentStep === 2 && <p>Paso 2</p>}
+        {currentStep === 2 && <StepTwo prodcutos={products}/>}
         {currentStep === 3 && <p>Paso 3</p>}
       </CartLayout>
     </>

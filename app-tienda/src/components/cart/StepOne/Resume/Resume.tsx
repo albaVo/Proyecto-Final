@@ -2,14 +2,15 @@
 import styles from "./Resume.module.scss"
 //next
 import { useRouter } from "next/router"
+import Link from "next/link"
 //react
 import { useEffect, useState } from "react"
 //lodash
 import { forEach } from "lodash"
 //utils
 import { fn } from "@/utils"
+//mui
 import { Button } from "@mui/material"
-import Link from "next/link"
 
 
 export const Resume = (props: any) => {
@@ -65,7 +66,12 @@ export const Resume = (props: any) => {
                     </div>
                 </div>
 
-                <Button onClick={goToStepTwo}>Proceder con el pago</Button>
+                <Button 
+                    onClick={goToStepTwo} 
+                    sx={{textTransform: 'none', width: '100%', fontSize: 13}}
+                >
+                    Proceder con el pago
+                </Button>
 
                 <Link href="/">Continuar comprando</Link>
             </div>
