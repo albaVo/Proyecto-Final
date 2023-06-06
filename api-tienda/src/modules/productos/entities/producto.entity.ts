@@ -1,3 +1,4 @@
+import { Transform, TransformFnParams } from "class-transformer";
 import { Categoria } from "src/modules/categorias/entities/categoria.entity";
 import { Pedido } from "src/modules/pedidos/entities/pedido.entity";
 import { Subcategoria } from "src/modules/subcategorias/entities/subcategoria.entity";
@@ -36,6 +37,7 @@ export class Producto {
 
     @Column('numeric')
     precio: number;
+
 
     @Column({ nullable: true })
     descuento?: number;

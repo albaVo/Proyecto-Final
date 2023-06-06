@@ -102,4 +102,10 @@ $ yarn add react-slick slick-carousel
 
 # Lodash
 $ yarn add lodash @types/lodash
+
+
+# Stripe
+$ yarn add @stripe/stripe-js
+
+$ yarn add @stripe/react-stripe-js
 ```

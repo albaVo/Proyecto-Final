@@ -78,7 +78,7 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
         {categoria.map((categoria) => (
             <>
               <div key={categoria.id} className={styles.categoria}>
-                <Link href={`/categorias/${categoria.id}`} passHref>
+                <Link href={`/categorias/${categoria.id}`} passHref> 
                   <Image src={categoria.icono} alt={""} width={32} height={20}/>
                   {categoria.titulo}
                 </Link>
