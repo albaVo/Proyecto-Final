@@ -37,7 +37,7 @@ const CartPage = () => {
           const producto = await getProductoById(productoId)
           data.push({...producto, quantity: item.quantity})
         }
-        console.log(data)
+        // console.log(data)
         setProducts(data)
       } 
       catch (error) {
@@ -52,7 +52,7 @@ const CartPage = () => {
     <>
       <CartLayout>
         {currentStep === 1 && <StepOne productos={products}/>}
-        {currentStep === 2 && <StepTwo prodcutos={products}/>}
+        {currentStep === 2 && <StepTwo productos={products}/>}
         {currentStep === 3 && <p>Paso 3</p>}
       </CartLayout>
     </>
