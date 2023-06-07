@@ -6,5 +6,5 @@ export interface ICategoria {
     titulo:        string;
     icono:         string;
     subcategorias: ISubcategoria[];
-    productos:     IProducto[]
+    productos:     IProducto[];
 }

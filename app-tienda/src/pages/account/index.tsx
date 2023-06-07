@@ -2,9 +2,8 @@
 import styles from "./account.module.scss"
 //components
 import Info from "@/components/account/Info/Info"
-import { UpdateForm } from "@/components/account/Settings";
-import { AddAddress, ListAddresses } from "@/components/account/Address";
 import { Separator } from "@/components/shared";
+import { AddAddress, ListAddresses, Orders, UpdateForm } from "@/components/account";
 // layout
 import { BasicLayout } from "@/layouts"
 //mui
@@ -72,13 +71,20 @@ const AccountPage = () => {
               <Tab icon={<Logout/>} value="5" onClick={onLogout}/>
             </TabList>
           </Box>
-          <TabPanel value="1">Mis pedidos...</TabPanel>
+
+          <TabPanel value="1">
+            <Orders/>
+            <Separator height={80}/>
+          </TabPanel>
+
           <TabPanel value="2">Mi lista de deseos...</TabPanel>
+
           <TabPanel value="3">
             <AddAddress/>
             <ListAddresses/>
             <Separator height={80}/>
           </TabPanel>
+
           <TabPanel value="4"><UpdateForm/></TabPanel>
         </TabContext>
         
