@@ -6,12 +6,19 @@ import { useEffect, useState } from "react"
 import { forEach, map } from "lodash"
 //utils
 import { fn } from "@/utils"
-import { Button } from "@mui/material"
+//mui
+import { Button, CircularProgress } from "@mui/material"
+//api
+import { Cart } from "@/api/Cart"
+
+
+const cartCtrl = new Cart()
 
 export const Resume = (props: any) => {
     
     const { productos, addressSelected } = props
-    const [total, setTotal] = useState<number>(0)    
+    const [total, setTotal] = useState<number>(0)  
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
       let totalTemp = 0
@@ -25,6 +32,19 @@ export const Resume = (props: any) => {
       setTotal(totalTemp)
     }, [productos])
     
+    const onPay = async () => {
+        setLoading(true)
+
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000);
+    }
+
+    const goToStepEnd = () => {
+
+    }
+
+    if (!total) return null
     
     return (
         <div className={styles.resume}>
@@ -53,8 +73,13 @@ export const Resume = (props: any) => {
                     <span>{total}€</span>
                 </div>
 
-                <Button sx={{textTransform: 'none'}} fullWidth disabled={!addressSelected}>
-                    Pagar
+                <Button 
+                    sx={{textTransform: 'none'}} 
+                    fullWidth 
+                    disabled={!addressSelected}
+                    onClick={onPay}
+                >
+                    {loading ? <CircularProgress size={20} /> : 'Pagar'}
                 </Button>
             </div>
         </div>
