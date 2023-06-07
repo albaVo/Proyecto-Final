@@ -2,12 +2,11 @@
 import { BasicLayout } from '@/layouts';
 //components
 import { BannerRandomProduct, RandomProducts } from '@/components/home';
-import { BannerAd, BarraInfo, Separator } from '@/components/shared';
+import { BannerAd, BarraInfo, Seo, Separator } from '@/components/shared';
 //hooks
 import { useProductos } from '@/hooks/useProductos';
 //mui
 import { Container } from '@mui/material';
-import { useCart } from '@/hooks/useCart';
 
 
 export default function Home() {
@@ -16,6 +15,8 @@ export default function Home() {
 
   return (
     <>
+      <Seo/>
+      
       <BasicLayout>
         <BannerRandomProduct productos={productos}/>
 

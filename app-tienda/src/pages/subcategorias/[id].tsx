@@ -7,7 +7,7 @@ import { Container, Pagination } from "@mui/material";
 //next
 import { useRouter } from "next/router"
 //components
-import { GridProductos, NoResult, Separator } from "@/components/shared";
+import { GridProductos, NoResult, Seo, Separator } from "@/components/shared";
 
 
 const SubcategoriaPage = () => {
@@ -21,26 +21,30 @@ const SubcategoriaPage = () => {
 
 
   return (
-    <BasicLayout relative subcategoria={subcategoria}>
-      <Container>
-        <Separator height={50}/>
+    <>
+      <Seo title={`Productos de ${subcategoria.titulo}`}/>
 
-        <h2>{subcategoria.titulo}</h2>
+      <BasicLayout relative subcategoria={subcategoria}>
+        <Container>
+          <Separator height={50}/>
 
-        {hasProducts ? (
-          <>
-            <GridProductos productos={subcategoria.productos}/>
-            <Separator height={30}/>
-          </>
-        ) : (
-          <NoResult 
-            text={`La subcategoria ${subcategoria.titulo} aun no tiene productos`}
-          />
-        )}
+          <h2>{subcategoria.titulo}</h2>
 
-        <Separator height={100}/>
-      </Container>
-    </BasicLayout>
+          {hasProducts ? (
+            <>
+              <GridProductos productos={subcategoria.productos}/>
+              <Separator height={30}/>
+            </>
+          ) : (
+            <NoResult 
+              text={`La subcategoria ${subcategoria.titulo} aun no tiene productos`}
+            />
+          )}
+
+          <Separator height={100}/>
+        </Container>
+      </BasicLayout>
+    </>
   )
 }
 

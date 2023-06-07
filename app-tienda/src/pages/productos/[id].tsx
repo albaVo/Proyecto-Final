@@ -1,6 +1,6 @@
 //components
 import { HeaderWallpaper, Info, Media, Panel } from "@/components/producto"
-import { Separator } from "@/components/shared"
+import { Seo, Separator } from "@/components/shared"
 //hooks
 import { useProductos } from "@/hooks/useProductos"
 //layout
@@ -21,22 +21,24 @@ const ProductoPage = () => {
 
   return (
     <>
-        <BasicLayout>
-            <HeaderWallpaper image={product.fondo}/>
-            <Panel productoId={product.id} product={product}/>
+      <Seo title={product.titulo}/>
+
+      <BasicLayout>
+        <HeaderWallpaper image={product.fondo}/>
+        <Panel productoId={product.id} product={product}/>
         
-            <Separator height={50}/>
+        <Separator height={50}/>
 
-            <Info product={product}/>
+        <Info product={product}/>
 
-            <Separator height={30}/>
+        <Separator height={30}/>
 
-            {product.video || product.capturas ? (
-              <Media video={product.video} capturas={product.capturas} />
-            ) : null}
+        {product.video || product.capturas ? (
+          <Media video={product.video} capturas={product.capturas} />
+        ) : null}
 
-            <Separator height={50}/>
-        </BasicLayout>
+        <Separator height={50}/>
+      </BasicLayout>
     </>
   )
 }

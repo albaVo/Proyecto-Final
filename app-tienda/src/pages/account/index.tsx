@@ -2,7 +2,7 @@
 import styles from "./account.module.scss"
 //components
 import Info from "@/components/account/Info/Info"
-import { Separator } from "@/components/shared";
+import { Seo, Separator } from "@/components/shared";
 import { AddAddress, ListAddresses, Orders, UpdateForm } from "@/components/account";
 // layout
 import { BasicLayout } from "@/layouts"
@@ -53,6 +53,8 @@ const AccountPage = () => {
   
   return (
     <>
+      <Seo title="Mi cuenta"/>
+
       <BasicLayout isContainer relative>
         <Info/>
         

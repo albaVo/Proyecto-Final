@@ -7,7 +7,9 @@ import { useCart } from "@/hooks/useCart"
 import { useProductos } from "@/hooks/useProductos"
 //react
 import { useState, useEffect } from "react"
+//components
 import { StepOne, StepTwo } from "@/components/cart"
+import { Seo } from "@/components/shared"
 
 
 const CartPage = () => {
@@ -50,6 +52,8 @@ const CartPage = () => {
   
   return (
     <>
+      <Seo title="Carrito"/>
+
       <CartLayout>
         {currentStep === 1 && <StepOne productos={products}/>}
         {currentStep === 2 && <StepTwo productos={products}/>}

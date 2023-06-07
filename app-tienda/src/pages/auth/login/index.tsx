@@ -4,6 +4,7 @@ import styles from "./login.module.scss"
 import { AuthLayout } from "@/layouts"
 //components
 import { LoginForm } from "@/components/auth"
+import { Seo } from "@/components/shared"
 //next 
 import Link from "next/link"
 
@@ -11,6 +12,8 @@ import Link from "next/link"
 const LoginPage = () => {
   return (
     <>
+      <Seo title="Iniciar sesión"/>
+
       <AuthLayout>
         <div className={styles.singIn}>
           <h3>Iniciar sesión</h3>
