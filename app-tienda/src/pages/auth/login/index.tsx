@@ -12,7 +12,7 @@ import Link from "next/link"
 const LoginPage = () => {
   return (
     <>
-      <Seo title="Iniciar sesión"/>
+      {/* <Seo title="Iniciar sesión"/> */}
 
       <AuthLayout>
         <div className={styles.singIn}>

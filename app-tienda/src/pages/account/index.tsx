@@ -53,7 +53,7 @@ const AccountPage = () => {
   
   return (
     <>
-      <Seo title="Mi cuenta"/>
+      {/* <Seo title="Mi cuenta"/> */}
 
       <BasicLayout isContainer relative>
         <Info/>

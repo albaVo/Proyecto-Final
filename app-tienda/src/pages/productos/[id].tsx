@@ -21,7 +21,7 @@ const ProductoPage = () => {
 
   return (
     <>
-      <Seo title={product.titulo}/>
+      {/* <Seo title={product.titulo}/> */}
 
       <BasicLayout>
         <HeaderWallpaper image={product.fondo}/>

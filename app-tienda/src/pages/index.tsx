@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <>
-      <Seo/>
+      {/* <Seo/> */}
       
       <BasicLayout>
         <BannerRandomProduct productos={productos}/>

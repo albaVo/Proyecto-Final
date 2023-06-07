@@ -224,6 +224,35 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
     }
 
 
+
+    // PEDIDOS 
+    const createPedido= async (fecha_pedido: Date, precio_total: number, direccionId: number, usuarioId: number, productosId: number):Promise<{hasError: boolean, message: string, id?: number}> => {
+        try {
+            const { data } = await tiendaApi.post('/pedidos', {fecha_pedido, precio_total, direccionId, usuarioId, productosId})
+            
+            window.location.reload();
+
+            return {
+                hasError: false,
+                message: 'Pedido creado con éxito',
+                id: data.id
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            // no es error de axios
+            return {
+                hasError: true,
+                message: 'No se puede crear el pedido, inténtalo de nuevo'
+            }
+        }
+    }
+
+
     return (
         <AuthContext.Provider value={{
             ...state,
@@ -233,7 +262,8 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             updateUser,
             createDireccion,
             updateDireccion,
-            deleteDireccion
+            deleteDireccion,
+            createPedido
         }}>
             { children }
         </AuthContext.Provider>

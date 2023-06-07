@@ -12,7 +12,7 @@ import { Seo } from "@/components/shared"
 const RegisterPage = () => {
   return (
     <>
-      <Seo title="Registrarse"/>
+      {/* <Seo title="Registrarse"/> */}
 
       <AuthLayout>
         <div className={styles.singIn}>

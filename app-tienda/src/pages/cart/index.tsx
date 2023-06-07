@@ -8,7 +8,7 @@ import { useProductos } from "@/hooks/useProductos"
 //react
 import { useState, useEffect } from "react"
 //components
-import { StepOne, StepTwo } from "@/components/cart"
+import { StepOne, StepThree, StepTwo } from "@/components/cart"
 import { Seo } from "@/components/shared"
 
 
@@ -52,12 +52,12 @@ const CartPage = () => {
   
   return (
     <>
-      <Seo title="Carrito"/>
+      {/* <Seo title="Carrito"/> */}
 
       <CartLayout>
         {currentStep === 1 && <StepOne productos={products}/>}
         {currentStep === 2 && <StepTwo productos={products}/>}
-        {currentStep === 3 && <p>Paso 3</p>}
+        {currentStep === 3 && <StepThree/>}
       </CartLayout>
     </>
   )

@@ -1,7 +1,7 @@
 //styles
 import styles from "./Resume.module.scss"
 //react
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 //lodash
 import { forEach, map } from "lodash"
 //utils
@@ -14,19 +14,51 @@ import { Cart } from "@/api/Cart"
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 //next
 import { useRouter } from "next/router"
+//context
+import { AuthContext } from "@/context"
+import { useForm } from "react-hook-form"
 
 
 const cartCtrl = new Cart()
 
+type PedidoData = {
+    id?: number,
+    fecha_pedido?: Date,
+    precio_total: number,
+    direccionId: number,
+    usuarioId: number,
+    productosId: number
+}
+
 export const Resume = (props: any) => {
     
-    const { productos, addressSelected } = props
+    const { productos, addressSelected, id } = props
+
     const [total, setTotal] = useState<number>(0)  
     const [loading, setLoading] = useState(false)
+    const router = useRouter()
+
     const stripe = useStripe()
     const elements = useElements()
+
     const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')  
-    const router = useRouter()
+    
+    //crear pedido
+    const { createPedido } = useContext(AuthContext)
+    const { register, handleSubmit, formState: { errors } } = useForm<PedidoData>()
+
+    const [ showError, setShowError ] = useState(false)
+    const [ errorMessage, setErrorMessage ] = useState('')
+
+    const onCreatePedido = async ( InputData: PedidoData) => {
+        const { precio_total } = InputData
+        
+        setLoading(true)
+
+        const usuario
+    }
+
+
 
     useEffect(() => {
       let totalTemp = 0
@@ -50,18 +82,21 @@ export const Resume = (props: any) => {
 
         const cardElement = elements.getElement(CardElement)
         const result = await stripe.createToken(cardElement)
-        console.log(result);
+        // console.log(result);
         
         if (result.error) {
             console.error(result.error.message)
+            setLoading(false)
         } else {
-            
+            goToStepEnd()
         }
 
         setTimeout(() => {
             setLoading(false)
         }, 1000);
     }
+
+
 
     const goToStepEnd = () => {
         router.replace({query: {...router.query, step: 3}})

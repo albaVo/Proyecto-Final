@@ -41,7 +41,6 @@ export const AddressForm = (props: any) => {
         setShowError(false)
         const { titulo, direccion, ciudad, codigo_postal, telefono } = InputData
 
-
         setIsSubmitting(true)
 
         //obtener el id del usuario logeuado desde el localStorage

@@ -22,7 +22,7 @@ const CategoriasPage = () => {
 
   return (
     <>
-      <Seo title={`Productos de ${categoria.titulo}`}/>
+      {/* <Seo title={`Productos de ${categoria.titulo}`}/> */}
 
       <BasicLayout relative categoria={categoria}>
         <Container>

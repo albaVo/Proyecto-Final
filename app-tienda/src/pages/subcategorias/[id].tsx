@@ -22,7 +22,7 @@ const SubcategoriaPage = () => {
 
   return (
     <>
-      <Seo title={`Productos de ${subcategoria.titulo}`}/>
+      {/* <Seo title={`Productos de ${subcategoria.titulo}`}/> */}
 
       <BasicLayout relative subcategoria={subcategoria}>
         <Container>

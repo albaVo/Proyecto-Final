@@ -23,6 +23,13 @@ interface ContextProps {
     }>
     updateDireccion: (id: number, titulo?: string, direccion?: string, ciudad?: string, codigo_postal?: number, telefono?: number, usuarioId?: number) => Promise<IRespuestaApiAuth>
     deleteDireccion: (id: number) => Promise<IRespuestaApiAuth>
+
+    //pedidos
+    createPedido: (fecha_pedido: Date, precio_total: number, direccionId: number, usuarioId: number, productosId: number) => Promise<{
+        hasError: boolean;
+        message: string;
+        id?: number;
+    }>
 }
 
 export const AuthContext = createContext( {} as ContextProps )
