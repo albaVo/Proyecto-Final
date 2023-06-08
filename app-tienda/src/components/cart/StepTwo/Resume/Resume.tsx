@@ -51,11 +51,22 @@ export const Resume = (props: any) => {
     const [ errorMessage, setErrorMessage ] = useState('')
 
     const onCreatePedido = async ( InputData: PedidoData) => {
-        const { precio_total } = InputData
+        const { fecha_pedido, precio_total } = InputData
         
         setLoading(true)
 
-        const usuario
+        const direccionId = addressSelected.id
+        const usuarioId = storedUser.id
+        // const productosId = 
+
+        // const { hasError, message, id } = await createPedido (
+        //     fecha_pedido,
+        //     precio_total,
+        //     direccionId, 
+        //     usuarioId,
+        //     productosId
+        // )
+        // console.log(message)
     }
 
 
