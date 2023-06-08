@@ -57,16 +57,16 @@ export const Resume = (props: any) => {
 
         const direccionId = addressSelected.id
         const usuarioId = storedUser.id
-        // const productosId = 
+        const productosId = 
 
-        // const { hasError, message, id } = await createPedido (
-        //     fecha_pedido,
-        //     precio_total,
-        //     direccionId, 
-        //     usuarioId,
-        //     productosId
-        // )
-        // console.log(message)
+        const { hasError, message, id } = await createPedido (
+            fecha_pedido,
+            precio_total,
+            direccionId, 
+            usuarioId,
+            productosId
+        )
+        console.log(message)
     }
 
 
