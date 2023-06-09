@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { classNames } from "primereact/utils";
 import { useContext, useEffect, useRef } from "react";
 import PrimeReact from 'primereact/api';
+import AppConfig from "@/components/admin/Layout/AppConfig";
 
 
 const AdminLayout = ({ children }: ChildContainerProps) => {
