@@ -229,8 +229,6 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
     const createPedido= async (fecha_pedido: Date, precio_total: number, direccionId: number, usuarioId: number, productosId: number):Promise<{hasError: boolean, message: string, id?: number}> => {
         try {
             const { data } = await tiendaApi.post('/pedidos', {fecha_pedido, precio_total, direccionId, usuarioId, productosId})
-            
-            window.location.reload();
 
             return {
                 hasError: false,

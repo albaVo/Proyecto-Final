@@ -19,7 +19,7 @@ export const Addresses = (props: any) => {
                     })}
                     onClick={() => setAddressSelected(direccion)}
                 >
-                    <p>{storedUser.nombre} {storedUser.apellidos} {direccion.titulo}</p>
+                    <p>{storedUser.nombre} {storedUser.apellidos} - {direccion.titulo}</p>
                     <p>{direccion.direccion}, {direccion.ciudad}, {direccion.codigo_postal},{direccion.telefono}</p>
                 </div>
             ))}

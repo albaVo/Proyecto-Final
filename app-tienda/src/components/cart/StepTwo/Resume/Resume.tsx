@@ -51,16 +51,16 @@ export const Resume = (props: any) => {
     const [ errorMessage, setErrorMessage ] = useState('')
 
     const onCreatePedido = async ( InputData: PedidoData) => {
-        const { fecha_pedido, precio_total } = InputData
+        const { precio_total } = InputData
         
         setLoading(true)
 
         const direccionId = addressSelected.id
         const usuarioId = storedUser.id
-        const productosId = 
+        const productosId = productos.map((producto: any) => producto.id)
 
         const { hasError, message, id } = await createPedido (
-            fecha_pedido,
+            new Date(),
             precio_total,
             direccionId, 
             usuarioId,
@@ -68,7 +68,6 @@ export const Resume = (props: any) => {
         )
         console.log(message)
     }
-
 
 
     useEffect(() => {
@@ -82,7 +81,8 @@ export const Resume = (props: any) => {
 
       setTotal(totalTemp)
     }, [productos])
-    
+
+
     const onPay = async () => {
         setLoading(true)
 
@@ -93,12 +93,17 @@ export const Resume = (props: any) => {
 
         const cardElement = elements.getElement(CardElement)
         const result = await stripe.createToken(cardElement)
-        // console.log(result);
         
         if (result.error) {
             console.error(result.error.message)
             setLoading(false)
         } else {
+            onCreatePedido({
+                precio_total: total,
+                direccionId: addressSelected.id,
+                usuarioId: storedUser.id,
+                productosId: productos.map((producto: any) => producto.id)
+            })
             goToStepEnd()
         }
 
