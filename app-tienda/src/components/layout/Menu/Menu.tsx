@@ -89,7 +89,7 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
                   className={styles.buttonArrow}
                   onClick={(event) => handleClick(event, categoria.id)}
                 >
-                  <KeyboardArrowDown/>
+                  <KeyboardArrowDown sx={{fill: 'white'}}/>
                 </IconButton>
 
                 <Menu

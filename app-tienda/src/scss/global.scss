@@ -20,7 +20,7 @@ p {
 }
 
 a {
-    color: $text-primary;
+    color: $text-primary !important;
     text-decoration: none;
 
     &:hover {

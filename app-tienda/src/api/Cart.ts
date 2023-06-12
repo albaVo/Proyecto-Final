@@ -51,4 +51,8 @@ export class Cart {
 
         localStorage.setItem('cart', JSON.stringify(updateProductos))
     }
+
+    deleteAll() {
+        localStorage.removeItem('cart')
+    }
 }

@@ -2,6 +2,7 @@
 import styles from "./Resume.module.scss"
 //react
 import { useContext, useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
 //lodash
 import { forEach, map } from "lodash"
 //utils
@@ -16,7 +17,8 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { useRouter } from "next/router"
 //context
 import { AuthContext } from "@/context"
-import { useForm } from "react-hook-form"
+//hooks
+import { useCart } from "@/hooks/useCart"
 
 
 const cartCtrl = new Cart()
@@ -37,6 +39,7 @@ export const Resume = (props: any) => {
     const [total, setTotal] = useState<number>(0)  
     const [loading, setLoading] = useState(false)
     const router = useRouter()
+    const { deleteAllItems } = useCart()
 
     const stripe = useStripe()
     const elements = useElements()
@@ -96,7 +99,6 @@ export const Resume = (props: any) => {
         
         if (result.error) {
             console.error(result.error.message)
-            setLoading(false)
         } else {
             onCreatePedido({
                 precio_total: total,
@@ -104,6 +106,7 @@ export const Resume = (props: any) => {
                 usuarioId: storedUser.id,
                 productosId: productos.map((producto: any) => producto.id)
             })
+            deleteAllItems()
             goToStepEnd()
         }
 
