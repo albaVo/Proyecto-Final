@@ -42,7 +42,7 @@ export class ProductosService {
 
   findAll() {
     return this.productoRepository.find({
-      relations: {categoria: true}
+      relations: {categoria: true, subcategoria: true}
     });
   }
 
@@ -63,7 +63,7 @@ export class ProductosService {
   findOne(id: number) {
     return this.productoRepository.findOne({
       where: {id},
-      relations: {categoria: true}
+      relations: {categoria: true, subcategoria: true}
     })
   }
 

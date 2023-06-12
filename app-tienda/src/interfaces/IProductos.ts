@@ -1,4 +1,5 @@
 import { ICategoria } from "./ICategorias";
+import { ISubcategoria } from "./ISubcategorias";
 
 export interface IProducto {
     id:           number;
@@ -13,4 +14,5 @@ export interface IProducto {
     descuento:    number;
     stock:        number;
     categoria:    ICategoria;
+    subcategoria: ISubcategoria
 }

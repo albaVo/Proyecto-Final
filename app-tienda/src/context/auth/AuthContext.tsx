@@ -15,6 +15,7 @@ interface ContextProps {
     logout: () => void
     updateUser: (id: number, nombre: string, apellidos: string, email: string, contraseña: string) => Promise<IRespuestaApiAuth>
     
+
     // direcciones
     createDireccion: (titulo: string, direccion: string, ciudad: string, codigo_postal: number, telefono: number, usuarioId: number) => Promise<{
         hasError: boolean;
@@ -24,12 +25,22 @@ interface ContextProps {
     updateDireccion: (id: number, titulo?: string, direccion?: string, ciudad?: string, codigo_postal?: number, telefono?: number, usuarioId?: number) => Promise<IRespuestaApiAuth>
     deleteDireccion: (id: number) => Promise<IRespuestaApiAuth>
 
+
     //pedidos
     createPedido: (fecha_pedido: Date, precio_total: number, direccionId: number, usuarioId: number, productosId: number) => Promise<{
         hasError: boolean;
         message: string;
         id?: number;
     }>
+
+
+    //productos
+    createProducto: (titulo: string, genero: string, descripcion: string, imagen: string, fondo: string, capturas: string[], video: string, precio: number, descuento: string, stock: number, categoriaId: number, subcategoriaId: number) => Promise<{
+        hasError: boolean;
+        message: string;
+        id?: number;
+    }>
+    deleteProducto: (id: number) => Promise<IRespuestaApiAuth>
 }
 
 export const AuthContext = createContext( {} as ContextProps )

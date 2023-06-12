@@ -230,6 +230,8 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
         try {
             const { data } = await tiendaApi.post('/pedidos', {fecha_pedido, precio_total, direccionId, usuarioId, productosId})
 
+            window.location.reload();
+
             return {
                 hasError: false,
                 message: 'Pedido creado con éxito',
@@ -251,6 +253,61 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
     }
 
 
+
+    // PRODUCTOS
+    const createProducto= async (titulo: string, genero: string, descripcion: string, imagen: string, fondo: string, capturas: string[], video: string, precio: number, descuento: string, stock: number, categoriaId: number, subcategoriaId: number):Promise<{hasError: boolean, message: string, id?: number}> => {
+        try {
+            const { data } = await tiendaApi.post('/productos', {titulo, genero, descripcion, imagen, fondo, capturas, video, precio, descuento, stock, categoriaId, subcategoriaId})
+
+            window.location.reload();
+            
+            return {
+                hasError: false,
+                message: 'Producto creado con éxito',
+                id: data.id
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            // no es error de axios
+            return {
+                hasError: true,
+                message: 'No se puede crear el producto, inténtalo de nuevo'
+            }
+        }
+    }
+
+    const deleteProducto = async (id: number):Promise<IRespuestaApiAuth> => {
+        try {
+            const { data } = await tiendaApi.delete(`/productos/${id}`)
+            console.log(data)
+
+            window.location.reload();
+
+            return {
+                hasError: false,
+                message: 'Producto eliminado con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            
+            return {
+                hasError: true,
+                message: 'No se puede eliminar el producto, inténtalo de nuevo'
+            }
+        }
+    }
+
+
     return (
         <AuthContext.Provider value={{
             ...state,
@@ -261,7 +318,9 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             createDireccion,
             updateDireccion,
             deleteDireccion,
-            createPedido
+            createPedido,
+            createProducto,
+            deleteProducto
         }}>
             { children }
         </AuthContext.Provider>

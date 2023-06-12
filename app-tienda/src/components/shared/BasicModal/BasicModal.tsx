@@ -1,6 +1,7 @@
 //styles
-import { Box, Modal, Typography } from "@mui/material"
 import styles from "./BasicModal.module.scss"
+//mui
+import { Box, Modal, Typography } from "@mui/material"
 
 
 export default function BasicModal(props: any) {

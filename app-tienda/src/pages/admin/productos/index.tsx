@@ -1,4 +1,4 @@
-import { LayoutProvider } from "@/context"
+import { AuthContext, LayoutProvider } from "@/context"
 import { useProductos } from "@/hooks/useProductos"
 import AdminLayout from "@/layouts/AdminLayout/AdminLayout"
 import { DataGrid } from "@mui/x-data-grid"
@@ -6,7 +6,12 @@ import { Column } from "primereact/column"
 import { DataTable, DataTableExpandedRows } from "primereact/datatable"
 import styles from "./Productos.module.scss"
 import Link from "next/link"
-import { AddCircle, Delete, Search } from "@mui/icons-material"
+import { AddCircle, Delete, Edit, Search } from "@mui/icons-material"
+import { useContext, useState } from "react"
+import { useRouter } from "next/router"
+import BasicModal from "@/components/shared/BasicModal/BasicModal"
+import { AdminModal } from "@/components/shared/AdminModal"
+import { AddProductoForm } from "@/components/admin/productos"
 
 
 const columns = [
@@ -19,9 +24,29 @@ const columns = [
     { field: "stock",  headerName: "Stock", width: 100 },
 ]
 
+type ProductData = {id: string}
+
+
 const ProductosAdminPage = () => {
     
     const { productos, isLoading } = useProductos('/productos')
+    const router = useRouter()
+    const [show, setShow] = useState(false)
+
+    const onOpenClose = () => setShow((prevState) => !prevState)
+
+
+    const { deleteProducto } = useContext(AuthContext)
+
+    const handleDelete = async (id: string) => {
+        const { hasError, message } = await deleteProducto(id)
+        console.log(id)
+
+        if (hasError) {
+            console.error(message)
+            return
+        }
+    }
 
     const status = (productosData) => {
         return <span className={`product-badge status-${productosData.stock}`}>
@@ -41,18 +66,25 @@ const ProductosAdminPage = () => {
     }))
 
     const actionColumns = [
-        { field: "action", headerName: "", width: 120, renderCell:({row}) => {
+        { field: "action", headerName: "", width: 150, renderCell:({row}) => {
             const {id} = row
 
             return (
                 <div className={styles.cellAction}>
-                    <Link href={`/dashboard/productos/${id}`}>
-                        <Search sx={{color: "blue", fontSize: 25}}/>
-                    </Link>
+                    {/* <Link href={`/dashboard/productos/${id}`}>
+                        <Search sx={{color: "#6D5FF3", fontSize: 25, marginLeft: 2}}/>
+                    </Link> */}
                     <div className={styles.linkall}>
-                        <AddCircle/>
+                        <AddCircle 
+                            sx={{color: "#639969", fontSize: 25, marginLeft: 3}}
+                            onClick={onOpenClose}
+                        />
+                        <Edit
+                            sx={{color: "#D7A34D", fontSize: 25, marginLeft: 3}}
+                        />
                         <Delete
-                            sx={{color: "red", fontSize: 25, marginLeft: 5}}
+                            sx={{color: "#C41111", fontSize: 25, marginLeft: 3}}
+                            onClick={() => handleDelete(id)}
                         />
                     </div>
                 </div>
@@ -77,6 +109,11 @@ const ProductosAdminPage = () => {
                         className={styles.datatable}
                     />             
                 </div>
+
+
+                <AdminModal show={show} onClose={onOpenClose} title="Nuevo producto">
+                    <AddProductoForm onClose={onOpenClose} id={productos.id}/>
+                </AdminModal>
             </AdminLayout>
         </LayoutProvider>
     )

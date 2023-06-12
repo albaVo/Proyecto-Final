@@ -1,0 +1,22 @@
+@import "~/src/scss/colors.scss";
+
+.modal {
+    // background-color: $background-quaternary;
+    background-color: #5B4A6D;
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+}
+
+.titulo {
+    font-size: 20px !important;
+    padding: 30px 30px 0 30px;
+    color: $text-primary;
+}
+
+.body {
+    padding: 30px;
+}
