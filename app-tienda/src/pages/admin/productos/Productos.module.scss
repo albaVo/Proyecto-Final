@@ -1,0 +1,16 @@
+.datatable {
+    padding: 20px;
+    font-size: 14px !important;
+}
+
+.cellAction {
+    display: flex;
+    align-items: center;
+    // gap: 15px;
+    border: 1px solid rebeccapurple;
+
+    .linkall {
+        // text-decoration: none;
+        cursor: pointer;
+    }
+}

@@ -51,6 +51,8 @@ $ yarn add @mui/material @emotion/react @emotion/styled
 
 $ yarn add @mui/lab
 
+$ yarn add @mui/x-data-grid
+
 
 # Semantic UI
 $ yarn add semantic-ui-react semantic-ui-css

@@ -1,9 +1,9 @@
 @import "./colors.scss";
 @import "./dropdown.scss";
 
-* {
-    color: $text-primary;
-}
+// * {
+//     color: $text-primary;
+// }
 
 body {
     margin: 0;
@@ -24,6 +24,12 @@ a {
     text-decoration: none;
 
     &:hover {
-        color: $primary;
+        color: $primary !important;
     }
+}
+
+
+.MuiDataGrid-columnHeaderTitle {
+    font-weight: bold !important;
+    font-size: 16px;
 }

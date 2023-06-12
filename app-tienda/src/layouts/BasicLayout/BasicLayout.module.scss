@@ -1,3 +1,6 @@
-.relative {
+@import "~/src/scss/colors.scss";
+
+.relative{
     padding-top: 100px;
+    color: $text-primary;
 }
