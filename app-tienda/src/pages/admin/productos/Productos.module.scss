@@ -1,3 +1,5 @@
+@import "~/src/scss/colors.scss";
+
 .datatable {
     padding: 20px;
     font-size: 14px !important;
@@ -11,5 +13,38 @@
     .linkall {
         // text-decoration: none;
         cursor: pointer;
+    }
+}
+
+
+.confirm {
+    background-color: $background-quaternary__blur;
+    backdrop-filter: blur(3px);
+
+    > div > div {
+        background-color: $background-primary;
+        border-radius: 12px;
+        overflow: hidden;
+
+        h2 {
+            background-color: $background-primary;
+            color: $text-primary;
+            font-size: 18px;
+            padding: 20px 20px 0 20px !important;
+        }
+
+        > div {
+            background-color: $background-primary;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            button {
+                width: 48%;
+                padding: 15px !important;
+                margin: 0;
+            }
+        }
     }
 }

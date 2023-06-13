@@ -33,3 +33,45 @@ a {
     font-weight: bold !important;
     font-size: 16px;
 }
+
+//tamaño fijo
+.textFieldDropdown {
+
+    > div > div {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 1rem;
+        color: #495057;
+        background-color: #ffffff;
+        padding: 0.75rem 0.75rem;
+        border: 1px solid #ced4da;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        margin: 0;
+        height: 37.5px;
+        width: 220px;
+
+        &:enabled:hover {
+            border-color: #6366F1;
+        }
+    }
+}
+
+//tamaño variante
+.textFieldDropdown2 {
+
+    > div > div {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 1rem;
+        color: #495057;
+        background-color: #ffffff;
+        padding: 0.75rem 0.75rem;
+        border: 1px solid #ced4da;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        margin: 0;
+        height: 37.5px;
+        width: 100%;
+
+        &:enabled:hover {
+            border-color: #6366F1;
+        }
+    }
+}

@@ -11,7 +11,9 @@ import { useContext, useState } from "react"
 import { useRouter } from "next/router"
 import BasicModal from "@/components/shared/BasicModal/BasicModal"
 import { AdminModal } from "@/components/shared/AdminModal"
-import { AddProductoForm } from "@/components/admin/productos"
+import { ProductoForm } from "@/components/admin/productos"
+import { Confirm } from "@/components/shared"
+import { Button, DialogActions, DialogTitle } from "@mui/material"
 
 
 const columns = [
@@ -31,10 +33,14 @@ const ProductosAdminPage = () => {
     
     const { productos, isLoading } = useProductos('/productos')
     const router = useRouter()
-    const [show, setShow] = useState(false)
+    const [showCreate, setShowCreate] = useState(false)
+    const [showEdit, setShowEdit] = useState(false)
+    const [showDelete, setShowDelete] = useState(false)
 
-    const onOpenClose = () => setShow((prevState) => !prevState)
 
+    const openCloseCreate = () => setShowCreate((prevState) => !prevState)
+    const openCloseEdit = () => setShowEdit((prevState) => !prevState)
+    const openCloseDelete = () => setShowDelete((prevState) => !prevState)
 
     const { deleteProducto } = useContext(AuthContext)
 
@@ -66,7 +72,7 @@ const ProductosAdminPage = () => {
     }))
 
     const actionColumns = [
-        { field: "action", headerName: "", width: 150, renderCell:({row}) => {
+        { field: "action", headerName: "", width: 180, renderCell:({row}) => {
             const {id} = row
 
             return (
@@ -77,14 +83,15 @@ const ProductosAdminPage = () => {
                     <div className={styles.linkall}>
                         <AddCircle 
                             sx={{color: "#639969", fontSize: 25, marginLeft: 3}}
-                            onClick={onOpenClose}
+                            onClick={openCloseCreate}
                         />
                         <Edit
                             sx={{color: "#D7A34D", fontSize: 25, marginLeft: 3}}
+                            onClick={openCloseEdit}
                         />
                         <Delete
                             sx={{color: "#C41111", fontSize: 25, marginLeft: 3}}
-                            onClick={() => handleDelete(id)}
+                            onClick={openCloseDelete}
                         />
                     </div>
                 </div>
@@ -110,10 +117,29 @@ const ProductosAdminPage = () => {
                     />             
                 </div>
 
-
-                <AdminModal show={show} onClose={onOpenClose} title="Nuevo producto">
-                    <AddProductoForm onClose={onOpenClose} id={productos.id}/>
+                
+                {/* crear producto */}
+                <AdminModal show={showCreate} onClose={openCloseCreate} title="Nuevo producto">
+                    <ProductoForm onClose={openCloseCreate} id={productos.id}/>
                 </AdminModal>
+
+                {/* editar producto */}
+                <AdminModal show={showEdit} onClose={openCloseEdit} title="Editar producto">
+                    <ProductoForm onClose={openCloseEdit} id={productos.id} isEditMode={true}/>
+                </AdminModal>
+
+
+                {/* eliminar producto */}
+                <Confirm
+                    open={showDelete}
+                    className={styles.confirm}
+                >
+                    <DialogTitle className={styles.dialog}>{"¿Estás seguro de que quieres eliminar el producto?"}</DialogTitle>
+                    <DialogActions className={styles.dialog}>
+                    <Button onClick={openCloseDelete}>Cancelar</Button>
+                    <Button onClick={() => handleDelete(id)}>OK</Button>
+                    </DialogActions>
+                </Confirm> 
             </AdminLayout>
         </LayoutProvider>
     )
