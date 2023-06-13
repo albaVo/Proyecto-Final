@@ -1,5 +1,9 @@
 @import "~/src/scss/colors.scss";
 
+.resume {
+    color: $text-primary;
+}
+
 .resume > h2 {
     margin-bottom: 15px;
     font-size: 18px;

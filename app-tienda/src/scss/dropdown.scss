@@ -2,8 +2,16 @@
   background-color: $background-tertiary;
   border-radius: 5px !important;
 
+  i {
+    color: $text-primary;
+  }
+
   &.visible.active {
     border-color: $primary;
+
+    > div {
+      color: white;
+    }
   }
 
   .divider.text {

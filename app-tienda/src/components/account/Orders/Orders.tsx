@@ -12,7 +12,7 @@ export const Orders = () => {
     const [orders, setOrders] = useState(null)    
     console.log(orders)
 
-    usuarioId = storedUser.id
+    const usuarioId = storedUser.id
     const { usuarios: usuario, isLoading } = useUsuarios(`/usuarios/${usuarioId}`)
 
     if (!orders) return <NoResult text="No tienes ningún producto comprado"/>

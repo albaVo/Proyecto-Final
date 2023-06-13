@@ -1,5 +1,9 @@
 @import "~/src/scss/colors.scss";
 
+.addresses {
+    color: $text-primary;
+}
+
 .addresses > h2 {
     margin-bottom: 15px;
     font-size: 18px;

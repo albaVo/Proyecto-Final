@@ -40,7 +40,7 @@
         &.success .number {
             border-color: $primary;
             background-color: $primary;
-            color: $primary;
+            color: $primary !important;
 
             i {
                 display: flex;
