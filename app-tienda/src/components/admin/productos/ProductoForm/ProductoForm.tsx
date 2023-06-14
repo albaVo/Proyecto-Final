@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form"
 //primereact
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
-import { Dropdown } from 'primereact/dropdown';
 import { Button } from "primereact/button";
 //context
 import { AuthContext } from "@/context"
+//mui
 import { CircularProgress, MenuItem, TextField } from "@mui/material";
 
 
@@ -101,7 +101,6 @@ export const ProductoForm = (props: any) => {
     return (
         <form onSubmit={handleSubmit(onCreateProducto)}>
             <div className="card">
-                <h5>Advanced</h5>
                 <div className="p-fluid formgrid grid">
                     <div className="field col-12 md:col-4">
                         <label>Titulo</label>
@@ -186,6 +185,7 @@ export const ProductoForm = (props: any) => {
                             </TextField>
                         </div>
                     </div>
+                    
                     <Button className="button" disabled={isSubmitting}>
                         {isSubmitting ? <CircularProgress size={20} /> : 'Enviar'}
                     </Button>

@@ -109,6 +109,32 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
         setUser(null)
     }
 
+    const createUser = async (nombre: string, apellidos: string, email: string, contraseña: string):Promise<{hasError: boolean, message: string, id?: number}> => {
+        try {
+            const { data } = await tiendaApi.post('/auth/register', {nombre, apellidos, email, contraseña})
+            
+            window.location.reload();
+
+            return {
+                hasError: false,
+                message: 'Usuario creado con éxito',
+                id: data.id
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            // no es error de axios
+            return {
+                hasError: true,
+                message: 'No se puede crear el usuario, inténtalo de nuevo'
+            }
+        }
+    }
+
     const updateUser = async (id: number, nombre: string, apellidos: string, email: string, contraseña: string):Promise<IRespuestaApiAuth> => {
         try {
             
@@ -139,6 +165,32 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             return {
                 hasError: true,
                 message: 'No se puede modificar el usuario, inténtalo de nuevo'
+            }
+        }
+    }
+
+    const deleteUsuario = async (id: number):Promise<IRespuestaApiAuth> => {
+        try {
+            const { data } = await tiendaApi.delete(`/usuarios/${id}`)
+            console.log(data)
+
+            window.location.reload();
+
+            return {
+                hasError: false,
+                message: 'Usuario eliminado con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            
+            return {
+                hasError: true,
+                message: 'No se puede eliminar el usuario, inténtalo de nuevo'
             }
         }
     }
@@ -252,6 +304,58 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
         }
     }
 
+    const updatePedido = async (id: number, fecha_pedido: Date, precio_total: number, direccionId: number, usuarioId: number, productosId: number):Promise<IRespuestaApiAuth> => {
+        try {            
+            const { data } = await tiendaApi.patch(`/pedidos/${id}`, {fecha_pedido, precio_total, direccionId, usuarioId, productosId})  
+            console.log(data)
+
+            window.location.reload();
+            
+            return {
+                hasError: false,
+                message: 'Pedido modificado con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            // no es error de axios
+            return {
+                hasError: true,
+                message: 'No se puede modificar el pedido, inténtalo de nuevo'
+            }
+        }
+    }
+
+    const deletePedido = async (id: number):Promise<IRespuestaApiAuth> => {
+        try {
+            const { data } = await tiendaApi.delete(`/pedidos/${id}`)
+            console.log(data)
+
+            window.location.reload();
+
+            return {
+                hasError: false,
+                message: 'Pedido eliminado con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            
+            return {
+                hasError: true,
+                message: 'No se puede eliminar el pedido, inténtalo de nuevo'
+            }
+        }
+    }
+
 
 
     // PRODUCTOS
@@ -340,11 +444,15 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             registerUser,
             loginUser,
             logout,
+            createUser,
             updateUser,
+            deleteUsuario,
             createDireccion,
             updateDireccion,
             deleteDireccion,
             createPedido,
+            updatePedido,
+            deletePedido,
             createProducto,
             updateProducto,
             deleteProducto

@@ -1,50 +1,50 @@
 //styles
-import styles from "./Productos.module.scss"
-//context
-import { AuthContext, LayoutProvider } from "@/context"
+import styles from "./Usuario.module.scss"
 //hooks
-import { useProductos } from "@/hooks/useProductos"
-//layout
-import AdminLayout from "@/layouts/AdminLayout/AdminLayout"
-//mui
-import { DataGrid } from "@mui/x-data-grid"
-import { AddCircle, Delete, Edit, Search } from "@mui/icons-material"
-import { Button, DialogActions, DialogTitle } from "@mui/material"
+import { useUsuarios } from "@/hooks/useUsuarios"
 //react
 import { useContext, useState } from "react"
-//componenets
+//context
+import { AuthContext, LayoutProvider } from "@/context"
+//mui
+import { AddCircle, Delete, Edit, Search } from "@mui/icons-material"
+import { DataGrid } from "@mui/x-data-grid"
+import { Button, DialogActions, DialogTitle } from "@mui/material"
+//layouts
+import AdminLayout from "@/layouts/AdminLayout/AdminLayout"
+//components
 import { AdminModal } from "@/components/shared/AdminModal"
-import { ProductoForm } from "@/components/admin/productos"
 import { Confirm } from "@/components/shared"
+import { Usuario } from "@/components/admin"
+import { UsuarioForm } from "@/components/admin/usuarios/UsuarioForm"
 
 
 const columns = [
-    { field: "id",  headerName: "Id", width: 60 },
-    { field: "titulo",  headerName: "Titulo", width: 190 },
-    { field: "genero",  headerName: "Genero", width: 150 },
-    { field: "imagen",  headerName: "Imagen", width: 130 },
-    { field: "precio",  headerName: "Precio", width: 90 },
-    { field: "descuento",  headerName: "Descuento", width: 120 },
-    { field: "stock",  headerName: "Stock", width: 100 },
+    { field: "id",  headerName: "Id", width: 70 },
+    { field: "nombre",  headerName: "Nombre", width: 190 },
+    { field: "apellidos",  headerName: "Apellidos", width: 150 },
+    { field: "email",  headerName: "Email", width: 120 },
+    { field: "isActive",  headerName: "isActive", width: 160 },
+    { field: "roles",  headerName: "Rol", width: 160 },
+    { field: "direcciones",  headerName: "Direcciones Id", width: 160 }
 ]
 
-
-const ProductosAdminPage = () => {
-    
-    const { productos, isLoading } = useProductos('/productos')
+const UsuariosAdminPage = () => {
+    const { usuarios, isLoading } = useUsuarios('/usuarios')
+    const [show, setShow] = useState(false)
     const [showCreate, setShowCreate] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
     const [showDelete, setShowDelete] = useState(false)
 
-
+    const openCloseShow = () => setShow((prevState) => !prevState)
     const openCloseCreate = () => setShowCreate((prevState) => !prevState)
     const openCloseEdit = () => setShowEdit((prevState) => !prevState)
     const openCloseDelete = () => setShowDelete((prevState) => !prevState)
 
-    const { deleteProducto } = useContext(AuthContext)
+    const { deleteUsuario } = useContext(AuthContext)
 
     const handleDelete = async (id: string) => {
-        const { hasError, message } = await deleteProducto(id)
+        const { hasError, message } = await deleteUsuario(id)
         console.log(id)
 
         if (hasError) {
@@ -53,29 +53,26 @@ const ProductosAdminPage = () => {
         }
     }
 
-    const status = (productos) => {
-        return <span className={`product-badge status-${productos.stock}`}>
-            {productos.stock > 0 && <span>EN STOCK</span>} 
-            {productos.stock == 0 && <span>SIN STOCK</span>}
-        </span>;
-    }
-
-    const rows = productos.map((producto) => ({
-        id: producto.id,
-        titulo: producto.titulo,
-        genero: producto.genero,
-        imagen: producto.imagen,
-        precio: producto.precio,
-        descuento: producto.descuento,
-        stock: status
+    const rows = usuarios.map((usuario) => ({
+        id: usuario.id,
+        nombre: usuario.nombre,
+        apellidos: usuario.apellidos,
+        email: usuario.email,
+        isActive: usuario.isActive,
+        roles: usuario.roles,
+        direcciones: usuario.direcciones
     }))
 
     const actionColumns = [
-        { field: "action", headerName: "", width: 180, renderCell:({row}) => {
+        { field: "action", headerName: "", width: 210, renderCell:({row}) => {
 
             return (
                 <div className={styles.cellAction}>
                     <div className={styles.linkall}>
+                        <Search
+                            sx={{color: "#1778C8", fontSize: 25, marginLeft: 3}}
+                            onClick={openCloseShow}
+                        />
                         <AddCircle 
                             sx={{color: "#639969", fontSize: 25, marginLeft: 3}}
                             onClick={openCloseCreate}
@@ -93,43 +90,52 @@ const ProductosAdminPage = () => {
             )
         }}
     ]
-    
+
+
     return (
         <LayoutProvider>
             <AdminLayout>
                 <div className="card">
-                    <div className="text-900 font-medium text-3xl">Productos</div>
+                    <div className="text-900 font-medium text-3xl">Usuarios</div>
                     <DataGrid
                         rows={rows}
                         columns={columns.concat(actionColumns)}
                         initialState={{
                             pagination: {
-                              paginationModel: { page: 0, pageSize: 5 },
+                            paginationModel: { page: 0, pageSize: 5 },
                             },
                         }}
                         pageSizeOptions={[5, 10]}
                         className={styles.datatable}
-                    />             
+                    /> 
                 </div>
 
-                
-                {/* crear producto */}
-                <AdminModal show={showCreate} onClose={openCloseCreate} title="Nuevo producto">
-                    <ProductoForm onClose={openCloseCreate} id={productos.id}/>
-                </AdminModal>
 
-                {/* editar producto */}
-                <AdminModal show={showEdit} onClose={openCloseEdit} title="Editar producto">
-                    <ProductoForm onClose={openCloseEdit} id={productos.id} isEditMode={true}/>
+
+                {/* ver usuario */}
+                <AdminModal show={show} onClose={openCloseShow} title="Visualizar usuario">
+                   <Usuario usuario={usuarios}/>
                 </AdminModal>
 
 
-                {/* eliminar producto */}
+                {/* crear usuario */}
+                <AdminModal show={showCreate} onClose={openCloseCreate} title="Nuevo usuario">
+                    <UsuarioForm onClose={openCloseCreate} id={usuarios.id}/>
+                </AdminModal>
+
+
+                {/* editar usuario */}
+                <AdminModal show={showEdit} onClose={openCloseEdit} title="Editar usuario">
+                   <UsuarioForm onClose={openCloseEdit} id={usuarios.id}/>
+                </AdminModal>
+
+
+                {/* eliminar usuario */}
                 <Confirm
                     open={showDelete}
                     className={styles.confirm}
                 >
-                    <DialogTitle className={styles.dialog}>{"¿Estás seguro de que quieres eliminar el producto?"}</DialogTitle>
+                    <DialogTitle className={styles.dialog}>{"¿Estás seguro de que quieres eliminar el usuario?"}</DialogTitle>
                     <DialogActions className={styles.dialog}>
                         <Button onClick={openCloseDelete}>Cancelar</Button>
                         <Button onClick={() => handleDelete(id)}>OK</Button>
@@ -140,5 +146,4 @@ const ProductosAdminPage = () => {
     )
 }
 
-export default ProductosAdminPage
-
+export default UsuariosAdminPage

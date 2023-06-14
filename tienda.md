@@ -53,6 +53,8 @@ $ yarn add @mui/lab
 
 $ yarn add @mui/x-data-grid
 
+$ yarn add @mui/x-date-pickers dayjs
+
 
 # Semantic UI
 $ yarn add semantic-ui-react semantic-ui-css

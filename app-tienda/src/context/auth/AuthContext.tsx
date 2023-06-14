@@ -13,7 +13,13 @@ interface ContextProps {
     registerUser: (email: string, contraseña: string, usuario: string, apellidos: string) => Promise<IRespuestaApiAuth>
     loginUser: (email: string, contraseña: string) => Promise<boolean>
     logout: () => void
+    createUser: (nombre: string, apellidos: string, email: string, contraseña: string) => Promise<{
+        hasError: boolean;
+        message: string;
+        id?: number;
+    }>
     updateUser: (id: number, nombre: string, apellidos: string, email: string, contraseña: string) => Promise<IRespuestaApiAuth>
+    deleteUsuario: (id: number) => Promise<IRespuestaApiAuth>
     
 
     // direcciones
@@ -32,6 +38,8 @@ interface ContextProps {
         message: string;
         id?: number;
     }>
+    updatePedido: (id: number, fecha_pedido: Date, precio_total: number, direccionId: number, usuarioId: number, productosId: number) => Promise<IRespuestaApiAuth>
+    deletePedido: (id: number) => Promise<IRespuestaApiAuth>
 
 
     //productos

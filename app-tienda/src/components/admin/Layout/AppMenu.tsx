@@ -18,9 +18,9 @@ const AppMenu = () => {
             items: [
                 { label: 'Productos', icon: 'pi pi-fw pi-shopping-bag', to: '/admin/productos' },
                 { label: 'Pedidos', icon: 'pi pi-fw pi-truck', to: '/admin/pedidos' },
-                { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', to: '/uikit/floatlabel' },
-                { label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', to: '/uikit/invalidstate' },
-                { label: 'Button', icon: 'pi pi-fw pi-mobile', to: '/uikit/button', class: 'rotated-icon' },
+                { label: 'Usuarios', icon: 'pi pi-fw pi-users', to: '/admin/usuarios' },
+                { label: 'Direcciones', icon: 'pi pi-fw pi-envelope', to: '/admin/direcciones' },
+                { label: 'Proveedores', icon: 'pi pi-fw pi-shopping-cart', to: '/admin/proveedores' },
                 { label: 'Table', icon: 'pi pi-fw pi-table', to: '/uikit/table' },
                 { label: 'List', icon: 'pi pi-fw pi-list', to: '/uikit/list' },
                 { label: 'Tree', icon: 'pi pi-fw pi-share-alt', to: '/uikit/tree' },
