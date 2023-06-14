@@ -17,7 +17,17 @@ export const Orders = () => {
     // console.log(usuario)
 
     const pedidos = usuario.pedidos
-    console.log(pedidos)
+    // console.log(pedidos)
+
+    if (pedidos) {
+        pedidos.forEach((pedido) => {
+          const productos = pedido.productos;
+          console.log(productos);
+          // Hacer algo con los productos...
+        });
+      } else {
+        // Manejar el caso cuando no hay pedidos
+      }
 
     if (!orders) return <NoResult text="No tienes ningún producto comprado"/>
 
