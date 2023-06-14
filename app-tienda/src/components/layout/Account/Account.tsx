@@ -39,13 +39,20 @@ export const Account = () => {
         <div className={styles.account}>
             <Button className={styles.cart}>
                 {/* <ShoppingCart onClick={goToCart}/> */}
-                {/* {total > 0 && <Avatar style={{width: 23, height: 23}}>{total}</Avatar>} */}
                 {total > 0 && <Badge badgeContent={total} color="secondary"><ShoppingCart onClick={goToCart}/></Badge>}
             </Button>
 
-            {/* <Button className={classNames({[styles.user]: isTokenPresent})}>
-                <PersonOutlineOutlined onClick={isTokenPresent() ? goToAccount : goToLogin}/>
-            </Button> */}
+            <Button className={`${styles.cart} ${isTokenPresent() ? '' : styles.cartNoBadge}`}>
+                {total > 0 ? (
+                <Badge badgeContent={total} color="secondary">
+                    <ShoppingCart onClick={goToCart} />
+                </Badge>
+                ) : (
+                <ShoppingCart onClick={goToCart} />
+                )}
+            </Button>
+
+
             <Button>
                 {isTokenPresent() ? (
                     <AccountCircle onClick={goToAccount}/>

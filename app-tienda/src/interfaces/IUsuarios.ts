@@ -1,4 +1,5 @@
 import { IDireccion } from "./IDirecciones";
+import { IPedido } from "./IPedidos";
 
 export interface IUsuario {
     id:          number;
@@ -10,4 +11,5 @@ export interface IUsuario {
     isActive:    boolean;
     roles:       string[];
     direcciones: IDireccion[];
+    pedidos:     IPedido[];
 }
