@@ -1,13 +1,13 @@
 //styles
-import { AuthContext } from "@/context/auth"
 import styles from "./UpdateForm.module.scss"
+//context
+import { AuthContext } from "@/context/auth"
 //mui
 import { Box, Button, CircularProgress, IconButton, InputAdornment, TextField, Typography } from "@mui/material"
+import { VisibilityOff, Visibility } from "@mui/icons-material"
 //react
 import { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
-import { validations } from "@/utils"
-import { VisibilityOff, Visibility } from "@mui/icons-material"
 
 
 type UserData = {
@@ -147,7 +147,7 @@ export const UpdateForm = () => {
 
       <Button
         type='submit'
-        sx={{width: '50%', marginLeft: 20, textTransform: 'none'}}
+        sx={{width: '50%', marginLeft: 27, textTransform: 'none'}}
         disabled={isSubmitting}
         className={styles.button}
       >

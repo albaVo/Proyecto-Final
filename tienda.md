@@ -118,4 +118,5 @@ $ yarn add @stripe/react-stripe-js
 # Dashboard
 $ yarn add primeicons primeflex primereact
 $ yarn add chart.js
+
 ```

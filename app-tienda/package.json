@@ -19,6 +19,7 @@
     "@mui/x-date-pickers": "^6.7.0",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.54.0",
+    "@syncfusion/ej2-react-schedule": "^21.2.10",
     "@types/axios": "^0.14.0",
     "@types/js-cookie": "^3.0.3",
     "@types/node": "18.16.1",
