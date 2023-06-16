@@ -1,0 +1,12 @@
+@import "~/src/scss/colors.scss";
+
+.container {
+    position: relative;
+    height: 100vh;
+    color: $text-primary;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
