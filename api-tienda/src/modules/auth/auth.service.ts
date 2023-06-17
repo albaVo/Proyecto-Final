@@ -80,7 +80,8 @@ export class AuthService {
   findOne(id: number) {
     return this.usuarioRepository.findOne({
       where: {id},
-      relations: {pedidos: true}
+      relations: ['pedidos', 'pedidos.productos', 'pedidos.productos.categoria', 'pedidos.direccion']
+      // relations: {pedidos: true}
     })
   }
 

@@ -9,7 +9,7 @@ import { useUsuarios } from "@/hooks/useUsuarios"
 
 export const Orders = () => {
     const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')  
-    const [orders, setOrders] = useState(null)    
+    // const [orders, setOrders] = useState(null)    
     // console.log(orders)
 
     const usuarioId = storedUser.id
@@ -19,22 +19,12 @@ export const Orders = () => {
     const pedidos = usuario.pedidos
     // console.log(pedidos)
 
-    if (pedidos) {
-        pedidos.forEach((pedido) => {
-          const productos = pedido.productos;
-          console.log(productos);
-          // Hacer algo con los productos...
-        });
-      } else {
-        // Manejar el caso cuando no hay pedidos
-      }
-
-    if (!orders) return <NoResult text="No tienes ningún producto comprado"/>
+    if (!pedidos) return <NoResult text="No tienes ningún producto comprado"/>
 
     return (
         <div>
-            {map(orders, (order) => (
-                <Order key={orders.id} order={order}/>
+            {map(pedidos, (pedido) => (
+                <Order key={pedido.id} pedido={pedido}/>
             ))}
         </div>
     )

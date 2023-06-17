@@ -10,32 +10,47 @@ import { fn } from "@/utils"
 
 export const Order = (props: any) => {
 
-    const { order } = props
+    const { pedido } = props
     const [showModal, setShowModal] = useState(false)
-    const products = order.products
-    const address = order.direccion
+    const products = pedido.productos
+    const address = pedido.direccion
+    console.log(products)
 
     const openCloseModal = () => setShowModal((prevState) => !prevState)
 
-    const getTotalProducts = () => {
-        let total = 0
+    // const getTotalProducts = () => {
+    //     let total = 0
 
-        forEach(products, (product) => {
-            total += product.quantity
-        })
+    //     forEach(products, (product) => {
+    //         if (product && typeof product.quantity === 'number'){
+    //             total += product.quantity
+    //         }
+    //     })
 
-        return total
-    }
+    //     return total
+    // }
+
+
+    //cambiar formato fecha
+    const fecha = pedido.fecha_pedido
+
+    const date = new Date(fecha)
+    const dia = date.getDate()
+    const mes = date.getMonth() +1
+    const anio = date.getFullYear()
+    
+    const fechaFormateada = `${dia}/${mes}/${anio}`
+    
 
     return (
         <>
             <div className={styles.order} onClick={openCloseModal}>
                 <div>
-                    <span>{order.fecha_pedido}</span>
-                    <p>{getTotalProducts} productos</p>
+                    <span>{fechaFormateada}</span>
+                    <p>{products.length} productos</p>
                 </div>
 
-                <p>{order.precio_total.toFixed(2)}€</p>
+                <p>{pedido.precio_total}€</p>
             </div>
 
             <BasicModal 
@@ -73,7 +88,7 @@ export const Order = (props: any) => {
                 </div>
 
                 <div className={styles.total}>
-                    <p>TOTAL: {order.precio_total}€</p>
+                    <p>TOTAL: {pedido.precio_total}€</p>
                 </div>
             </BasicModal>
         </>

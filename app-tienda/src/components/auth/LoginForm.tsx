@@ -49,7 +49,7 @@ export const LoginForm = () => {
         const roles = Cookies.get('rol')
 
         if ( roles == 'admin' ) {
-            // router.replace('')
+            router.replace('/admin')
         } else {
             router.replace('/')
         }
