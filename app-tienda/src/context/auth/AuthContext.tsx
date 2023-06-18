@@ -50,6 +50,7 @@ interface ContextProps {
     }>
     updateProducto: (id: number, titulo: string, genero: string, descripcion: string, imagen: string, fondo: string, capturas: string[], video: string, precio: number, descuento: string, stock: number, categoriaId: number, subcategoriaId: number) => Promise<IRespuestaApiAuth>
     deleteProducto: (id: number) => Promise<IRespuestaApiAuth>
+    updateProductStock: (productosIdArray: number[]) => Promise<void>
 }
 
 export const AuthContext = createContext( {} as ContextProps )

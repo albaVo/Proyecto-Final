@@ -9,7 +9,7 @@ import AdminLayout from "@/layouts/AdminLayout/AdminLayout"
 //mui
 import { DataGrid } from "@mui/x-data-grid"
 import { AddCircle, Delete, Edit, Search } from "@mui/icons-material"
-import { Button, DialogActions, DialogTitle } from "@mui/material"
+import { Button, DialogActions, DialogTitle, Modal } from "@mui/material"
 //react
 import { useContext, useState } from "react"
 //componenets
@@ -18,23 +18,23 @@ import { ProductoForm } from "@/components/admin/productos"
 import { Confirm } from "@/components/shared"
 
 
-const columns = [
-    { field: "id",  headerName: "Id", width: 60 },
-    { field: "titulo",  headerName: "Titulo", width: 190 },
-    { field: "genero",  headerName: "Genero", width: 150 },
-    { field: "imagen",  headerName: "Imagen", width: 130 },
-    { field: "precio",  headerName: "Precio", width: 90 },
-    { field: "descuento",  headerName: "Descuento", width: 120 },
-    { field: "stock",  headerName: "Stock", width: 100 },
-]
-
-
 const ProductosAdminPage = () => {
     
     const { productos, isLoading } = useProductos('/productos')
     const [showCreate, setShowCreate] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
     const [showDelete, setShowDelete] = useState(false)
+    const [selectedStock, setSelectedStock] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleStockCellClick = (stock) => {
+        setSelectedStock(stock);
+        setIsModalOpen(true);
+    };
+    
+    const handleModalClose = () => {
+        setIsModalOpen(false);
+    };
 
 
     const openCloseCreate = () => setShowCreate((prevState) => !prevState)
@@ -53,12 +53,46 @@ const ProductosAdminPage = () => {
         }
     }
 
-    const status = (productos) => {
-        return <span className={`product-badge status-${productos.stock}`}>
-            {productos.stock > 0 && <span>EN STOCK</span>} 
-            {productos.stock == 0 && <span>SIN STOCK</span>}
-        </span>;
-    }
+
+    const columns = [
+        { field: "id",  headerName: "Id", width: 60 },
+        { field: "titulo",  headerName: "Titulo", width: 190 },
+        { field: "genero",  headerName: "Genero", width: 150 },
+        {
+            field: 'imagen',
+            headerName: 'Imagen',
+            width: 130,
+            renderCell: (params) => (
+              <img src={params.value} alt="Imagen producto" style={{ width: '100%', height: 'auto' }} />
+            ),
+        },
+        { 
+            field: "precio",  
+            headerName: "Precio", 
+            width: 90,
+            valueFormatter: (params) => `${params.value}€`
+        },
+        { 
+            field: "descuento",  
+            headerName: "Descuento",
+            width: 120,
+            valueFormatter: (params) => params.value ? `${params.value}%` : ''
+        },
+        { 
+            field: "stock",  
+            headerName: "Stock", 
+            width: 100,
+            renderCell: (params) => (
+                <span 
+                    className={`product-badge ${params.value > 0 ? styles.inStock : styles.outOfStock}`}    
+                    onClick={() => handleStockCellClick(params.value)}
+                >
+                    {params.value > 0 ? 'EN STOCK' : 'SIN STOCK'}
+                </span>
+            )
+        }
+    ]
+
 
     const rows = productos.map((producto) => ({
         id: producto.id,
@@ -67,8 +101,9 @@ const ProductosAdminPage = () => {
         imagen: producto.imagen,
         precio: producto.precio,
         descuento: producto.descuento,
-        stock: status
+        stock: producto.stock
     }))
+
 
     const actionColumns = [
         { field: "action", headerName: "", width: 180, renderCell:({row}) => {
@@ -76,10 +111,6 @@ const ProductosAdminPage = () => {
             return (
                 <div className={styles.cellAction}>
                     <div className={styles.linkall}>
-                        <AddCircle 
-                            sx={{color: "#639969", fontSize: 25, marginLeft: 3}}
-                            onClick={openCloseCreate}
-                        />
                         <Edit
                             sx={{color: "#D7A34D", fontSize: 25, marginLeft: 3}}
                             onClick={openCloseEdit}
@@ -98,18 +129,32 @@ const ProductosAdminPage = () => {
         <LayoutProvider>
             <AdminLayout>
                 <div className="card">
-                    <div className="text-900 font-medium text-3xl">Productos</div>
+                    <div className="text-900 font-medium text-3xl">
+                        Productos
+                        
+                        <AddCircle 
+                            sx={{color: "#639969", fontSize: 25, marginLeft: 3}}
+                            onClick={openCloseCreate}
+                        />
+                    </div>
                     <DataGrid
                         rows={rows}
                         columns={columns.concat(actionColumns)}
                         initialState={{
                             pagination: {
-                              paginationModel: { page: 0, pageSize: 5 },
+                              paginationModel: { page: 0, pageSize: 10 },
                             },
                         }}
                         pageSizeOptions={[5, 10]}
                         className={styles.datatable}
-                    />             
+                    />  
+                    
+                    <Modal open={isModalOpen} onClose={handleModalClose}>
+                        <div className={styles.modalContent}>
+                            <h2 className={styles.modalTitle}>Número de Stock</h2>
+                            <p className={styles.modalStock}>{selectedStock}</p>
+                        </div>
+                    </Modal>           
                 </div>
 
                 

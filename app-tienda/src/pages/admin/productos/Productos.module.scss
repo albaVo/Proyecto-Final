@@ -49,3 +49,40 @@
         }
     }
 }
+
+
+.inStock {
+    background-color: $success;
+    color: white;
+}
+  
+.outOfStock {
+    background-color: $danger;
+    color: white;
+}
+
+
+.modalContent {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    width: 12%;
+    position: absolute;
+    top: 32%;
+    left: 72%;
+}
+  
+.modalTitle {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+  
+.modalStock {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+}

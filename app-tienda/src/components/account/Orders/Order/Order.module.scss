@@ -59,6 +59,7 @@
             p {
                 &:first-of-type {
                     font-weight: bold;
+                    color: $text-primary;
                 }
                 
                 &:last-of-type {
@@ -71,6 +72,7 @@
         .quantity {
             display: flex;
             align-items: center;
+            color: $text-primary;
 
             span {
                 margin-left: 10px;
@@ -84,13 +86,15 @@
 .address {
     margin-bottom: 20px;
     border-bottom: 1px solid $border-secondary;
-    background-color: $background-quaternary;
+    // background-color: #3d3d3d;
+    background-color: #5e5e5e;
     padding: 20px;
     border-radius: 10px;
 
     .title {
         font-weight: bold;
         font-size: 16px;
+        color: $text-primary;
     }
 
     .info {
@@ -104,5 +108,5 @@
     text-align: right;
     font-size: 20px;
     font-weight: bold;
-    color: $primary;
+    color: #9c4cd2;
 }

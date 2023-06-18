@@ -44,6 +44,7 @@
     padding: 6px 15px;
     border-radius: 50px;
     margin-bottom: 40px;
+    color: $text-primary;
 
     > span {
         display: flex;
@@ -78,6 +79,7 @@
 
 .price {
     margin-bottom: 40px;
+    color: $text-primary;
 
     .originalPrice {
         font-size: 18px;

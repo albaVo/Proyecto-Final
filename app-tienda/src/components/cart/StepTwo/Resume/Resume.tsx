@@ -19,6 +19,7 @@ import { useRouter } from "next/router"
 import { AuthContext } from "@/context"
 //hooks
 import { useCart } from "@/hooks/useCart"
+import tiendaApi from "@/api/TiendaApi"
 
 
 const cartCtrl = new Cart()
@@ -47,7 +48,7 @@ export const Resume = (props: any) => {
     const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')  
     
     //crear pedido
-    const { createPedido } = useContext(AuthContext)
+    const { createPedido, updateProductStock } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm<PedidoData>()
 
     const [ showError, setShowError ] = useState(false)
@@ -70,6 +71,8 @@ export const Resume = (props: any) => {
             productosId
         )
         console.log(message)
+
+        await updateProductStock(productosId);
     }
 
 
@@ -136,7 +139,7 @@ export const Resume = (props: any) => {
                                 <span>{producto.categoria.titulo}</span>
                             </div>
                             <span>
-                                {producto.quantity > 1 && `${producto.quantity}x`}
+                                {producto.quantity > 1 && `${producto.quantity} x `}
                                 {fn.calcDiscount(producto.precio, producto.descuento)}€
                             </span>
                         </div>

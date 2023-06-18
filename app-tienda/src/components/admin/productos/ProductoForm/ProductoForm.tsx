@@ -14,14 +14,14 @@ import { CircularProgress, MenuItem, TextField } from "@mui/material";
 type ProductoData = {
     id?: number,
     titulo: string,
-    genero?: string,
+    genero: string,
     descripcion: string,
-    imagen?: string,
-    fondo?: string,
-    capturas?: string[]
-    video?: string,
+    imagen: string,
+    fondo: string,
+    capturas: string[]
+    video: string,
     precio: number,
-    descuento?: number,
+    descuento: string,
     stock: number,
     categoriaId: number,
     subcategoriaId: number
@@ -93,8 +93,15 @@ export const ProductoForm = (props: any) => {
         { value: 'PLA', label: 'Plataformas'},
         { value: 'RV', label: 'Realidad virtual'}
     ]
-
-    const valuesCategoria = [] //intentar hacer un map de la categoria de los productos
+ 
+    const valuesCategoria = [
+        { value: '', label: '' },
+        ...categoriaId.map((categoria) => ({
+          value: categoria.id,
+          label: categoria.nombre,
+        })),
+      ];
+      
 
     const valuesSubcategoria = []
 

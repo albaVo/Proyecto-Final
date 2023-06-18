@@ -37,10 +37,10 @@ export const Account = () => {
 
     return (
         <div className={styles.account}>
-            <Button className={styles.cart}>
-                {/* <ShoppingCart onClick={goToCart}/> */}
+            {/* <Button className={styles.cart}>
+                <ShoppingCart onClick={goToCart}/>
                 {total > 0 && <Badge badgeContent={total} color="secondary"><ShoppingCart onClick={goToCart}/></Badge>}
-            </Button>
+            </Button> */}
 
             <Button className={`${styles.cart} ${isTokenPresent() ? '' : styles.cartNoBadge}`}>
                 {total > 0 ? (

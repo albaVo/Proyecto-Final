@@ -1,12 +1,28 @@
-import { LayoutProvider } from "@/context"
+import { AuthContext, LayoutProvider } from "@/context"
 import AdminLayout from "@/layouts/AdminLayout/AdminLayout"
-import { PersonOutlineOutlined } from "@mui/icons-material"
+import { Logout, PersonOutlineOutlined } from "@mui/icons-material"
 import { IconButton } from "@mui/material"
 import styles from "./Usuario.module.scss"
+import { useContext, useEffect, useState } from "react"
+import router from "next/router"
 
 const UsuarioAdminPage = () => {
 
-    const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
+    // const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')
+    const { logout } = useContext(AuthContext)
+    
+    const [storedUser, setStoredUser] = useState({});
+    useEffect(() => {
+        const userFromLocalStorage = JSON.parse(localStorage.getItem('user') || '{}');
+        setStoredUser(userFromLocalStorage);
+    }, []);
+      
+
+    const onLogout = () => {
+        logout()
+        router.push("/")
+    }
+    
     
     // fecha random
     function getRandomDate(startDate: Date, endDate: Date): Date {
@@ -16,21 +32,32 @@ const UsuarioAdminPage = () => {
         return new Date(randomMillis)
     }
 
-    const startDate = new Date('2021-01-01')
-    const endDate = new Date('2023-01-01')
-    const randomDate = getRandomDate(startDate, endDate).toLocaleDateString()
+    const [randomDate, setRandomDate] = useState('');
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const startDate = new Date('2021-01-01');
+            const endDate = new Date('2023-01-01');
+            const generatedDate = getRandomDate(startDate, endDate).toLocaleDateString();
+            setRandomDate(generatedDate);
+        }
+    }, []);
 
 
     return (
         <LayoutProvider>
             <AdminLayout>
                 <div className="card">
+                    <IconButton onClick={onLogout}>
+                        <Logout sx={{fill: "purple"}}/>
+                    </IconButton>
+
                     <div className={styles.info}>
                         <IconButton className={styles.user}>
                             <PersonOutlineOutlined/>
                         </IconButton>
-                        <h3 className={styles.username}>{storedUser.nombre} {storedUser.apellidos}</h3>
-                        <h4 className={styles.email}>{storedUser.email}</h4>
+                        <div className={styles.username}>{storedUser.nombre} {storedUser.apellidos}</div>
+                        <div className={styles.email}>{storedUser.email}</div>
                         <p className={styles.createdAt}>
                             Miembro desde: {randomDate}
                         </p>

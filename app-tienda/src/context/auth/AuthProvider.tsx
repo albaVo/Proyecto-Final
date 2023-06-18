@@ -12,6 +12,7 @@ import axios from "axios";
 // auth
 import { authReducer } from "./authReducer";
 import { AuthContext } from "./AuthContext";
+import { useProductos } from "@/hooks/useProductos";
 
 
 export interface AuthState {
@@ -278,6 +279,30 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
 
 
     // PEDIDOS 
+    const updateProductStock = async (productosIdArray: number[]) => {
+        await Promise.all(productosIdArray.map(async (productoId) => {
+            const { productos: producto, isLoading } = useProductos(`/productos/${productoId}`);
+            if (producto.stock >= 1) {
+                producto.stock -= 1;
+                await updateProducto(
+                    producto.id,
+                    producto.titulo,
+                    producto.genero,
+                    producto.descripcion,
+                    producto.imagen,
+                    producto.fondo,
+                    producto.capturas,
+                    producto.video,
+                    producto.precio,
+                    producto.descuento,
+                    producto.stock,
+                    producto.categoriaId,
+                    producto.subcategoriaId
+                );
+            }
+        }));
+    }
+    
     const createPedido = async (fecha_pedido: Date, precio_total: number, direccionId: number, usuarioId: number, productosId: number):Promise<{hasError: boolean, message: string, id?: number}> => {
         try {
             const { data } = await tiendaApi.post('/pedidos', {fecha_pedido, precio_total, direccionId, usuarioId, productosId})
@@ -455,7 +480,8 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             deletePedido,
             createProducto,
             updateProducto,
-            deleteProducto
+            deleteProducto,
+            updateProductStock
         }}>
             { children }
         </AuthContext.Provider>

@@ -56,7 +56,8 @@ export class PedidosService {
   findOne(id: number) {
     return this.pedidoRepository.findOne({
       where: { id },
-      relations: { productos: true }
+      // relations: { productos: true }
+      relations: ['productos', 'productos.categoria']
     });
   }
 
