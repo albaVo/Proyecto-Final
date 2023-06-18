@@ -9,6 +9,11 @@ import { useUsuarios } from "@/hooks/useUsuarios"
 
 export const Orders = () => {
     const storedUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user') || '{}')  
+<<<<<<< HEAD
+=======
+    // const [orders, setOrders] = useState(null)    
+    // console.log(orders)
+>>>>>>> 3cd86c917d913db3da347de476aeabb7c9251378
 
     const usuarioId = storedUser.id
     const { usuarios: usuario, isLoading } = useUsuarios(`/auth/${usuarioId}`)
