@@ -1,5 +1,5 @@
 //styles
-import styles from "./Menu.module.scss"
+import styles from "./MenuTop.module.scss"
 //react
 import { FC, useEffect, useState } from "react"
 import React from "react";
@@ -24,9 +24,6 @@ interface Props {
 }
 
 export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
-
-    const { productos, isLoading } = useProductos('/productos')
-    const [products, setProducts] = useState([])
 
     const router = useRouter()
     const theme = useTheme()
@@ -75,11 +72,11 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
 
     return (
       <div className={styles.categorias}>
-        {categoriaData.map((categoria) => (
+        {categoria.map((categoria) => (
             <>
               <div key={categoria.id} className={styles.categoria}>
                 <Link href={`/categorias/${categoria.id}`} passHref> 
-                  {/* <Image src={categoria.icono} alt={""} width={32} height={20}/> */}
+                  <Image src={categoria.icono} alt={""} width={32} height={20}/>
                   {categoria.titulo}
                 </Link>
               </div>

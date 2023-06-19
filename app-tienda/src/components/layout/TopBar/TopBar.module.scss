@@ -21,8 +21,56 @@
     margin-left: 15px;
 }
 
+.menuIcon {
+    display: none;
+}
+
+.menu {
+    display: none;
+}
+
 .right {
     width: 15%;
     display: flex;
     justify-content: flex-end;
+}
+
+
+@media (max-width: 1000px) {
+    .topBar {
+        width: 100%;
+    }
+
+    .left {
+        width: 30%;
+    }
+    
+    .center {
+        display: none;
+    }
+    
+    .menuIcon {
+        display: block;
+        width: 50%;
+        text-align: end;
+        margin-right: 50px;
+
+        svg {
+            fill: $text-primary;
+            font-size: 40px;
+        }
+    }
+
+    .menu {
+        display: block;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 80px;
+        // height: 100%;
+    }
+
+    .right {
+        width: 20%;
+    }
 }
