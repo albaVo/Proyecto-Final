@@ -21,16 +21,16 @@ import { UsuarioForm } from "@/components/admin/usuarios/UsuarioForm"
 
 const columns = [
     { field: "id",  headerName: "Id", width: 70 },
-    { field: "nombre",  headerName: "Nombre", width: 190 },
+    { field: "nombre",  headerName: "Nombre", width: 100 },
     { field: "apellidos",  headerName: "Apellidos", width: 150 },
     { field: "email",  headerName: "Email", width: 120 },
-    { field: "isActive",  headerName: "isActive", width: 160 },
-    { field: "roles",  headerName: "Rol", width: 160 },
-    { field: "direcciones",  headerName: "Direcciones Id", width: 160 }
+    { field: "isActive",  headerName: "isActive", width: 100 },
+    { field: "roles",  headerName: "Rol", width: 100 },
+    { field: "direcciones",  headerName: "Direcciones Id", width: 150 }
 ]
 
 const UsuariosAdminPage = () => {
-    const { usuarios, isLoading } = useUsuarios('/usuarios')
+    const { usuarios, isLoading } = useUsuarios('/auth')
     const [show, setShow] = useState(false)
     const [showCreate, setShowCreate] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
@@ -53,6 +53,8 @@ const UsuariosAdminPage = () => {
         }
     }
 
+    console.log('usuarios', usuarios)
+
     const rows = usuarios.map((usuario) => ({
         id: usuario.id,
         nombre: usuario.nombre,
@@ -60,11 +62,13 @@ const UsuariosAdminPage = () => {
         email: usuario.email,
         isActive: usuario.isActive,
         roles: usuario.roles,
-        direcciones: usuario.direcciones
+        direcciones: usuario.direcciones.map((direccion) => direccion.id)
     }))
 
     const actionColumns = [
         { field: "action", headerName: "", width: 210, renderCell:({row}) => {
+
+            const { id } = row
 
             return (
                 <div className={styles.cellAction}>
@@ -73,17 +77,13 @@ const UsuariosAdminPage = () => {
                             sx={{color: "#1778C8", fontSize: 25, marginLeft: 3}}
                             onClick={openCloseShow}
                         />
-                        <AddCircle 
-                            sx={{color: "#639969", fontSize: 25, marginLeft: 3}}
-                            onClick={openCloseCreate}
-                        />
                         <Edit
                             sx={{color: "#D7A34D", fontSize: 25, marginLeft: 3}}
                             onClick={openCloseEdit}
                         />
                         <Delete
                             sx={{color: "#C41111", fontSize: 25, marginLeft: 3}}
-                            onClick={openCloseDelete}
+                            onClick={() => handleDelete(id)}
                         />
                     </div>
                 </div>
@@ -96,7 +96,14 @@ const UsuariosAdminPage = () => {
         <LayoutProvider>
             <AdminLayout>
                 <div className="card">
-                    <div className="text-900 font-medium text-3xl">Usuarios</div>
+                    <div className="text-900 font-medium text-3xl">
+                        Usuarios
+
+                        <AddCircle 
+                            sx={{color: "#639969", fontSize: 25, marginLeft: 3, cursor: "pointer"}}
+                            onClick={openCloseCreate}
+                        />
+                    </div>
                     <DataGrid
                         rows={rows}
                         columns={columns.concat(actionColumns)}

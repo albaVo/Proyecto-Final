@@ -48,7 +48,8 @@ export class PedidosService {
     return this.pedidoRepository.find({
       relations: {
         direccion: true,
-        productos: true
+        productos: true,
+        usuario: true
       }
     });
   }

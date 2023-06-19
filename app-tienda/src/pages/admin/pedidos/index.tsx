@@ -42,7 +42,7 @@ const PedidosAdminPage = () => {
 
     const { deletePedido } = useContext(AuthContext)
 
-    const handleDelete = async (id: string) => {
+    const handleDelete = async (id: number) => {
         const { hasError, message } = await deletePedido(id)
         console.log(id)
 
@@ -52,18 +52,29 @@ const PedidosAdminPage = () => {
         }
     }
 
-    //poner en dirección el titulo y en usuario el nombre
+    // console.log('pedidos', pedidos)
+
+    // const fecha = pedidos.fecha_pedido
+    // const date = new Date(fecha)
+    // const dia = date.getDate()
+    // const mes = date.getMonth() +1
+    // const anio = date.getFullYear()
+    
+    // const fechaFormateada = `${dia}/${mes}/${anio}`
+
     const rows = pedidos.map((pedido) => ({
         id: pedido.id,
         fecha_pedido: pedido.fecha_pedido,
         precio_total: pedido.precio_total,
-        direccion: pedido.direccion,
-        usuario: pedido.usuario,
-        productos: pedido.productos
+        direccion: pedido.direccion.titulo,
+        usuario: pedido.usuario.nombre,
+        productos: pedido.productos.map((producto) => producto.id)
     }))
 
     const actionColumns = [
         { field: "action", headerName: "", width: 210, renderCell:({row}) => {
+
+            const { id } = row
 
             return (
                 <div className={styles.cellAction}>
@@ -78,7 +89,7 @@ const PedidosAdminPage = () => {
                         />
                         <Delete
                             sx={{color: "#C41111", fontSize: 25, marginLeft: 3}}
-                            onClick={openCloseDelete}
+                            onClick={() => handleDelete(id)}
                         />
                     </div>
                 </div>

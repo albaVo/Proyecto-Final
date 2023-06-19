@@ -279,29 +279,30 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
 
 
     // PEDIDOS 
-    const updateProductStock = async (productosIdArray: number[]) => {
-        await Promise.all(productosIdArray.map(async (productoId) => {
-            const { productos: producto, isLoading } = useProductos(`/productos/${productoId}`);
-            if (producto.stock >= 1) {
-                producto.stock -= 1;
-                await updateProducto(
-                    producto.id,
-                    producto.titulo,
-                    producto.genero,
-                    producto.descripcion,
-                    producto.imagen,
-                    producto.fondo,
-                    producto.capturas,
-                    producto.video,
-                    producto.precio,
-                    producto.descuento,
-                    producto.stock,
-                    producto.categoriaId,
-                    producto.subcategoriaId
-                );
-            }
-        }));
-    }
+
+    // const updateProductStock = async (productosIdArray: number[]) => {
+    //     await Promise.all(productosIdArray.map(async (productoId) => {
+    //         const { productos: producto, isLoading } = useProductos(`/productos/${productoId}`);
+    //         if (producto.stock >= 1) {
+    //             producto.stock -= 1;
+    //             await updateProducto(
+    //                 producto.id,
+    //                 producto.titulo,
+    //                 producto.genero,
+    //                 producto.descripcion,
+    //                 producto.imagen,
+    //                 producto.fondo,
+    //                 producto.capturas,
+    //                 producto.video,
+    //                 producto.precio,
+    //                 producto.descuento,
+    //                 producto.stock,
+    //                 producto.categoriaId,
+    //                 producto.subcategoriaId
+    //             );
+    //         }
+    //     }));
+    // }
     
     const createPedido = async (fecha_pedido: Date, precio_total: number, direccionId: number, usuarioId: number, productosId: number):Promise<{hasError: boolean, message: string, id?: number}> => {
         try {
@@ -384,9 +385,10 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
 
 
     // PRODUCTOS
-    const createProducto = async (titulo: string, genero: string, descripcion: string, imagen: string, fondo: string, capturas: string[], video: string, precio: number, descuento: string, stock: number, categoriaId: number, subcategoriaId: number):Promise<{hasError: boolean, message: string, id?: number}> => {
+    const createProducto = async (titulo: string, genero: string, descripcion: string, imagen: string, fondo: string, capturas: string, video: string, precio: number, descuento: number, stock: number, categoriaId: number, subcategoriaId: number):Promise<{hasError: boolean, message: string, id?: number}> => {
         try {
             const { data } = await tiendaApi.post('/productos', {titulo, genero, descripcion, imagen, fondo, capturas, video, precio, descuento, stock, categoriaId, subcategoriaId})
+            console.log(data)
 
             window.location.reload();
             
@@ -410,7 +412,7 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
         }
     }
 
-    const updateProducto = async (id: number, titulo: string, genero: string, descripcion: string, imagen: string, fondo: string, capturas: string[], video: string, precio: number, descuento: string, stock: number, categoriaId: number, subcategoriaId: number):Promise<IRespuestaApiAuth> => {
+    const updateProducto = async (id: number, titulo: string, genero: string, descripcion: string, imagen: string, fondo: string, capturas: string, video: string, precio: number, descuento: number, stock: number, categoriaId: number, subcategoriaId: number):Promise<IRespuestaApiAuth> => {
         try {            
             const { data } = await tiendaApi.patch(`/productos/${id}`, {titulo, genero, descripcion, imagen, fondo, capturas, video, precio, descuento, stock, categoriaId, subcategoriaId})  
             console.log(data)
@@ -480,8 +482,7 @@ export const AuthProvider:FC<{children:any}> = ({children}) => {
             deletePedido,
             createProducto,
             updateProducto,
-            deleteProducto,
-            updateProductStock
+            deleteProducto
         }}>
             { children }
         </AuthContext.Provider>

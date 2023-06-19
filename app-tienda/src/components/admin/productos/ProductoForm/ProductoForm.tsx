@@ -3,12 +3,15 @@ import { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 //primereact
 import { InputText } from 'primereact/inputtext';
+import { InputNumber } from 'primereact/inputnumber';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Button } from "primereact/button";
 //context
 import { AuthContext } from "@/context"
 //mui
 import { CircularProgress, MenuItem, TextField } from "@mui/material";
+import { useCategorias } from "@/hooks/useCategorias";
+import { useSubcategorias } from "@/hooks/useSubcategorias";
 
 
 type ProductoData = {
@@ -18,10 +21,10 @@ type ProductoData = {
     descripcion: string,
     imagen: string,
     fondo: string,
-    capturas: string[]
+    capturas: string,
     video: string,
     precio: number,
-    descuento: string,
+    descuento: number,
     stock: number,
     categoriaId: number,
     subcategoriaId: number
@@ -30,6 +33,9 @@ type ProductoData = {
 export const ProductoForm = (props: any) => {
     
     const { onClose, isEditMode, id } = props
+    
+    const { categorias } = useCategorias('/categorias')
+    const { subcategorias } = useSubcategorias('/subcategorias')
 
     const { createProducto, updateProducto } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm<ProductoData>()
@@ -96,14 +102,20 @@ export const ProductoForm = (props: any) => {
  
     const valuesCategoria = [
         { value: '', label: '' },
-        ...categoriaId.map((categoria) => ({
+        ...categorias.map((categoria) => ({
           value: categoria.id,
-          label: categoria.nombre,
+          label: categoria.titulo,
         })),
-      ];
+    ];
       
 
-    const valuesSubcategoria = []
+    const valuesSubcategoria = [
+        { value: '', label: '' },
+        ...subcategorias.map((subcategoria) => ({
+          value: subcategoria.id,
+          label: subcategoria.titulo,
+        })),
+    ]
 
     return (
         <form onSubmit={handleSubmit(onCreateProducto)}>
@@ -127,7 +139,7 @@ export const ProductoForm = (props: any) => {
                     </div>
                     <div className="field col-12 md:col-4">
                         <label>Capturas</label>
-                        <InputText type="text" {...register('capturas')}/>
+                        <InputTextarea {...register('capturas')}/>
                     </div>
                     <div className="field col-12 md:col-4">
                         <label>Video</label>
@@ -136,7 +148,7 @@ export const ProductoForm = (props: any) => {
                     <div className="field col-12 md:col-4">
                         <label>Genero</label>
                         <div className="textFieldDropdown">
-                            <TextField
+                            <Select type="text"
                                 select
                                 {...register('genero')}
                             >
@@ -145,22 +157,26 @@ export const ProductoForm = (props: any) => {
                                         {option.label}
                                     </MenuItem>
                                 ))}
-                            </TextField>
+                            </Select>
                         </div>
                     </div>
                     <div className="field col-12 md:col-3">
                         <label>Precio</label>
                         <div className="p-inputgroup">
-                            <InputText type="number" {...register('precio')}/>
+                            <InputNumber {...register('precio')} mode="currency" currency="EUR" />
                             <span className="p-inputgroup-addon">€</span>
                         </div>
                     </div>
                     <div className="field col-12 md:col-3">
                         <label>Descuento</label>
                         <div className="p-inputgroup">
-                            <InputText type="number" {...register('descuento')}/>
+                            <InputNumber {...register('descuento')}/>
                             <span className="p-inputgroup-addon">%</span>
                         </div>
+                    </div>
+                    <div className="field col-12 md:col-3">
+                        <label>Stock</label>
+                        <InputNumber {...register('stock')}/>
                     </div>
                     <div className="field col-12 md:col-3">
                         <label>Categoria</label>

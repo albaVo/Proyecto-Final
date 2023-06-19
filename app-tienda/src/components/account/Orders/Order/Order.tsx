@@ -14,15 +14,6 @@ export const Order = (props: any) => {
     const [showModal, setShowModal] = useState(false)
     const products = pedido.productos
     const address = pedido.direccion
-<<<<<<< HEAD
-    // console.log(products)
-
-    const openCloseModal = () => setShowModal((prevState) => !prevState)
-
-    //cambiar formato fecha
-    const fecha = pedido.fecha_pedido
-
-=======
     console.log(products)
 
     const openCloseModal = () => setShowModal((prevState) => !prevState)
@@ -43,7 +34,6 @@ export const Order = (props: any) => {
     //cambiar formato fecha
     const fecha = pedido.fecha_pedido
 
->>>>>>> 3cd86c917d913db3da347de476aeabb7c9251378
     const date = new Date(fecha)
     const dia = date.getDate()
     const mes = date.getMonth() +1

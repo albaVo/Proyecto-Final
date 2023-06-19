@@ -118,4 +118,8 @@ $ yarn add @stripe/react-stripe-js
 $ yarn add primeicons primeflex primereact
 $ yarn add chart.js
 
+
+# React select
+$ yarn add react-select
+
 ```

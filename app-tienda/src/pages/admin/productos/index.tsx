@@ -21,9 +21,11 @@ import { Confirm } from "@/components/shared"
 const ProductosAdminPage = () => {
     
     const { productos, isLoading } = useProductos('/productos')
+
     const [showCreate, setShowCreate] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
     const [showDelete, setShowDelete] = useState(false)
+
     const [selectedStock, setSelectedStock] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -43,7 +45,7 @@ const ProductosAdminPage = () => {
 
     const { deleteProducto } = useContext(AuthContext)
 
-    const handleDelete = async (id: string) => {
+    const handleDelete = async (id: number) => {
         const { hasError, message } = await deleteProducto(id)
         console.log(id)
 
@@ -108,6 +110,8 @@ const ProductosAdminPage = () => {
     const actionColumns = [
         { field: "action", headerName: "", width: 180, renderCell:({row}) => {
 
+            const { id } = row
+
             return (
                 <div className={styles.cellAction}>
                     <div className={styles.linkall}>
@@ -117,7 +121,7 @@ const ProductosAdminPage = () => {
                         />
                         <Delete
                             sx={{color: "#C41111", fontSize: 25, marginLeft: 3}}
-                            onClick={openCloseDelete}
+                            onClick={() => handleDelete(id)}
                         />
                     </div>
                 </div>
@@ -133,7 +137,7 @@ const ProductosAdminPage = () => {
                         Productos
                         
                         <AddCircle 
-                            sx={{color: "#639969", fontSize: 25, marginLeft: 3}}
+                            sx={{color: "#639969", fontSize: 25, marginLeft: 3, cursor: "pointer"}}
                             onClick={openCloseCreate}
                         />
                     </div>
