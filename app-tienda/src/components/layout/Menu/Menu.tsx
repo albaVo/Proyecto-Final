@@ -75,11 +75,11 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
 
     return (
       <div className={styles.categorias}>
-        {categoria.map((categoria) => (
+        {categoriaData.map((categoria) => (
             <>
               <div key={categoria.id} className={styles.categoria}>
                 <Link href={`/categorias/${categoria.id}`} passHref> 
-                  <Image src={categoria.icono} alt={""} width={32} height={20}/>
+                  {/* <Image src={categoria.icono} alt={""} width={32} height={20}/> */}
                   {categoria.titulo}
                 </Link>
               </div>
@@ -151,3 +151,27 @@ export const MenuTop:FC<Props> = ({isOpenSearch, categoria}) => {
       </div>
     )
 }
+
+
+const categoriaData = [
+  {
+    "id": 1,
+      "titulo": "Videojuegos"
+  },
+  {
+    "id": 2,
+      "titulo": "Consolas"
+  },
+  {
+    "id": 3,
+      "titulo": "Figuras"
+  },
+  {
+    "id": 4,
+      "titulo": "Cosplay"
+  },
+  {
+    "id": 5,
+      "titulo": "Juegos de mesa"
+  }
+]
